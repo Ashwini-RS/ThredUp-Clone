@@ -1,0 +1,2503 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Inter, sans-serif;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #f5f5f5;
+}
+
+.top-bar {
+  background: #daefc6;
+  text-align: center;
+  padding: 15px 30px;
+  font-size: 14px;
+  font-family: "Seasons", Sons, serif;
+  letter-spacing: 0.5px;
+}
+
+.top-bar a {
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+  font-family: "Seasons", Sons, serif;
+  border-bottom: 0.75px solid #000;
+  margin-left: 8px;
+}
+
+.header {
+  width: 100%;
+  padding: 0px 40px;
+  margin: 0px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 8px;
+  /* position: fixed;
+  top: 30px; */
+
+}
+
+.toggle {
+  display: flex;
+  background: #eee;
+  border-radius: 50px;
+  padding: 6px;
+  width: 200px;
+}
+
+.toggle button {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 8px 0;
+  border-radius: 22px;
+  font-weight: 600;
+  font-family: "Seasons", Sons, serif;
+  cursor: pointer;
+}
+
+.toggle .active {
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .15);
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-left: 40px;
+  text-align: center;
+}
+
+.search-box {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  max-width: 360px;
+  border: 0.75px solid #ccc;
+  border-radius: 6px;
+  padding: 4px 12px;
+  display: flex;
+  align-items: center;
+  /* position: relative;
+  height: 50px;
+  display: block;
+  text-align: left;
+  width: 100%;
+  max-width: 360px;
+  margin: 0;
+  margin-bottom: 20px;
+  padding: 6px;
+  border: 0.75px solid;
+  gap: 10px;
+  font-size: 17px;
+  cursor: pointer; */
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+  padding-right: 35px;
+  background: transparent;
+}
+
+.search-box input .i {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  font-size: 18px;
+  color: #f5f5f5;
+  cursor: pointer;
+
+  padding: 5px;
+  margin: 2px;
+
+  /* width: 10%;
+  padding: 10px;
+ 
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer; */
+}
+
+.search-box i {
+  color: gray;
+}
+
+.nav-row {
+  display: flex;
+  /* margin-top: px; */
+  margin-right: 5px;
+  align-items: center;
+  padding: 15px 30px;
+  justify-content: space-between;
+  /* gap: 40px; */
+}
+
+.nav-menu {
+  display: flex;
+  gap: 15px;
+  font-size: 15px;
+}
+
+.nav-menu a {
+  /* text-decoration: none; */
+  color: #222;
+  font-size: 14px;
+  /* position: relative; */
+}
+
+.nav-menu a.active::after {
+  content: "";
+  /* position: absolute; */
+  /* left: 0; */
+  /* bottom: -10px; */
+  width: 100%;
+  /* height: 2px; */
+  background: #222;
+}
+
+.heading {
+  display: flex;
+}
+
+.heading h3 {
+  font-family: "Seasons", Sons, serif;
+  margin-left: 0.5px;
+  padding: 20px;
+  font-size: 140%;
+  font-weight: 100px;
+}
+
+.heading .button {
+  background: none;
+  border: none;
+  border-bottom: 1px solid #000;
+  font-size: 14px;
+  letter-spacing: 1px;
+  padding-bottom: 4px;
+  cursor: pointer;
+}
+
+.icons {
+  display: flex;
+  width: 20%;
+  padding: 5px;
+  margin-left: 5px;
+  gap: 5px;
+  cursor: pointer;
+  /* margin-right: 30px;
+  display: flex;
+  flex-direction: row;
+  font-size: 18px; */
+}
+
+/* ==========essentials part============== */
+.essentials {
+  display: flex;
+  padding: 40px 40px;
+  background: #f2f2f2;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.essentials .heading {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.essentials .categories {
+  flex: 1;
+  width: 240px;
+}
+
+.essentials .categories img {
+  width: 230px;
+  display: block;
+  object-fit: cover;
+}
+
+.essentials .dresses {
+  margin-left: 16px;
+  color: #000;
+  text-decoration: none;
+}
+
+.essentials .categories #img1 {
+  margin-left: 16px;
+}
+
+.essentials .categories #img6 {
+  margin-right: 16px;
+}
+
+.essentials .categories p {
+  margin-top: 14px;
+  font-size: 16px;
+  font-family: "Seasons", Sons, serif;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+/*======= promo sentence=======*/
+.promo {
+  display: flex;
+  width: 100%;
+  height: 360px;
+
+}
+
+.promo-left {
+  width: 55%;
+  background: #cfe0bd;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.promo h2 {
+  font-size: 42px;
+  font-weight: 500;
+  font-family: "Seasons", Sons, serif;
+  margin-bottom: 15px;
+}
+
+.promo-left p {
+  font-size: 18px;
+  font-family: "Seasons", Sons, serif;
+  margin-bottom: 25px;
+}
+
+.promo .promo-button {
+  display: inline-block;
+  border: 1px solid #222;
+  padding: 14px 20px;
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+  font-family: "Seasons", Sons, serif;
+  letter-spacing: 1px;
+  background: none;
+}
+
+.promo-right {
+  width: 45%;
+}
+
+.promo-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* trend images */
+.trend-report {
+  padding: 50px 60px;
+  background: #efefef;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+}
+
+.trend-header {
+  width: 100%;
+}
+
+.trend-header h2 {
+  font-size: 28px;
+  margin-bottom: 8px;
+  font-family: "Seasons", Sons, serif;
+}
+
+.trend-header p {
+  font-size: 15px;
+  font-family: "Seasons", Sons, serif;
+  margin-bottom: 28px;
+  color: #333;
+}
+
+.trend-row {
+  flex: none;
+  width: 200px;
+}
+
+.trend-row img {
+  width: 220px;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+}
+
+.trend-row p {
+  margin-top: 10px;
+  font-size: 14px;
+  font-family: "Seasons", Sons, serif;
+}
+
+.trend-row a {
+  display: block;
+  text-decoration: none;
+  color: black;
+}
+
+/* brands image */
+.brands {
+  padding: 40px 60px;
+  background: #efefef;
+}
+
+.brand-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.brand-heading h2 {
+  font-size: 22px;
+  font-family: "Seasons", Sons, serif;
+  font-weight: 100;
+}
+
+.shop-all {
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: #000;
+  border-bottom: 1px solid #000;
+  padding-bottom: 3px;
+}
+
+.brands-row {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-left: 25px;
+}
+
+.brand {
+  width: 200px;
+  height: 200px;
+  background: #e8e6e2;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.brand a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.brand img {
+  max-width: 200px;
+  max-height: 200px;
+  object-fit: contain;
+  display: block;
+}
+
+.daily-edit {
+  background: url("images/navy-dark-blue.avif") center/cover no-repeat;
+  padding: 100px 40px;
+  text-align: center;
+  color: #fff;
+}
+
+.carousel {
+  display: flex;
+  gap: 40px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 20px;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.item {
+  min-width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: center;
+
+  text-decoration: none;
+  margin: 10px;
+  overflow: hidden;
+}
+
+.item img {
+  width: 65%;
+  height: 155%;
+  object-fit: contain;
+}
+
+.item:hover {
+  background: #fff;
+  transform: scale(1.15);
+}
+
+h2 {
+  margin-top: 60px;
+  font-size: 48px;
+  font-family: "Seasons", Sons, serif;
+}
+
+.sub {
+  font-size: 16px;
+  font-family: "Seasons", Sons, serif;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.btn-outline {
+  display: inline-block;
+  padding: 16px 60px;
+  border: 1px solid whitesmoke;
+  color: whitesmoke;
+  text-decoration: none;
+  letter-spacing: 2px;
+  transition: .2s;
+  font-family: "Seasons", Sons, serif;
+}
+
+.btn-outline:hover {
+  color: white;
+  border-color: white;
+}
+
+
+/* favourites images */
+.favorites-section {
+  max-width: 1400px;
+  margin: auto;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.section-header h2 {
+  font-size: 28px;
+  font-weight: 500;
+  font-family: "Seasons", Sons, serif;
+}
+
+.shop-all {
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: black;
+}
+
+.carousel {
+  display: flex;
+  gap: 25px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
+}
+
+.carousel::-webkit-scrollbar {
+  height: 6px;
+}
+
+.carousel::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+.product-card {
+  min-width: 150px;
+  flex: 0 0 auto;
+}
+
+.product-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.product-card h3 {
+  margin: 5px 0;
+  font-weight: 500;
+  font-family: "Seasons", Sons, serif;
+}
+
+.size {
+  font-size: 14px;
+  font-family: "Seasons", Sons, serif;
+  color: gray;
+}
+
+.old-price {
+  text-decoration: line-through;
+  margin: 5px 0 2px;
+  font-family: "Seasons", Sons, serif;
+}
+
+.new-price {
+  color: #b12704;
+  font-weight: bold;
+  font-family: "Seasons", Sons, serif;
+  margin: 0 0 5px;
+}
+
+.code {
+  color: #b12704;
+  font-family: "Seasons", Sons, serif;
+  font-size: 13px;
+}
+
+/* forever */
+.forever-section {
+  margin: auto;
+  background: #f4f4f4;
+  text-align: center;
+  padding: 80px 40px;
+  font-family: "Seasons", Sons, serif;
+}
+
+.forever-icon {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.forever-title {
+  font-size: 34px;
+  font-family: "Seasons", Sons, serif;
+  margin-bottom: 50px;
+}
+
+.forever-grid {
+  display: flex;
+  justify-content: center;
+  gap: 120px;
+  margin-bottom: 50px;
+}
+
+.forever-item {
+  width: 280px;
+}
+
+.forever-item img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 18px;
+}
+
+.forever-item h3 {
+  font-size: 20px;
+  font-family: "Seasons", Sons, serif;
+  margin-bottom: 10px;
+}
+
+.forever-item p {
+  font-size: 16px;
+  font-family: "Seasons", Sons, serif;
+  line-height: 1.5;
+  color: #333;
+}
+
+.forever-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn-outline {
+  display: inline-block;
+  padding: 16px 75px;
+  border: 1px solid #000;
+  text-decoration: none;
+  color: #000;
+  font-size: 13px;
+  font-family: "Seasons", Sons, serif;
+  letter-spacing: 1px;
+  background: transparent;
+  transition: 0.2s ease, border-color 0.25s ease;
+}
+
+.btn-outline:hover {
+  color: #444;
+  border-color: #444;
+  background: transparent;
+}
+
+
+/* bottom of the page */
+.footer {
+  background-color: #f4f2ef;
+  padding: 60px 80px;
+  margin-top: 50px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+/* Columns */
+.footer-column {
+  flex: 1;
+}
+
+.footer-column h3 {
+  font-family: "Seasons", Sons, serif;
+}
+
+.footer-column ul li {
+  font-family: "Seasons", Sons, serif;
+}
+
+.footer-column.wide {
+  flex: 1.5;
+}
+
+.footer-column h3 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  font-family: "Seasons", Sons, serif;
+}
+
+.footer-column ul {
+  list-style: none;
+  margin-bottom: 25px;
+}
+
+.footer-column ul li {
+  font-size: 15px;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.footer-column ul li:hover {
+  text-decoration: underline;
+}
+
+/* Signup Section */
+.footer-column p {
+  font-size: 14px;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.signup-box {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 35px;
+}
+
+.signup-box input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ccc;
+}
+
+.signup-box button {
+  padding: 12px 20px;
+  border: 1px solid black;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* App Section */
+
+.mobile-title {
+  margin-top: 30px;
+  font-family: "Seasons", Sons, serif;
+}
+
+.app-section {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+.app-section img {
+  width: 50%;
+}
+
+.app-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.app-btn {
+  padding: 15px 20px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-size: 13px;
+  cursor: pointer;
+  font-family: "Seasons", Sons, serif;
+}
+
+/* Social Icons */
+.connect-title {
+  margin-top: 20px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #aaa;
+  border-radius: 50%;
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.social-icons .icon i {
+  font-size: 22px;
+}
+
+/* .top-line {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin-bottom: 30px;
+}
+ */
+.footer-line {
+  border: none;
+  height: 1px;
+  background-color: #383535;
+  margin: 40px 0 0;
+}
+
+.footer-inner {
+  max-width: 1400px;
+  margin: 50px 0 40px;
+  /* width: 1400px; */
+  /* margin-left: 0px;
+  margin-top: 30px; */
+  padding: 0px 0px;
+}
+
+.footer-title {
+  /* margin: px; */
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-family: "Seasons", Sons, serif;
+}
+
+.footer-desc {
+  font-size: 17px;
+  font-family: "Seasons", Sons, serif;
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+.footer-notes {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.footer-notes p {
+  font-family: "Seasons", Sons, serif;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: flex-start;  */
+  gap: auto;
+  /* align-items: center;  */
+}
+
+.footer-links a {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  /* border-bottom: 1px solid #000; */
+  padding-bottom: 15px;
+  color: #000;
+  font-size: 13px;
+  font-family: "Seasons", serif;
+}
+
+.footer-bottom {
+  font-size: 12px;
+  color: #343434;
+  text-align: right;
+  margin-bottom: 50px;
+  margin-top: 5px;
+}
+
+.footer-rights {
+  text-align: right;
+  font-size: 12px;
+  margin-top: 2px;
+  font-family: "Seasons", Sons, serif;
+}
+
+/* kids styling page  */
+
+.girls-section {
+  width: 100%;
+  padding: 40px 60px;
+  margin: 20px 0;
+  background-color: #f7f6f4;
+}
+
+.girls-section h2 {
+  font-size: 28px;
+  font-family: "Seasons", Sons, serif;
+  margin-bottom: 30px;
+}
+
+.cards-container {
+  display: grid;
+  /* grid-template-columns: 350px 350px 350px 370px; */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.price {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+
+/* .card img {
+  transition: transform 0.3s ease;
+} */
+
+/* .card:hover img {
+  transform: scale(1.05);
+} */
+
+@media (max-width: 1024px) {
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* kids gotta section */
+
+.gottasection {
+  padding: 40px 60px;
+  margin: 40px 0;
+  background-color: #f5f5f5;
+}
+
+.gottasection h2 {
+  font-size: 28px;
+  font-family: "Seasons", Sons, serif;
+  margin-bottom: 30px;
+}
+
+.products-container {
+  display: flex;
+  gap: 10px;
+}
+
+.product-card {
+  flex: 1;
+  cursor: pointer;
+}
+
+.product-card img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+  border-radius: 4px;
+  transition: transform 0.3s ease;
+}
+
+.product-card p {
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+@media (max-width: 1024px) {
+  .products-container {
+    flex-wrap: wrap;
+  }
+
+  .product-card {
+    flex: 1 1 30%;
+  }
+}
+
+@media (max-width: 600px) {
+  .product-card {
+    flex: 1 1 100%;
+  }
+}
+
+/* girls brand section */
+
+.girlsbrandssection {
+  background-color: grey;
+  padding: 60px 80px;
+  margin: 40px 0;
+}
+
+.girlsbrandssection h2 {
+  font-size: 26px;
+  margin-bottom: 40px;
+}
+
+.brands-container {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.brand-circle {
+  width: 220px;
+  height: 220px;
+  background-color: #e9e6e2;
+  border-radius: 70%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 30px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.brand-circle img {
+  max-width: 120px;
+  max-height: 120px;
+  object-fit: contain;
+}
+
+/* .brand-circle:hover {
+  transform: scale(1.05);
+} */
+
+/* lids promo section*/
+.kidspromo {
+  display: flex;
+  width: 100%;
+  height: 300px;
+}
+
+.kidspromo-left {
+  width: 50%;
+  background: hsl(242, 75%, 79%);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.kidspromo h2 {
+  font-size: 42px;
+  font-weight: 500;
+  font-family: "Seasons", Sons, serif;
+  margin-bottom: 15px;
+}
+
+.kidspromo-left p {
+  font-size: 18px;
+  font-family: "Seasons", Sons, serif;
+  margin-bottom: 25px;
+}
+
+.kidspromo .kidspromo-button {
+  display: inline-block;
+  border: 1px solid #222;
+  width: 300px;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+  font-family: "Seasons", Sons, serif;
+  letter-spacing: 1px;
+  background: none;
+}
+
+.kidspromo-right {
+  width: 50%;
+}
+
+.kidspromo-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* boys section  */
+
+.boyssection {
+  width: 100%;
+  padding: 20px 60px;
+  margin: 20px 0;
+  background-color: #f7f6f4;
+}
+
+.boyssection h2 {
+  font-size: 28px;
+  font-family: "Seasons", Sons, serif;
+  margin-top: 5px;
+  margin-bottom: 30px;
+}
+
+.boyscards-container {
+  display: grid;
+  /* grid-template-columns: 350px 350px 350px 370px; */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.boys-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.boys-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.price {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* .card img {
+  transition: transform 0.3s ease;
+} */
+
+/* .card:hover img {
+  transform: scale(1.05);
+} */
+
+@media (max-width: 1024px) {
+  .boyscards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .boyscards-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* boys style section */
+
+.boysstylesection {
+  padding: 20px 60px;
+  margin: 40px 0px;
+  background-color: #f5f5f5;
+}
+
+.boysstylesection h2 {
+  font-size: 28px;
+  font-family: "Seasons", Sons, serif;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.products-container {
+  display: flex;
+  gap: 10px;
+}
+
+.product-card {
+  flex: 1;
+  cursor: pointer;
+}
+
+.product-card img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+  border-radius: 4px;
+  transition: transform 0.3s ease;
+}
+
+.product-card p {
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+@media (max-width: 1024px) {
+  .products-container {
+    flex-wrap: wrap;
+  }
+
+  .product-card {
+    flex: 1 1 30%;
+  }
+}
+
+@media (max-width: 600px) {
+  .product-card {
+    flex: 1 1 100%;
+  }
+}
+
+
+/* boys brands section */
+
+.boysbrands-section {
+  padding: 40px 60px;
+}
+
+.boysbrands-section h2 {
+  font-size: 28px;
+  margin-bottom: 40px;
+}
+
+.boysbrands-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.boys-brand {
+  width: 210px;
+  height: 210px;
+  background: #e9e7e3;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.boys-brand img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+
+
+/* dresses page style  */
+
+/* .dresseshero {
+  height: 600px;
+  background: url("images/womensdresses.webp") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+} */
+
+.dresseshero {
+  height: 680px;
+  position: relative;
+  overflow: hidden;
+}
+
+.dresseshero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dresseshero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+}
+
+.dresseshero-content h1 {
+  font-size: 48px;
+  font-family: "Seasons", Sons, serif;
+  margin-bottom: 20px;
+}
+
+.dresseshero-content button {
+  display: inline-block;
+  width: 25%;
+  padding: 10px 20px;
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  font-family: "Seasons", Sons, serif;
+  cursor: pointer;
+}
+
+.dressesproduct-scroll {
+  background: white;
+  padding: 30px;
+}
+
+
+.dressesproducts {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  gap: 15px;
+  padding: 0 40px;
+  overflow-x: auto;
+  z-index: 3;
+}
+
+.dressesproducts::-webkit-scrollbar {
+  height: 6px;
+}
+
+.dressesproducts::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+.dressescard {
+  flex: 0 0 150px;
+  padding: 5px;
+}
+
+.dressescard img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+}
+
+.heart {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.heart i {
+  font-size: 14px;
+  color: black;
+}
+
+/* Hover effect */
+.heart:hover i {
+  color: red;
+}
+
+
+/* =======WOMENS SECTION STYLING PAGE============= */
+.women-section {
+  width: 90%;
+  margin: auto;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.title-banner {
+  width: 90%;
+  margin: auto;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.women-title {
+  font-size: 45px;
+  font-weight: 500;
+  /* margin-bottom:  5px; */
+  font-family: "Seasons", Sons, serif;
+  color: #000;
+}
+
+.womenbar-categories {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+}
+
+.category-card {
+  /* min-width:120px; */
+  text-decoration: none;
+  color: black;
+}
+
+.category-card img {
+  width: 140px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 2px;
+  transition: opacity 0.3s ease;
+}
+
+.category-card:hover img {
+  opacity: 0.7;
+}
+
+.category-card p {
+  margin-top: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.category-card:hover {
+  text-decoration: underline;
+  color: #050101;
+}
+
+
+/* ========PREMIUM PAGE ACTUAL PRODUCT CARDS========= */
+.product-container {
+  display: flex;
+  padding: 5px;
+  font-family: Arial;
+  margin-right: 40px;
+  margin-left: 40px;
+}
+
+.main-product-card {
+  width: 250px;
+  font-family: "Seasons", Sons, serif;
+}
+
+.product-image {
+  position: relative;
+  background: #f6f6f6;
+  padding: 10px;
+  text-align: center;
+  overflow-y: hidden;
+  box-sizing: border-box;
+}
+
+.product-image img {
+  width: 100%;
+}
+
+.wishlist {
+  /* position:absolute; */
+  /* bottom: 10px;
+  right: 10px;
+  padding: 90px;
+  width: 4px;   
+  height: auto;
+  cursor: pointer; */
+  position: absolute;
+  top: 280px;
+  left: 80px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.add-cart {
+  position: absolute;
+  top: 87%;
+  left: 50%;
+  width: 90%;
+  transform: translate(-50%, -50%);
+  text-decoration: underline;
+  background: #F3F2EECC;
+  color: #000;
+  border: none;
+  padding: 10px 15px;
+  opacity: 0;
+  transition: 0.3s;
+  font-family: "Seasons", Sons, serif;
+  cursor: pointer;
+}
+
+.product-image:hover .add-cart {
+  opacity: 1;
+}
+
+.product-info {
+  margin-top: 5px;
+  width: 100%;
+}
+
+.product-info h4 {
+  margin: 0;
+  margin-right: 25px;
+  font-weight: 700;
+  font-family: "Seasons", Sons, serif;
+}
+
+.product-name {
+  margin: 2px 0;
+  color: #555;
+  font-weight: 500;
+  font-size: 17px;
+  font-family: "Seasons", Sons, serif;
+}
+
+.price-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #0e0d0d;
+  margin: 5px 0 2px;
+  font-size: 14px;
+}
+
+.new-price {
+  color: #c0392b;
+  font-weight: 600;
+  font-size: 14px;
+  margin: 5px 0 2px;
+}
+
+.discount {
+  margin-top: 2px;
+  font-size: 14px;
+  color: #c0392b;
+  margin: 5px 0 2px;
+}
+
+.coupon {
+  color: #c0392b;
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+/* ========OTP PAGE======= */
+
+/* top-bar */
+.otp-top-bar {
+  background-color: #daefc6;
+  text-align: center;
+  padding: 14px;
+  font-family: "Seasons", serif;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.otp-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 20px;
+  background: #fff;
+}
+
+.otp-nav-left,
+.otp-nav-right {
+  padding: 5px 0px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.otp-logo {
+  font-size: 36px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.otp-hero {
+  height: 70vh;
+  background: url('https://cdn.aptoide.com/imgs/a/b/c/abc75511d67a2edc1187d6462e513d98_fgraphic.png') no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.verify-box {
+  position: relative;
+  background: #f5f5f5;
+  padding: 50px;
+  width: 500px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.verify-box h1 {
+  font-size: 36px;
+  font-family: "Seasons", serif;
+  margin-bottom: 20px;
+}
+
+.verify-box p {
+  font-size: 15px;
+  font-family: "Seasons", serif;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.code-input {
+  width: 100%;
+  padding: 12px;
+  color: #000;
+  font-size: 16px;
+  font-family: "Seasons", serif;
+  border: 1px solid #050101;
+  margin-bottom: 15px;
+}
+
+.code-input::placeholder {
+  color: black;
+  opacity: 1;
+}
+
+.otp-primary-btn {
+  width: 100%;
+  padding: 14px;
+  background: black;
+  color: white;
+  border: none;
+  font-size: 14px;
+  font-family: "Seasons", serif;
+  letter-spacing: 2px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.otp-primary-btn:hover {
+  background: #333;
+}
+
+.otp-link-btn {
+  background: none;
+  border: none;
+  color: black;
+  font-size: 14px;
+  font-family: "Seasons", serif;
+  letter-spacing: 2px;
+  cursor: pointer;
+  margin-top: 10px;
+
+  display: inline-block;
+  width: auto;
+
+  padding-bottom: 4px;
+  border-bottom: 1px solid black;
+}
+
+/* ===LOGIN PAGE====== */
+
+.login form {
+  border: 1px solid black;
+  width: 500px;
+  margin: 50px auto;
+  /* top margin + center horizontally */
+  text-align: center;
+  height: 450px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+}
+
+.login form input[type="text"],
+.login form input[type="email"],
+.login form .buttonlogin {
+  width: 85%;
+  padding: 12px;
+  margin: 8px 0;
+  display: inline-block;
+  box-sizing: border-box;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.login h2,
+h3 {
+  font-family: "Seasons", serif;
+}
+
+.login form .buttonlogin {
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 12px;
+  margin: 8px 0;
+  background-color: black;
+  color: white;
+  font-family: "Seasons", serif;
+  transition: background-color 0.3s;
+}
+
+.login form .buttonlogin:hover {
+  background-color: #ddd;
+}
+
+/* ========admin-login-styling======== */
+
+.admin-section {
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  margin-top: 15px;
+  margin-left: 500px;
+  text-align: center;
+  height: 670px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  flex-direction: column;
+  height: 450px;
+  width: 470px;
+}
+
+.Admin-form input[type=email],
+.Admin-form input[type=password] {
+  width: 400px;
+  padding: 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #050505;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+
+.admin-btn-login {
+  width: 400px;
+  padding: 12px;
+  margin: 8px 0px;
+  margin-top: 10px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: whitesmoke;
+  background-color: #222;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+
+/* ========admin dashboard======= */
+.admin-topbar {
+  width: 100%;
+  height: 70px;
+  background-color: #daefc6;
+  display: flex;
+  position: fixed;
+  top: 0;
+  /* justify-content: space-between; */
+  /* align-items: center; */
+  /* padding: 0 20px; */
+  /* min-height: 70px;
+  display: flex;
+  margin-bottom: 100px; */
+}
+
+.admin-logo-section {
+  width: 300px;
+  box-sizing: border-box;
+  background: #a3a99b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70px;
+}
+
+.admin-logo {
+  height: 20px;
+  margin: 10px;
+}
+
+.admin-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin: auto;
+  color: black;
+}
+
+.admin-right {
+  display: flex;
+  align-items: center;
+  background: #daefc6;
+  font-size: 20px;
+  height: 70px;
+  font-size: 22px;
+}
+
+.admin-panel {
+  margin-left: 900px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.admin-container {
+  display: flex;
+  margin: auto;
+  margin-top: 0px;
+  top: 70px;
+}
+
+.admin-container .thredup-sidebar {
+  width: 250px;
+  height: 100vh;
+  background: #daefc6;
+  display: flex;
+  flex-direction: column;
+  top: 70px;
+  position: fixed;
+  z-index: 100;
+}
+
+.admin-task {
+  padding: 15px 25px;
+  text-decoration: none;
+  align-items: center;
+  color: black;
+  font-weight: 500;
+}
+
+.admin-task:hover {
+  background: #e2e2e2;
+}
+
+.admin-task i {
+  margin-right: 10px;
+}
+
+.sidebar-line {
+  width: 200px;
+  margin: 4px 20px;
+  border: 0.8px solid #2d2b2b;
+}
+
+.admin-content {
+  padding: 30px;
+  text-align: center;
+}
+
+.content-image {
+  width: 100%;
+  max-width: 1000px;
+  margin: 10px;
+}
+
+/* ========add product section ========*/
+
+.addproduct-section {
+  flex-direction: row-reverse;
+  text-align: center;
+  border: 1px solid rgb(224, 216, 216);
+  width: 600px;
+  margin-top: 100px;
+  margin-left: 500px;
+  height: 1200px;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+}
+
+.addproduct-title {
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  font-size: 32px;
+  letter-spacing: 0.5px;
+  /* border: 1px solid #9a9b7e; */
+  border-radius: 8px;
+}
+
+/* .addproduct-form input[type="text"], */
+/* .addproduct-form input[type="file"], */
+.addproduct-form input,
+.addproduct-form select {
+  width: 400px;
+  padding: 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #050505;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.category-label {
+  text-align: left;
+  font-weight: 500;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.admin-btn-addproducts {
+  width: 400px;
+  padding: 12px;
+  margin: 8px 0px;
+  margin-top: 50px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: whitesmoke;
+  background-color: #222;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.admin-btn-addproducts:hover {
+  background: white;
+  color: black;
+}
+
+/* ============Manage Products Styling section ============= */
+
+.admin-layout {
+  margin-left: 270px;
+  padding: 20px;
+  margin-top: 80px;
+  position: relative;
+  z-index: 1;
+}
+
+table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 83%;
+  table-layout: fixed;
+}
+
+td,
+th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
+th {
+  background-color: #5b6822;
+  color: white;
+}
+
+.mng-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 6px;
+}
+
+
+/* ============SINGLE PRODUCT DETAILS SECTION==================== */
+.details-container {
+  display: flex;
+  /* height: 100vh; */
+  gap: 40px;
+  padding: 40px;
+  margin-left: 40px;
+}
+
+
+/* LEFT SIDE IMAGE PART */
+.image-section {
+  display: flex;
+  gap: 20px;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  /* height:100vh; */
+}
+
+/* .main-image img {
+  width: 600px;
+  height: 650px;
+} */
+
+/* ====RIGHT SIDE OF PRODUCT DETIaLS PART==== */
+.product-details {
+  width: 90%;
+  /* overflow-y: auto; */
+  height: 100vh;
+  padding-right: 10px;
+}
+
+.product-details h2 {
+  font-family: "Seasons", serif;
+}
+
+.subtitle {
+  color: #414141;
+  margin: 5px 0;
+  font-family: "Seasons", serif;
+}
+
+.stock {
+  color: brown;
+  height: 25px;
+  width: 260px;
+  margin-bottom: 7px;
+  font-family: "Seasons", serif;
+}
+
+.product-price {
+  display: flex;
+  margin: 14px 0;
+}
+
+.product-old {
+  text-decoration: line-through;
+  font-family: "Seasons", serif;
+  width: 200px;
+}
+
+.product-new {
+  color: #c0392b;
+  width: 200px;
+  font-weight: 700;
+  font-family: "Seasons", serif;
+}
+
+.product-discount {
+  color: #c0392b;
+  font-family: "Seasons", serif;
+}
+
+.product-coupon {
+  background-color: brown;
+  color: white;
+  font-weight: 500;
+  font-family: "Seasons", serif;
+  margin-left: -60px;
+  width: -100px;
+}
+
+.cart-btn {
+  width: 90%;
+  padding: 15px;
+  background: black;
+  color: white;
+  border: none;
+  margin: 20px 0;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 15px;
+  color: #313131;
+  font-size: 14px;
+}
+
+.info-row p {
+  font-family: "Seasons", serif;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+}
+
+.divider {
+  margin-top: 28px;
+  border: none;
+  border-top: 1px solid #acaaaa;
+  width: 90%;
+}
+
+.condition h4 {
+  margin-top: 20px;
+  font-weight: 600;
+  font-family: "Seasons", serif;
+  /* font-size: 16px; */
+}
+
+.condition p {
+  font-weight: 500;
+  font-family: "Seasons", serif;
+}
+
+.item-desc h4 {
+  margin-top: 20px;
+  /* font-size: 16px; */
+  font-family: "Seasons", serif;
+}
+
+.item-desc p {
+  font-weight: 500;
+  font-family: "Seasons", serif;
+}
+
+.shipping h3 {
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.shipping p {
+  font-weight: 500;
+  font-family: "Seasons", serif;
+}
+
+.nav-row .icons .cart-icon .cart-item-len {
+  position: absolute;
+  /* top: 6px;
+  right: 10px; */
+  margin-top: -39px;
+  margin-left: 9px;
+  background: #e71658;
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  font-family: "Seasons", serif;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========ADD TO CART PAGE======= */
+
+.empty-cart-container {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+}
+
+.empty-cart-content {
+  text-align: center;
+}
+
+/* .empty-cart-content img {
+  width: 100%;
+} */
+
+.icon {
+  width: 10%;
+  height: 10%;
+  margin-left: 640px;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.empty-cart-content h1 {
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.empty-cart-content p {
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.empty-cart-content button {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 14px 45px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  width: 400px;
+  border-radius: 2px;
+}
+
+.empty-cart-content button:hover {
+  opacity: 0.8;
+}
+
+.cart-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px;
+  gap: 40px;
+}
+
+.cart-left {
+  width: 70%;
+  margin: -40PX;
+  margin-left: 40px;
+}
+
+.cart-left h2 {
+  margin-bottom: 20px;
+  font-size: 30px;
+  font-family: "Seasons", serif;
+}
+
+.cart-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-top: 20px;
+  position: relative;
+  /* align-items: center;
+  gap: 20px;
+  margin-top: 20px; */
+}
+
+.cart-item img {
+  width: 220px;
+  height: 200px;
+}
+
+.item-details h3 {
+  margin: 0;
+  font-size: 16px;
+  font-family: "Seasons", serif;
+}
+
+.item-details p {
+  margin: 4px 0;
+  color: #232222;
+  font-family: "Seasons", serif;
+}
+
+.quantity-box label {
+  font-family: "Seasons", serif;
+  font-size: 14px;
+}
+
+.quantity-box select {
+  padding: 6px 10px;
+  border: 1px solid #383737;
+  width: 10%;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+}
+
+.quantity-box span {
+  font-size: 16px;
+  font-family: "Seasons", serif;
+}
+
+/* .qty-remove {
+  margin-top: 10px;
+} */
+.remove {
+  margin-left: auto;
+  width: 35%;
+  color: red;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.remove img {
+  width: 20px;
+  height: 20px;
+}
+
+.price p {
+  margin-left: 50px;
+  font-weight: bold;
+  font-family: "Seasons", serif;
+}
+
+.cart-right {
+  width: 50%;
+  border: 1px solid #eee;
+  padding: 20px;
+}
+
+.cart-right h3 {
+  margin-bottom: 20px;
+  font-size: 25px;
+  font-family: "Seasons", serif;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  font-family: "Seasons", serif;
+}
+
+.summary-row span {
+  margin: 2px;
+  font-family: "Seasons", serif;
+}
+
+.summary-row p {
+  margin: 2px;
+  margin-left: 260px;
+  color: brown;
+  font-family: "Seasons", serif;
+}
+
+.summary-row span:last-child {
+  width: 40%;
+  margin-left: 40px;
+  text-align: left;
+}
+
+.total {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.checkout-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  background: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-family: "Seasons", serif;
+  border-radius: 2px;
+}
+
+/* =====Manage order styling page===== */
+.admin-order {
+  margin: 0px 0px 360px 250px;
+  padding: 0px 30px;
+  /* margin-left: 270px;
+  padding: 20px; */
+  /* margin-top: -650px;  */
+}
+
+.admin-order h3 {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.mod-order-details table {
+  width: 90%;
+  border-collapse: collapse;
+}
+
+.mod-order-details th,
+.mod-order-details td {
+  padding: 8px;
+  text-align: center;
+  border-top-right-radius: 10px ;
+  border-top-left-radius: 10px ;
+  border-bottom: 1px solid #ddd;
+}
+
+.mod-order-details th {
+  background-color: rgb(92, 87, 21);
+  font-weight: 600;
+}
+
+.mod-order-details h4 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: 600;
+}
+
+.mod-order-details {
+  position: fixed;
+  top: 35%;
+  left: 50%;
+  transform: translateX(-50% );
+
+  width: 70%;
+  max-width: 700px;
+
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  color: black ;
+  border-radius: 5px;
+  text-align: center;
+  padding: 10px 30px 0px 80px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  z-index: 9999; 
+}
+
+.mod-order-details img {
+  object-fit: cover;
+  border-radius: 3px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+
+  background: #d31a1a;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  width: 10%;
+ /* margin: 10px 360px 10px; */
+  /* margin-top: 10px; */
+
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  background: #621a1a;
+}
+
+/* ======Edit status Section ======= */
+.editproduct-section {
+  margin-left: 250px;
+  margin: 50px 50px 0px 250px;
+  width: 50%;
+  padding: 40px ;
+  background-color: #f5f6fa;
+  min-height: 100vh;
+}
+
+.edit-products {
+  max-width: 500px;
+  margin: auto;
+}
+
+.edit-form {
+  background: #e1dfdf;
+  padding: 40px 60px;
+  position: relative;
+  z-index: 10;
+  border-radius: 5px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.edit-title{
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 28px;
+  font-family: "Seasons", serif;
+  color: #333;
+}
+
+.edit-form-row{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 22px;
+}
+
+.edit-form-row label {
+  font-weight: 600;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  margin-bottom: 8px;
+  color: #565656;
+}
+
+.edit-form-row select {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #dddcdc;
+  outline: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.form-row select:focus {
+  border-color: #1272d8;
+}
+
+.admin-btn-editproducts {
+  width: 350px;
+  padding: 12px;
+  margin: 8px 0px;
+  margin-top: 50px;
+  display: inline-block;
+  text-align: center;
+  font-family: "Seasons", Sons, serif;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: whitesmoke;
+  background-color: #222;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.admin-button:hover {
+  background: #0e75a9;
+}
