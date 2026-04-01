@@ -4,6 +4,8 @@ import Adminsidebar from './Adminsidebar';
 import { useState } from 'react';
 import axios from 'axios'
 
+// https://thredup-clone.onrender.com
+
 function Editproducts() {
     const [image, setImage] = useState(null)
     const [name, setName] = useState()
@@ -23,7 +25,9 @@ function Editproducts() {
     const { id } = useParams()
 
     useEffect(() => {
-        axios.get(`http://127.0.0.1:3001/imageUpload/${id}`)
+        // axios.get(`http://127.0.0.1:3001/imageUpload/${id}`)
+
+        axios.get(`https://thredup-clone.onrender.com/imageUpload/${id}`)
             .then((res) => {
                 const data = res.data
 
@@ -62,7 +66,9 @@ function Editproducts() {
         formdata.append("discount", discount)
         formdata.append("category", category)
 
-        fetch(`http://127.0.0.1:3001/imageUpload/${id}`, {
+        // fetch(`http://127.0.0.1:3001/imageUpload/${id}`, {
+
+        fetch(`https://thredup-clone.onrender.com/imageUpload/${id}`, {
             method: "put",
             body: formdata
         })
@@ -91,7 +97,8 @@ function Editproducts() {
                     <input type="file"
                         name="image"
                         id="imageupload"
-                        onChange={(e) => {setImage(e.target.files[0])
+                        onChange={(e) => {
+                            setImage(e.target.files[0])
                         }}
                     />
                     <br />

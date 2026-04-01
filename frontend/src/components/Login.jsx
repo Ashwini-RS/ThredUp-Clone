@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import OtpForm from "./OtpForm";
 
+
+// https://thredup-clone.onrender.com
+
 function Login() {
 
   const [email, setEmail] = useState("");
@@ -11,7 +14,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      await axios.post("http://127.0.0.1:3001/login/sendOtp",
+      await axios.post("https://thredup-clone.onrender.com/login/sendOtp",
      { email });
 
       setShowOtpForm(true);

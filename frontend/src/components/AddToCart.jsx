@@ -19,7 +19,7 @@ function AddToCart() {
             let data = [];
 
             for (const item of cart) {
-                const res = await axios.get(`http://127.0.0.1:3001/products/${item.productId}`);
+                const res = await axios.get(`https://thredup-clone.onrender.com/${item.productId}`);
                 data.push({ ...res.data, quantity: item.quantity });
             }
 
@@ -93,7 +93,7 @@ function AddToCart() {
             }
 
         try {
-            const res = await axios.post("http://127.0.0.1:3001/placeAnOrder", {
+            const res = await axios.post("https://thredup-clone.onrender.com/placeAnOrder", {
                 userEmail: user,
                 products: cartItems,
                 finalTotal: finalTotal
@@ -135,7 +135,7 @@ function AddToCart() {
 
                             {cartItems.map((item, index) => (
                                 <div className="cart-item" key={index}>
-                                    <img src={`http://localhost:3001/${item.productImage}`} alt="product" />
+                                    <img src={`https://thredup-clone.onrender.com/${item.productImage}`} alt="product" />
 
                                     <div className="item-details">
                                         <h3>{item.productName}</h3>

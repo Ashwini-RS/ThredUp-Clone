@@ -5,16 +5,22 @@ import { Link } from "react-router-dom";
 
 function ManageProducts() {
 
-    const [products, setProducts] = useState([])
+    const [products, setProducts] = useState([])  
+ // https://thredup-clone.onrender.com
+
 
     useEffect(() => {
-        axios.get("http://127.0.0.1:3001/ManageProducts")
+        // axios.get("http://127.0.0.1:3001/ManageProducts")
+
+        axios.get("https://thredup-clone.onrender.com/ManageProducts")
             .then(res => setProducts(res.data))
             .catch(err => console.log(err))
     }, [])
 
     const deleteProduct = async (id) => {
-        axios.delete(`http://127.0.0.1:3001/deleteProducts/${id}`)
+        // axios.delete(`http://127.0.0.1:3001/deleteProducts/${id}`)
+
+        axios.delete(`https://thredup-clone.onrender.com/deleteProducts/${id}`)
         alert("Product Deleted")
         window.location.reload();
     }
@@ -51,7 +57,9 @@ function ManageProducts() {
 
                                     <td>
                                         <img
-                                            src={`http://localhost:3001/${product.productImage}`}
+                                            // src={`http://localhost:3001/${product.productImage}`}
+                                            
+                                            src={`https://thredup-clone.onrender.com/${product.productImage}`}
                                             className="mng-img" alt="" />
                                     </td>
 

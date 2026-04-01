@@ -32,6 +32,8 @@ function AddProducts() {
         formdata.append("discount", discount)
         formdata.append("category", category)
 
+        // fetch("http://127.0.0.1:3001/imageUpload", {
+
         fetch("http://127.0.0.1:3001/imageUpload", {
             method: "POST",
             body: formdata

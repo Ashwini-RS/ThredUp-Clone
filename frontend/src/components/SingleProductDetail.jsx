@@ -11,7 +11,7 @@ function SingleProductDetail() {
     const [product, setProduct] = useState(null)
 
     useEffect(() => {
-        axios.get(`http://127.0.0.1:3001/products/${id}`)
+        axios.get(`https://thredup-clone.onrender.com/products/${id}`)
             .then(res => setProduct(res.data))
             .catch(err => console.log(err))
     }, [id])
@@ -44,7 +44,9 @@ function SingleProductDetail() {
                         <div className="image-section">
                             <div className="main-image">
 
-                                <img src={`http://localhost:3001/${product.productImage}`} alt="" />
+                               {/* <img src={`http://localhost:3001/${product.productImage}`} alt="" /> */}
+                               
+                                <img src={`https://thredup-clone.onrender.com${product.productImage}`} alt="" />
                             </div>
                         </div>
 

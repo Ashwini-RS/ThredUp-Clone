@@ -22,7 +22,21 @@ const fs = require('fs')
 // creating the app
 const app = express()
 app.use(express.json())
-app.use(cors())
+// app.use(cors())
+app.use(cors({
+  origin: "https://thredup-clone.onrender.com",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}))
+
+// app.use(cors({
+//   origin: [
+//     "http://localhost:5173",
+//     "https://thredup-clone.onrender.com"
+//   ],
+//   methods: ["GET", "POST", "PUT", "DELETE"],
+//   credentials: true
+// }))
 
 
 // MULTER CODE FOR IMAGE
@@ -49,9 +63,9 @@ app.use(express.static("UploadsImage"))
 // mongoose.connect('mongodb+srv://ashwini:dynamite9845@cluster0.dqo9pwv.mongodb.net/thredup')
 // console.log("MongoDB Connected")
 
-mongoose.connect('mongodb+srv://ashwini:dynamite9845@cluster0.dqo9pwv.mongodb.net/thredup?retryWrites=true&w=majority')
-  .then(() => console.log("MongoDB Connected"))
-  .catch(err => console.error("MongoDB Connection Error:", err))
+// mongoose.connect('mongodb+srv://ashwini:dynamite9845@cluster0.dqo9pwv.mongodb.net/thredup?retryWrites=true&w=majority')
+//   .then(() => console.log("MongoDB Connected"))
+//   .catch(err => console.error("MongoDB Connection Error:", err))
 
 // mongoose.connect('mongodb+srv://ashwini:dynamite9845@cluster0.dqo9pwv.mongodb.net/thredup')
 // console.log("MongoDB Connected")

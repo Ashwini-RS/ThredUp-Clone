@@ -12,9 +12,13 @@ function FavoritesSection() {
     //         .then(res => setProducts(res.data))
     //         .catch(err => console.log(err))
     // }, [])
+// https://thredup-clone.onrender.com
+
 
     useEffect(() => {
-        axios.get("http://127.0.0.1:3001/products")
+        // axios.get("http://127.0.0.1:3001/products")
+        
+        axios.get("https://thredup-clone.onrender.com/products")
             .then(res => {
                 console.log(res.data); 
                 setProducts(res.data);
@@ -34,7 +38,7 @@ function FavoritesSection() {
                 {products && products.map((product) => (
                     <div className="product-card" key={product._id}>
                         <Link to={`/SingleProductDetail/${product._id}`}>
-                        <img src={`http://localhost:3001/${product.productImage}`}  alt={product.productName} />
+                        <img src={`https://thredup-clone.onrender.com/${product.productImage}`}  alt={product.productName} />
                         </Link>
 
                         <h3>Betsey Johnson</h3>

@@ -3,6 +3,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 
+// https://thredup-clone.onrender.com
+
 function EditStatus() {
 
     const [orderStatus, setOrderStatus] = useState("")
@@ -15,7 +17,9 @@ function EditStatus() {
         e.preventDefault()
 
         try {
-            const response = await axios.put(`http://127.0.0.1:3001/updateOrderStatus/${id}`, {
+            // const response = await axios.put(`http://127.0.0.1:3001/updateOrderStatus/${id}`, {
+
+            const response = await axios.put(`https://thredup-clone.onrender.com/updateOrderStatus/${id}`, {
                 orderStatus
             });
             alert("Status Updated and mail sent");

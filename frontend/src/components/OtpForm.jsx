@@ -40,7 +40,7 @@ function OtpForm({ email }) {
     try {
 
       const response = await axios.post(
-        "http://127.0.0.1:3001/login/verifyOtp",
+        "https://thredup-clone.onrender.com/login/verifyOtp",
         {
           email: email,
           otp: code
@@ -69,7 +69,7 @@ function OtpForm({ email }) {
     try {
 
       await axios.post(
-        "http://127.0.0.1:3001/login/sendOtp",
+         "https://thredup-clone.onrender.com/login/sendOtp",
         { email }
       );
 

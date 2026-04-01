@@ -8,8 +8,12 @@ function ManageOrder() {
     const [showModal, setShowModal] = useState(false)
     const [selectedProducts, setSelectedProducts] = useState([])
 
+    // https://thredup-clone.onrender.com
+
     useEffect(() => {
-        axios.get("http://127.0.0.1:3001/manageOrders")
+        // axios.get("http://127.0.0.1:3001/manageOrders")
+
+        axios.get("https://thredup-clone.onrender.com/manageOrders")
             .then(orders => setOrders(orders.data))
             .catch(err => console.log(err))
     }, [])
@@ -21,7 +25,9 @@ function ManageOrder() {
 
     const deleteOrders = async (id) => {
         try {
-            await axios.delete(`http://localhost:3001/deleteOrders/${id}`);
+            // await axios.delete(`http://localhost:3001/deleteOrders/${id}`);
+
+            await axios.delete(`https://thredup-clone.onrender.com/deleteOrders/${id}`);
 
             setOrders(orders.filter(order => order._id !== id));
 
@@ -66,9 +72,9 @@ function ManageOrder() {
                                 <td>{order.finalTotal}</td>
                                 <td>{order.orderStatus}</td>
                                 <td className="order-btn">
-                                    <Link to={`/admin/EditStatus/` +  order._id}>Edit</Link>
+                                    <Link to={`/admin/EditStatus/` + order._id}>Edit</Link>
                                     <button onClick={() => deleteOrders(order._id)}>
-                                    Delete</button>
+                                        Delete</button>
                                 </td>
                             </tr>
                         })
@@ -94,7 +100,11 @@ function ManageOrder() {
                         <tbody>
                             {selectedProducts.map((product, index) => (
                                 <tr key={index}>
-                                    <td><img src={`http://localhost:3001/${product.productImage}`} /></td>
+                                    {/* <td><img src={`http://localhost:3001/${product.productImage}`} /></td> */}
+
+                                    <td>
+                                        <img src={` https://thredup-clone.onrender.com/${product.productImage}`} />
+                                    </td>
                                     <td>{product.productName}</td>
                                     <td>{product.newprice}</td>
                                     <td>{product.quantity}</td>
