@@ -34,7 +34,7 @@ function AddProducts() {
 
         // fetch("http://127.0.0.1:3001/imageUpload", {
 
-        fetch("http://127.0.0.1:3001/imageUpload", {
+        fetch("https://thredup-clone.onrender.com/imageUpload", {
             method: "POST",
             body: formdata
         })

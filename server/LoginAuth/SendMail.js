@@ -39,7 +39,7 @@ const sendMail = async (email, otp) => {
   try {
     const msg = {
       to: `${email}`,
-      from: process.env.user, // verified sender
+      from: process.env.user, 
       subject: 'OTP Verification Code for ThredUp Login',
       html: `
         <h3>Dear Customer</h3>
