@@ -7,6 +7,8 @@ const Order = require('./models/Order')
 const OrderProcessingMail = require('./Ordermail/OrderProcessingMail'); 
 const OrderDeliveredMail = require('./Ordermail/OrderDeliveredMail');
 const path = require("path")
+const cloudinary = require('cloudinary').v2;
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
 
 require('dotenv').config()
 
