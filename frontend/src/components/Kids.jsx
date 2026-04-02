@@ -1,8 +1,8 @@
-import GirlsSection from "./girlssection";
+import GirlsSection from "./GirlsSection";
 import GottaSection from "./GottaSection";
 import GirlsBrandsSection from "./GirlsBrandSection"; 
 import Kidspromo from "./Kidspromo";
-import BoysSection from "./boysSection";
+import BoysSection from "./BoysSection";
 import BoysStyleSection from "./BoysStyleSection";
 import BoysBrandSection from "./BoysBrandSection";
 
