@@ -19,7 +19,7 @@ function AddToCart() {
             let data = [];
 
             for (const item of cart) {
-                const res = await axios.get(`https://thredup-clone.onrender.com/${item.productId}`);
+                const res = await axios.get(`https://thredup-clone.onrender.com/products/${item.productId}`);
                 data.push({ ...res.data, quantity: item.quantity });
             }
 

@@ -1,7 +1,7 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
-import axios from 'axios'
 import { useState } from "react";
 import { useEffect } from "react";
+import axios from 'axios'
 
 function SingleProductDetail() {
 

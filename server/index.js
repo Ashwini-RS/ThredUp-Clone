@@ -56,13 +56,6 @@ const upload = multer({ storage })
 
 app.use(express.static("UploadsImage"))
 
-// // DB MONGODB CONNECTION
-// mongoose.connect('mongodb://127.0.0.1:27017/thredup')
-// console.log("MongoDB Connected")
-
-// mongoose.connect('mongodb+srv://ashwini:dynamite9845@cluster0.dqo9pwv.mongodb.net/thredup')
-// console.log("MongoDB Connected")
-
 // mongoose.connect('mongodb+srv://ashwini:dynamite9845@cluster0.dqo9pwv.mongodb.net/thredup?retryWrites=true&w=majority')
 //   .then(() => console.log("MongoDB Connected"))
 //   .catch(err => console.error("MongoDB Connection Error:", err))

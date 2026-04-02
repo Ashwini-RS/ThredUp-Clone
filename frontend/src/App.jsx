@@ -10,7 +10,7 @@ import './App.css';
 import Womens from "./components/Womens";
 import Premium from "./components/Premium";
 import Designer from "./components/Designer";
-import SingleProductDetail from "./components/Singleproductdetail";
+import SingleProductDetail from "./components/SingleProductDetail";
 import AddToCart from "./components/AddToCart";
 
 function App() {
