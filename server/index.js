@@ -40,21 +40,38 @@ app.use(cors())
 
 
 // MULTER CODE FOR IMAGE
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    // cb(null, uploadPath)
-    // cb(null, './UploadsImage')
-    cb(null, path.join(__dirname, "UploadsImage"))
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     // cb(null, uploadPath)
+//     // cb(null, './UploadsImage')
+//     cb(null, path.join(__dirname, "UploadsImage"))
 
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + "-" + file.originalname)
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, Date.now() + "-" + file.originalname)
+//   }
+// })
+
+//CLOUDINARY
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_API_SECRET
+});
+
+// Multer storage for Cloudinary
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+      folder: 'products',  // Cloudinary folder name
+      allowed_formats: ['jpg', 'jpeg', 'png', 'webp', 'avif'],
+      public_id: (req, file) => path.parse(file.originalname).name
   }
-})
+});
 
 const upload = multer({ storage })
 
-app.use(express.static("UploadsImage"))
+// app.use(express.static("UploadsImage"))
 
 // mongoose.connect('mongodb+srv://ashwini:dynamite9845@cluster0.dqo9pwv.mongodb.net/thredup?retryWrites=true&w=majority')
 //   .then(() => console.log("MongoDB Connected"))
@@ -79,6 +96,8 @@ app.post("/imageUpload", upload.single("image"), async (req, res) => {
 
   try {
     const productImage = req.file.filename
+
+    // const productImage = req.file.path
 
     const { productName, brand, productDescription, size, color, quantity, oldprice, newprice, discount, category } = req.body
 
