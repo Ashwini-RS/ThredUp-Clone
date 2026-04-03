@@ -97,9 +97,9 @@ app.use('/login', authRoutes)
 app.post("/imageUpload", upload.single("image"), async (req, res) => {
 
   try {
-    const productImage = req.file.filename
-
+    // const productImage = req.file.filename
     // const productImage = req.file.path
+   const productImage = req.file.secure_url
 
     const { productName, brand, productDescription, size, color, quantity, oldprice, newprice, discount, category } = req.body
 
@@ -175,13 +175,35 @@ app.delete('/deleteProducts/:id', async (req, res) => {
 
     const imageUrl = product.productImage;
     const publicId = "products/" + path.parse(imageUrl.split('/').pop()).name;
+
     await cloudinary.uploader.destroy(publicId);
+
     const deleteProduct = await Products.findByIdAndDelete(req.params.id)
     res.status(200).json(deleteProduct)
   }
   catch (err) {
     console.log(err)
   }
+})
+
+// ORDER PART in Add to cart
+app.post('/placeAnOrder', async (req, res) => {
+  const { userEmail, products, finalTotal } = req.body
+
+  // const user = await User.findById(userId)
+  const orderList = new Order({
+    userEmail, products, finalTotal
+  })
+
+  await orderList.save()
+  res.json({ message: 'order placed successfully' })
+})
+
+// CODE FOR THE PRODUCTS FOR THE DB TO FRONTEND
+app.get('/products', (req, res) => {
+  Products.find()
+    .then(products => res.json(products))
+    .catch(err => res.json(err))
 })
 
 // app.get('/products/:id', async (req, res) => {
@@ -204,44 +226,29 @@ app.get('/products/:id', async (req, res) => {
   }
 })
 
-// ORDER PART in Add to cart
-app.post('/placeAnOrder', async (req, res) => {
-  const { userEmail, products, finalTotal } = req.body
-
-  const orderList = new Order({
-    userEmail, products, finalTotal
-  })
-
-  await orderList.save()
-  res.json({ message: 'order placed successfully' })
-})
-
 // EDITING PART OF MANAGEPRODUCTS TO DB
 app.put('/imageUpload/:id', upload.single("image"), async (req, res) => {
   try {
     const { id } = req.params
     const product = await Products.findById(id)
-
     let imageUrl = product.productImage
 
-    const publicId = "products/" + path.parse(product.productImage.split('/').pop()).name
-
-    // let imageName = product.productImage
+    const publicId = "products/" + path.parse(product.productImage.split('/').pop()).name;
     if (req.file) {
-      // delete old image
-      await cloudinary.uploader.destroy(publicId)
+     // delete old image
+     await cloudinary.uploader.destroy(publicId)
 
-      // new image 
-      imageUrl = req.file.path;
-    }
+     // new image 
+    //  imageUrl = req.file.path;  
+    imageUrl = req.file.secure_url;
+  }
 
     const updateProduct = await Products.findByIdAndUpdate(id, {
     ...req.body,
     productImage: imageUrl
   },
-    {
-      new: true
-    });
+    { new: true }
+  );
   res.status(200).json(updateProduct)
 }
   catch (err) {
@@ -264,13 +271,6 @@ app.get("/imageUpload/:id", async (req, res) => {
   catch (err) {
     console.log(err)
   }
-})
-
-// CODE FOR THE PRODUCTS FOR THE DB TO FRONTEND
-app.get('/products', (req, res) => {
-  Products.find()
-    .then(products => res.json(products))
-    .catch(err => res.json(err))
 })
 
 
