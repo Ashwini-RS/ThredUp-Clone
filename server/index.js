@@ -97,9 +97,9 @@ app.use('/login', authRoutes)
 app.post("/imageUpload", upload.single("image"), async (req, res) => {
 
   try {
-    // const productImage = req.file.filename
-    // const productImage = req.file.path
-   const productImage = req.file.secure_url
+
+    const productImage = req.file.path
+  //  const productImage = req.file.secure_url
 
     const { productName, brand, productDescription, size, color, quantity, oldprice, newprice, discount, category } = req.body
 
@@ -199,13 +199,6 @@ app.post('/placeAnOrder', async (req, res) => {
   res.json({ message: 'order placed successfully' })
 })
 
-// CODE FOR THE PRODUCTS FOR THE DB TO FRONTEND
-app.get('/products', (req, res) => {
-  Products.find()
-    .then(products => res.json(products))
-    .catch(err => res.json(err))
-})
-
 // app.get('/products/:id', async (req, res) => {
 //   try {
 //     const product = await Products.findById(req.params.id)
@@ -239,8 +232,8 @@ app.put('/imageUpload/:id', upload.single("image"), async (req, res) => {
      await cloudinary.uploader.destroy(publicId)
 
      // new image 
-    //  imageUrl = req.file.path;  
-    imageUrl = req.file.secure_url;
+    imageUrl = req.file.path;  
+   
   }
 
     const updateProduct = await Products.findByIdAndUpdate(id, {
@@ -255,7 +248,7 @@ app.put('/imageUpload/:id', upload.single("image"), async (req, res) => {
     console.log(err);
     res.status(500).json(err);
 }
-})
+});
 
 app.get("/imageUpload/:id", async (req, res) => {
   const { id } = req.params
@@ -273,6 +266,12 @@ app.get("/imageUpload/:id", async (req, res) => {
   }
 })
 
+// CODE FOR THE PRODUCTS FOR THE DB TO FRONTEND
+app.get('/products', (req, res) => {
+  Products.find()
+    .then(products => res.json(products))
+    .catch(err => res.json(err))
+})
 
 app.listen(3001, () => {
   console.log("server is running")
