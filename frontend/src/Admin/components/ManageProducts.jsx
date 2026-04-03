@@ -59,8 +59,8 @@ function ManageProducts() {
                                         <img
                                             // src={`http://localhost:3001/${product.productImage}`}
                                             
-                                            src={`https://thredup-clone.onrender.com/${product.productImage}`}
-                                            className="mng-img" alt="" />
+                                            src={product.productImage}
+                                            className="mng-img" alt={product.productName} />
                                     </td>
 
                                     <td>{product.productName}</td>

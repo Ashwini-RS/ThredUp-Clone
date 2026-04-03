@@ -38,12 +38,12 @@ function FavoritesSection() {
                 {products && products.map((product) => (
                     <div className="product-card" key={product._id}>
                         <Link to={`/SingleProductDetail/${product._id}`}>
-                        <img src={`https://thredup-clone.onrender.com/${product.productImage}`}  alt={product.productName} />
+                        <img src={product.productImage}  alt={product.productName} />
                         </Link>
 
-                        <h3>Betsey Johnson</h3>
-                        <p className="size">{product.productName}</p>
                         <h3> {product.brand}</h3>
+                        <p className="size">{product.productName}</p>
+                        {/* <h3> {product.brand}</h3> */}
                         <p> {product.productDescription}</p>
                         <p className="old-price">{product.oldprice} off</p>
                         <p className="new-price">{product.newprice} off</p>

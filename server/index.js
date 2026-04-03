@@ -4,7 +4,7 @@ const cors = require('cors')
 const multer = require('multer')
 const Products = require('./models/Products');
 const Order = require('./models/Order')
-const OrderProcessingMail = require('./Ordermail/OrderProcessingMail'); 
+const OrderProcessingMail = require('./Ordermail/OrderProcessingMail');
 const OrderDeliveredMail = require('./Ordermail/OrderDeliveredMail');
 const path = require("path")
 const cloudinary = require('cloudinary').v2;
@@ -16,7 +16,7 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err))
 
-  
+
 // CODE FOR THE login route
 const authRoutes = require('./LoginAuth/Auth')
 const fs = require('fs')
@@ -65,9 +65,9 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
-      folder: 'products',  // Cloudinary folder name
-      allowed_formats: ['jpg', 'jpeg', 'png', 'webp', 'avif'],
-      public_id: (req, file) => path.parse(file.originalname).name
+    folder: 'products',  // Cloudinary folder name
+    allowed_formats: ['jpg', 'jpeg', 'png', 'webp', 'avif'],
+    public_id: (req, file) => path.parse(file.originalname).name
   }
 });
 
@@ -118,8 +118,8 @@ app.post("/imageUpload", upload.single("image"), async (req, res) => {
 // manage orders to DB
 app.get('/manageOrders', (req, res) => {
   Order.find()
-      .then(orders => res.json(orders))
-      .catch(err => res.json(err))
+    .then(orders => res.json(orders))
+    .catch(err => res.json(err))
 })
 
 //update order status in the db
@@ -127,18 +127,18 @@ app.put('/updateOrderStatus/:id', async (req, res) => {
   const { id } = req.params
   const { orderStatus } = req.body
   const updateOrderStatus = await Order.findByIdAndUpdate(id, {
-      orderStatus: orderStatus
+    orderStatus: orderStatus
   },
-      {
-          new: true
-  })
+    {
+      new: true
+    })
 
-  if(orderStatus === 'Order Processing') {
-      await OrderProcessingMail(updateOrderStatus.userEmail)
+  if (orderStatus === 'Order Processing') {
+    await OrderProcessingMail(updateOrderStatus.userEmail)
   }
 
-  if(orderStatus === 'Order Delivered') {
-      await OrderDeliveredMail(updateOrderStatus.userEmail)
+  if (orderStatus === 'Order Delivered') {
+    await OrderDeliveredMail(updateOrderStatus.userEmail)
   }
 
   res.status(200).json(updateOrderStatus)
@@ -147,11 +147,11 @@ app.put('/updateOrderStatus/:id', async (req, res) => {
 // DELETING ORDER of the MANAGE ORDER to DB
 app.delete('/deleteOrders/:id', async (req, res) => {
   try {
-      const deleteOrders = await Order.findByIdAndDelete(req.params.id)
-      res.status(200).json(deleteOrders)
+    const deleteOrders = await Order.findByIdAndDelete(req.params.id)
+    res.status(200).json(deleteOrders)
   }
   catch (err) {
-      console.log(err)
+    console.log(err)
   }
 })
 
@@ -168,11 +168,14 @@ app.delete('/deleteProducts/:id', async (req, res) => {
     const { id } = req.params
     const product = await Products.findById(id)
 
-    const imagePath = path.join(__dirname, "UploadsImage", product.productImage)
-    if (fs.existsSync(imagePath)) {
-      fs.unlinkSync(imagePath)
-    }
+    // const imagePath = path.join(__dirname, "UploadsImage", product.productImage)
+    // if (fs.existsSync(imagePath)) {
+    //   fs.unlinkSync(imagePath)
+    // }
 
+    const imageUrl = product.productImage;
+    const publicId = "products/" + path.parse(imageUrl.split('/').pop()).name;
+    await cloudinary.uploader.destroy(publicId);
     const deleteProduct = await Products.findByIdAndDelete(req.params.id)
     res.status(200).json(deleteProduct)
   }
@@ -193,11 +196,11 @@ app.delete('/deleteProducts/:id', async (req, res) => {
 app.get('/products/:id', async (req, res) => {
   const { id } = req.params
   try {
-      const product = await Products.findById(id)
-      res.json(product)
+    const product = await Products.findById(id)
+    res.json(product)
   }
   catch (err) {
-      console.log(err)
+    console.log(err)
   }
 })
 
@@ -219,28 +222,32 @@ app.put('/imageUpload/:id', upload.single("image"), async (req, res) => {
     const { id } = req.params
     const product = await Products.findById(id)
 
-    let imageName = product.productImage
-    if (req.file) {
-      const imagePath = path.join(__dirname, "UploadsImage", product.productImage)
-      if (fs.existsSync(imagePath)) {
-        fs.unlinkSync(imagePath)
-      }
+    let imageUrl = product.productImage
 
-      imageName = req.file.filename
+    const publicId = "products/" + path.parse(product.productImage.split('/').pop()).name
+
+    // let imageName = product.productImage
+    if (req.file) {
+      // delete old image
+      await cloudinary.uploader.destroy(publicId)
+
+      // new image 
+      imageUrl = req.file.path;
     }
 
     const updateProduct = await Products.findByIdAndUpdate(id, {
-      ...req.body,
-      productImage: imageName
-    },
-      {
-        new: true
-      })
-    res.status(200).json(updateProduct)
-  }
+    ...req.body,
+    productImage: imageUrl
+  },
+    {
+      new: true
+    });
+  res.status(200).json(updateProduct)
+}
   catch (err) {
-
-  }
+    console.log(err);
+    res.status(500).json(err);
+}
 })
 
 app.get("/imageUpload/:id", async (req, res) => {
