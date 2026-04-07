@@ -12,6 +12,7 @@ import Premium from "./components/Premium";
 import Designer from "./components/Designer";
 import SingleProductDetail from "./components/SingleProductDetail";
 import AddToCart from "./components/AddToCart";
+import Searchpage from "./components/Searchpage";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
                 <Route path="/Womens" element={<Womens />} />
                 <Route path="/Premium" element={<Premium />} />
                 <Route path="/Designer" element={<Designer />} />
+                <Route path="/Searchpage" element={<Searchpage />} />
                 <Route path="/SingleProductDetail/:id" element={<SingleProductDetail />} />
                 <Route path="/AddToCart" element={<AddToCart />} />
                 
