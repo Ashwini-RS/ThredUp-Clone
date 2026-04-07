@@ -101,6 +101,9 @@ app.post("/imageUpload", upload.single("image"), async (req, res) => {
     const productImage = req.file.path
   //  const productImage = req.file.secure_url
 
+  console.log(req.file.path)
+  console.log(req.file.secure_url)
+
     const { productName, brand, productDescription, size, color, quantity, oldprice, newprice, discount, category } = req.body
 
     const productDetails = new Products({ productImage, productName, brand, productDescription, size, color, quantity, oldprice, newprice, discount, category })
@@ -230,10 +233,8 @@ app.put('/imageUpload/:id', upload.single("image"), async (req, res) => {
     if (req.file) {
      // delete old image
      await cloudinary.uploader.destroy(publicId)
-
      // new image 
     imageUrl = req.file.path;  
-   
   }
 
     const updateProduct = await Products.findByIdAndUpdate(id, {

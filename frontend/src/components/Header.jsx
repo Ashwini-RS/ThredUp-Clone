@@ -29,10 +29,10 @@ function Header() {
 
           <div className="logo">THREDUP</div>
 
-          <div className="search-box">
+          {/* <div className="search-box">
             <input type="text" placeholder="Search" />
             <i className="fa-regular fa-camera" style={{ marginTop: '10px' }}></i>
-          </div>
+          </div> */}
         </div>
 
         <div className="nav-row">

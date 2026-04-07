@@ -135,6 +135,7 @@ function AddProducts() {
                         <option value="Red">Red</option>
                         <option value="Blue">Blue</option>
                         <option value="Black">Black</option>
+                        <option value="White">White</option>
                         <option value="Yellow">Yellow</option>
                         <option value="Pink">Pink</option>
                         <option value="Green">Green</option>
@@ -194,6 +195,7 @@ function AddProducts() {
                         <option value="">Select Category</option>
                         <option value="dress">Dress</option>
                         <option value="tops">Tops</option>
+                        <option value="sweater">Sweater</option>
                         <option value="jeans">Jeans</option>
                         <option value="kids">Kids</option>
                     </select>
