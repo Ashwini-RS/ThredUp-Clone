@@ -114,7 +114,7 @@ body {
 
 .search-box input .i {
   position: absolute;
-  right: 15px;
+  right: 12px;
   top: 50%;
   transform: translateY(-50%);
 
@@ -136,6 +136,111 @@ body {
 
 .search-box i {
   color: gray;
+}
+
+.search-overlay {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  height: 63%;
+  background: white;
+  z-index: 1000;
+}
+
+.overlay-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* padding: 50px; */
+  padding: 70px 0px 12px 150px;
+  gap: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.overlay-top input {
+  width: 250%;
+  border: 0.75px solid #ccc;
+  border-radius: 2px;
+  padding: 12px 64px 12px 12px;
+}
+
+.overlay-top input:hover {
+  border: 0.75px solid #000;
+}
+.close {
+  font-size: 12px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  text-decoration: underline;
+  margin: 0px 0px 0px;
+  color: #000;
+  position: relative;
+}
+
+.close::after {
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 20px;
+  background-color: black;
+}
+
+.close:hover {
+  opacity: 0.7;
+}
+
+.overlay-top span {
+  cursor: pointer;
+}
+
+.overlay-content {
+  display: flex;
+  padding: 20px;
+}
+
+.left {
+  width: 20%;
+  margin-left: 9%;
+}
+
+.left .tabs{
+  font-size: 18px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.search-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-links a {
+  text-decoration: none;
+  font-size: 14px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: black;
+  padding: 12px 0;
+  display: block;  
+  cursor: pointer;
+}
+
+.search-links a:hover {
+  background-color: #e0dcc5;
+}
+
+.right {
+  width: 70%;
+  display: flex;
+}
+
+.search-product {
+  text-align: center;
+}
+
+.search-product img {
+  width: 120px;
+  height: 180px;
 }
 
 .nav-row {
@@ -2357,8 +2462,8 @@ th {
 .mod-order-details td {
   padding: 8px;
   text-align: center;
-  border-top-right-radius: 10px ;
-  border-top-left-radius: 10px ;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
   border-bottom: 1px solid #ddd;
 }
 
@@ -2379,7 +2484,7 @@ th {
   position: fixed;
   top: 35%;
   left: 50%;
-  transform: translateX(-50% );
+  transform: translateX(-50%);
 
   width: 70%;
   max-width: 700px;
@@ -2388,14 +2493,14 @@ th {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 
-  color: black ;
+  color: black;
   border-radius: 5px;
   text-align: center;
   padding: 10px 30px 0px 80px;
   margin-bottom: 20px;
   border: 1px solid rgba(255, 255, 255, 0.1);
 
-  z-index: 9999; 
+  z-index: 9999;
 }
 
 .mod-order-details img {
@@ -2414,7 +2519,7 @@ th {
   padding: 5px 10px;
   border-radius: 5px;
   width: 10%;
- /* margin: 10px 360px 10px; */
+  /* margin: 10px 360px 10px; */
   /* margin-top: 10px; */
 
   cursor: pointer;
@@ -2429,7 +2534,7 @@ th {
   margin-left: 250px;
   margin: 50px 50px 0px 250px;
   width: 50%;
-  padding: 40px ;
+  padding: 40px;
   background-color: #f5f6fa;
   min-height: 100vh;
 }
@@ -2448,7 +2553,7 @@ th {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
-.edit-title{
+.edit-title {
   text-align: center;
   margin-bottom: 25px;
   font-size: 28px;
@@ -2456,7 +2561,7 @@ th {
   color: #333;
 }
 
-.edit-form-row{
+.edit-form-row {
   display: flex;
   flex-direction: column;
   margin-bottom: 22px;
@@ -2500,4 +2605,67 @@ th {
 
 .admin-button:hover {
   background: #0e75a9;
+}
+
+.product-page{
+  /* padding: 0px 0px 20px 40px; */
+  text-align: center;
+}
+
+/* ==========SearchPage=========== */
+.title {
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+
+.products-grid{
+  display: flex;
+  gap: 20px;
+  padding: 40px;
+}
+
+.products-card{
+  margin: 8px;
+  width: 300px;
+  position: relative;
+}
+
+.products-card img {
+   background-color: #f0f0f0;
+}
+
+.brand-title{
+  font-weight: bold;
+  font-family: "Seasons", Sons, serif;
+  margin-top: 10px;
+}
+
+.desc {
+  color: #555;
+  font-size: 14px;
+}
+
+.price-section {
+  font-size: 14px;
+}
+
+.old {
+  text-decoration: line-through;
+  margin-right: 5px;
+}
+
+.new {
+  color: #b12704;
+  margin-right: 5px;
+}
+
+.off {
+  color: #b12704;
+}
+
+.code-p{
+  color: #b12704;
+  font-family: "Seasons", Sons, serif;
+  font-size: 14px;
 }

@@ -195,9 +195,9 @@ function AddProducts() {
                         <option value="">Select Category</option>
                         <option value="dress">Dress</option>
                         <option value="tops">Tops</option>
-                        <option value="sweater">Sweater</option>
+                        <option value="cardigan">Cardigan</option>
                         <option value="jeans">Jeans</option>
-                        <option value="kids">Kids</option>
+                        <option value="pants">Pants</option>
                     </select>
 
                     <br />

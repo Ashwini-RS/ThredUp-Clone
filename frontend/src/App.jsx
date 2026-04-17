@@ -1,5 +1,5 @@
 import Header from "./components/Header";
-import {BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from "./components/Home";
 import TheDresses from "./components/TheDresses";
 import Login from "./components/Login";
@@ -12,24 +12,25 @@ import Premium from "./components/Premium";
 import Designer from "./components/Designer";
 import SingleProductDetail from "./components/SingleProductDetail";
 import AddToCart from "./components/AddToCart";
-import Searchpage from "./components/Searchpage";
+import SearchPage from "./components/Searchpage";
+// import SearchBar from "./components/SearchBar";
 
 function App() {
   return (
     <>
       <Header />
       <Routes>
-      <Route path="/" element={<Home />} />
-                <Route path="/kids" element={<Kids />} />
-                <Route path="/thedresses" element={<TheDresses />} />
-                <Route path="/Womens" element={<Womens />} />
-                <Route path="/Premium" element={<Premium />} />
-                <Route path="/Designer" element={<Designer />} />
-                <Route path="/Searchpage" element={<Searchpage />} />
-                <Route path="/SingleProductDetail/:id" element={<SingleProductDetail />} />
-                <Route path="/AddToCart" element={<AddToCart />} />
-                
-                <Route path="/Login" element={<Login />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/kids" element={<Kids />} />
+        <Route path="/thedresses" element={<TheDresses />} />
+        <Route path="/Womens" element={<Womens />} />
+        <Route path="/Premium" element={<Premium />} />
+        <Route path="/Designer" element={<Designer />} />
+        {/* <Route path="/SearchBar" element={<SearchBar />} /> */}
+        <Route path="/SingleProductDetail/:id" element={<SingleProductDetail />} />
+        <Route path="/SearchPage" element={<SearchPage />} />
+        <Route path="/AddToCart" element={<AddToCart />} />
+        <Route path="/Login" element={<Login />} />
       </Routes>
       <Footer />
     </>

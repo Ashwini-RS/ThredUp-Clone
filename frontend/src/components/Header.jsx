@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { CiLogout } from "react-icons/ci";
+import SearchBar from "./SearchBar";
 
 function Header() {
 
@@ -29,10 +30,12 @@ function Header() {
 
           <div className="logo">THREDUP</div>
 
+
           {/* <div className="search-box">
             <input type="text" placeholder="Search" />
             <i className="fa-regular fa-camera" style={{ marginTop: '10px' }}></i>
           </div> */}
+          <SearchBar />
         </div>
 
         <div className="nav-row">

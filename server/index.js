@@ -40,6 +40,26 @@ app.use(cors())
 //   credentials: true
 // }))
 
+//SEARCH PRODUCT
+// //SEARCH IMPLEMENTATION
+
+app.get('/search', async (req, res) => {
+  try {
+      const { q } = req.query
+
+      const products = await Products.find({
+          $or: [
+              { productName: { $regex: q || "", $options: "i" } },
+              { productDescription: { $regex: q || "", $options: "i" } }
+          ]
+      })
+
+      res.status(200).json({ products })
+  } catch (error) {
+      res.status(500).json({ message: error.message })
+  }
+})
+
 
 // MULTER CODE FOR IMAGE
 // const storage = multer.diskStorage({
@@ -47,7 +67,6 @@ app.use(cors())
 //     // cb(null, uploadPath)
 //     // cb(null, './UploadsImage')
 //     cb(null, path.join(__dirname, "UploadsImage"))
-
 //   },
 //   filename: function (req, file, cb) {
 //     cb(null, Date.now() + "-" + file.originalname)

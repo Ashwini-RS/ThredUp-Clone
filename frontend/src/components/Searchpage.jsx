@@ -1,69 +1,70 @@
-import { useState } from "react";
-
-function Searchpage() {
-    const [isOpen, setIsOpen] = useState(false);
-
+function SearchPage() {
     return (
         <>
-            <div className="search-box">
-                <input type="text"
-                    placeholder="Search"
-                    onFocus={() => setIsOpen(true)} />
-                <i className="fa-regular fa-camera" style={{ marginTop: '10px' }}></i>
+            <div className="product-page">
+                <h2 className="product-title">Athleta</h2>
             </div>
 
-            {isOpen && (
-                <div className="search-overlay">
+            <div className="products-grid">
+                <div className="products-card">
 
-                    <div className="overlay-top">
-                        <input type="text" placeholder="Search" />
-                        <span onClick={() => setIsOpen(false)}>CLOSE</span>
-                    </div>
+                        <img src="images/athleta1.webp" />
+                        <p className="brand-title">Athleta</p>
+                        <p className="desc">Size M Casual Dress</p>
+                        <p className="price-section">
+                            <span className="old">$43.99</span>
+                            <span className="new">$21.99</span>
+                            <span className="off">50% off</span>
+                        </p>
+                        <p className="code-p">with code FIRST50</p>
 
-                    <div className="overlay-content">
-
-                        {/* LEFT */}
-                        <div className="left">
-                            <div className="tabs">
-                                <span className="active">Women</span>
-                                <span>Girls</span>
-                                <span>Boys</span>
-                            </div>
-
-                            <ul>
-                                <li>silk skirt</li>
-                                <li>statement belt</li>
-                                <li>leather jacket</li>
-                                <li>work pants</li>
-                                <li>cardigan</li>
-                            </ul>
-                        </div>
-
-                        {/* RIGHT */}
-                        <div className="right">
-                            <div className="product">
-                                <img src="https://via.placeholder.com/120x180" alt="" />
-                                <p>Zara</p>
-                                {/* <span>$38.99</span> */}
-                            </div>
-
-                            <div className="product">
-                                <img src="https://via.placeholder.com/120x180" alt="" />
-                                <p>Leith</p>
-                                {/* <span>$33.99</span> */}
-                            </div>
-
-                            <div className="product">
-                                <img src="https://via.placeholder.com/120x180" alt="" />
-                                <p>Free People</p>
-                                {/* <span>$20.99</span> */}
-                            </div>
-                        </div>
-
-                    </div>
                 </div>
-            )}
+
+                <div className="products-card">
+                     
+                     <img src="images/athleta2.webp" />
+                     <p className="brand-title">Athleta</p>
+                     <p className="desc">Shirt</p>
+                     <p className="price-section">
+                         <span className="old">$43.99</span>
+                         <span className="new">$21.99</span>
+                         <span className="off">50% off</span>
+                     </p>
+                     <p className="code-p">with code FIRST50</p>
+
+             </div>
+
+             <div className="products-card">
+                     
+                     <img src="images/athleta4.webp" />
+                     <p className="brand-title">Athleta</p>
+                     <p className="desc">Shirts</p>
+                     <p className="price-section">
+                         <span className="old">$43.99</span>
+                         <span className="new">$21.99</span>
+                         <span className="off">50% off</span>
+                     </p>
+                     <p className="code-p">with code FIRST50</p>
+
+             </div>
+
+             <div className="products-card">
+                     
+                     <img src="images/athleta5.webp" />
+                     <p className="brand-title">Athleta</p>
+                     <p className="desc">Tanl top</p>
+                     <p className="price-section">
+                         <span className="old">$43.99</span>
+                         <span className="new">$21.99</span>
+                         <span className="off">50% off</span>
+                     </p>
+                     <p className="code-p">with code FIRST50</p>
+
+             </div>
+
+            </div>
         </>
     );
 }
-export default Searchpage;
+
+export default SearchPage;
