@@ -24,12 +24,12 @@ const fs = require('fs')
 // creating the app
 const app = express()
 app.use(express.json())
-app.use(cors())
-// app.use(cors({
-//   origin: "https://thredup-clone.onrender.com",
-//   methods: ["GET", "POST", "PUT", "DELETE"],
-//   credentials: true
-// }))
+// app.use(cors())
+app.use(cors({
+  origin: "https://thredup-clone.onrender.com",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}))
 
 // app.use(cors({
 //   origin: [
@@ -39,27 +39,6 @@ app.use(cors())
 //   methods: ["GET", "POST", "PUT", "DELETE"],
 //   credentials: true
 // }))
-
-//SEARCH PRODUCT
-// //SEARCH IMPLEMENTATION
-
-app.get('/search', async (req, res) => {
-  try {
-      const { q } = req.query
-
-      const products = await Products.find({
-          $or: [
-              { productName: { $regex: q || "", $options: "i" } },
-              { productDescription: { $regex: q || "", $options: "i" } }
-          ]
-      })
-
-      res.status(200).json({ products })
-  } catch (error) {
-      res.status(500).json({ message: error.message })
-  }
-})
-
 
 // MULTER CODE FOR IMAGE
 // const storage = multer.diskStorage({
@@ -291,6 +270,24 @@ app.get('/products', (req, res) => {
   Products.find()
     .then(products => res.json(products))
     .catch(err => res.json(err))
+})
+
+//SEARCH PRODUCT
+app.get('/search', async (req, res) => {
+  try {
+      const { q } = req.query
+
+      const products = await Products.find({
+          $or: [
+              { productName: { $regex: q || "", $options: "i" } },
+              { productDescription: { $regex: q || "", $options: "i" } }
+          ]
+      })
+
+      res.status(200).json({ products })
+  } catch (error) {
+      res.status(500).json({ message: error.message })
+  }
 })
 
 app.listen(3001, () => {

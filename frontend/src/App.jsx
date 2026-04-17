@@ -26,9 +26,8 @@ function App() {
         <Route path="/Womens" element={<Womens />} />
         <Route path="/Premium" element={<Premium />} />
         <Route path="/Designer" element={<Designer />} />
-        {/* <Route path="/SearchBar" element={<SearchBar />} /> */}
         <Route path="/SingleProductDetail/:id" element={<SingleProductDetail />} />
-        <Route path="/SearchPage" element={<SearchPage />} />
+        <Route path="/search" element={<SearchPage />} />
         <Route path="/AddToCart" element={<AddToCart />} />
         <Route path="/Login" element={<Login />} />
       </Routes>

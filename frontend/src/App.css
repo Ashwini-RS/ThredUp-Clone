@@ -215,7 +215,7 @@ body {
   flex-direction: column;
 }
 
-.search-links a {
+.search-links p {
   text-decoration: none;
   font-size: 14px;
   font-family: Georgia, 'Times New Roman', Times, serif;
@@ -225,7 +225,7 @@ body {
   cursor: pointer;
 }
 
-.search-links a:hover {
+.search-links p:hover {
   background-color: #e0dcc5;
 }
 
