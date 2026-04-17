@@ -26,9 +26,10 @@ const app = express()
 app.use(express.json())
 // app.use(cors())
 app.use(cors({
-  origin: "https://thredup-clone.onrender.com",
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
+  origin: ["https://thredup-clone.onrender.com",
+    'http://localhost:5173'
+  ]
+  
 }))
 
 // app.use(cors({

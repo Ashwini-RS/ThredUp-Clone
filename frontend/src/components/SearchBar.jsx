@@ -22,17 +22,17 @@ function SearchBar() {
             .catch(err => console.log(err))
     }, [])
 
-    const handleKeyDown = (e) => {
+    // const handleKeyDown = (e) => {
 
-        axios.get("https://thredup-clone.onrender.com/products")
-            .then(res => setProducts(res.data))
-            .catch(err => console.log(err))
+    //     axios.get("https://thredup-clone.onrender.com/products")
+    //         .then(res => setProducts(res.data))
+    //         .catch(err => console.log(err))
 
-        if (e.key === "Enter") {
-            navigate(`/search?q=${query}`);
-            setIsOpen(false);
-        }
-    };
+    //     if (e.key === "Enter") {
+    //         navigate(`/search?q=${query}`);
+    //         setIsOpen(false);
+    //     }
+    // };
 
     // const searchHandleProductName = (productName) => {
     //     navigate(`/search?q=${productName}`);
@@ -56,7 +56,7 @@ function SearchBar() {
                     <div className="overlay-top">
                         <input type="text"
                             placeholder="Search"
-                            onChange={e => setQuery(e.target.value)} onKeyDown={handleKeyDown} />
+                            onChange={e => setQuery(e.target.value)}  />
                         <span className="close" onClick={() => setIsOpen(false)}>CLOSE</span>
                     </div>
 

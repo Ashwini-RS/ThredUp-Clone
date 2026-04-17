@@ -10,7 +10,7 @@ function SearchPage() {
 
     useEffect(() => {
         if (searchQuery) {
-            axios.get(`https://thredup-clone-frontend.onrender.com/search?q=${searchQuery}`)
+            axios.get(`https://thredup-clone.onrender.com/search?q=${searchQuery}`)
                 .then((res) => setProducts(res.data.products))
                 .catch(err => console.log(err));
         }
@@ -25,7 +25,7 @@ function SearchPage() {
 
             <div className="products-grid">
                 {products && products.map((product) => (
-                    <Link to={`/singleProductPage/${product._id}`} className="product-list" key={product._id}>
+                    <Link to={`/SingleProductDetail/${product._id}`} className="product-list" key={product._id}>
                         <div className="products-card">
 
                             <img src={product.productImage} />
