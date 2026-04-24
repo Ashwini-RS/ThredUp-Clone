@@ -10,7 +10,6 @@ const OrderDeliveredMail = require('./Ordermail/OrderDeliveredMail');
 const path = require("path")
 const cloudinary = require('cloudinary').v2;
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
-const 
 
 require('dotenv').config()
 
@@ -293,7 +292,7 @@ app.get('/search', async (req, res) => {
   }
 })
 
-// User Profile
+// USER PROFILE 
 app.get('/userData/:id', async (req, res) => {
   try {
       const user = await User.findById(req.params.id);
