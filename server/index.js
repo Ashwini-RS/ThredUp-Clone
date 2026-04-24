@@ -312,7 +312,7 @@ app.put('/editProfile/:id', async (req, res) => {
 
       const { id } = req.params
       const { username, phonenumber } = req.body
-      const updateUser = await Users.findByIdAndUpdate(
+      const updateUser = await User.findByIdAndUpdate(
           id,
           {
               username: username,
