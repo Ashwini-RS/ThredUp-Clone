@@ -7,7 +7,7 @@ import { FaUser, FaBox, FaMapMarkerAlt, FaUniversity } from "react-icons/fa";
 function UserPage() {
     const userId = localStorage.getItem("userId");
     const [user, setUser] = useState({})
- {/* userEmail */}
+
     useEffect(() => {
         if (userId) {
           axios.get(`https://thredup-clone.onrender.com/userData/${userId}`)

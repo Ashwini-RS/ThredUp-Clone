@@ -306,6 +306,29 @@ app.get('/userData/:id', async (req, res) => {
   }
 })
 
+// edit profile page
+app.put('/editProfile/:id', async (req, res) => {
+  try {
+
+      const { id } = req.params
+      const { username, phonenumber } = req.body
+      const updateUser = await Users.findByIdAndUpdate(
+          id,
+          {
+              username: username,
+              phonenumber: phonenumber
+          },
+          { new: true }
+      );
+
+      res.status(200).json(updateUser);
+
+  } catch (err) {
+      console.log(err);
+      res.status(500).json(err)
+  }
+
+})
 
 app.listen(3001, () => {
   console.log("server is running")
