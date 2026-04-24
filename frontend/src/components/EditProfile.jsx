@@ -1,6 +1,6 @@
 import { FaUser } from "react-icons/fa";
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from 'axios'
 
@@ -35,7 +35,7 @@ function EditProfile() {
                 phonenumber: user.phonenumber
             });
 
-            alert("Profile Updated");
+            alert("Profile Updated!!!!!");
             navigate("/UserPage");
 
         } catch (err) {
