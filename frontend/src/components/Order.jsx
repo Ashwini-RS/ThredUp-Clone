@@ -76,51 +76,6 @@ function Order() {
                             </div>
                         </div>
 
-                        <div className="order-card">
-                            <div className="order-left">
-                                <img src="https://via.placeholder.com/80" alt="product" />
-                            </div>
-
-                            <div className="order-center">
-                                <h5>Kilos Basket </h5>
-                            </div>
-
-                            <div className="order-price">
-                                ₹356
-                            </div>
-                            <div className="order-right">
-                                <p className="status delivered">
-                                    ● Delivered on Mar 12
-                                </p>
-                                <p className="message">
-                                    Your item has been delivered
-                                </p>
-                            </div>
-                        </div>
-
-                        <div className="order-card">
-                            <div className="order-left">
-                                <img src="https://via.placeholder.com/80" alt="product" />
-                            </div>
-
-                            <div className="order-center">
-                                <h5>Portronics My Buddy J Wood Portable Laptop Table</h5>
-                            </div>
-
-                            <div className="order-price">
-                                ₹566
-                            </div>
-
-                            <div className="order-right">
-                                <p className="status delivered">
-                                    ● Delivered on Oct 19, 2025
-                                </p>
-                                <p className="message">
-                                    Your item has been delivered
-                                </p>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
 
