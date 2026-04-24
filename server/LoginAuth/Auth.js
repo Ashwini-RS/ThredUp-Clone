@@ -25,8 +25,12 @@ router.post('/sendOtp', async(req, res) => {
             await user.save(); 
         }
         else {
-            user = await User.create( {
-                email, otp, otpExpiry
+            // user = await User.create( {
+            //     email, otp, otpExpiry
+            // });
+            user = new User({
+                email,
+                phonenumber: null,
             });
         }
 

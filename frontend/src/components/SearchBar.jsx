@@ -34,10 +34,10 @@ function SearchBar() {
         }
     };
 
-    // const searchHandleProductName = (productName) => {
-    //     navigate(`/search?q=${productName}`);
-
-    // }
+    const searchHandleProductName = (productName) => {
+        navigate(`/search?q=${productName}`);
+        setIsOpen(false);
+    }
 
     return (
         <>
@@ -69,7 +69,7 @@ function SearchBar() {
                                 <div className="search-links">
                                     {products && products.filter((product) =>
                                         product.productName?.toLowerCase().includes(query.toLowerCase())).slice(0, 5).map((product) => (
-                                            <p key={product._id}>{product.productName}</p>
+                                            <p key={product._id}> onClick={() => searchHandleProductName(product.productName)}  {product.productName}</p>
                                         ))}
                                 </div>
                             </div>

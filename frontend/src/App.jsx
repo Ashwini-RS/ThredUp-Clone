@@ -14,6 +14,10 @@ import SingleProductDetail from "./components/SingleProductDetail";
 import AddToCart from "./components/AddToCart";
 import SearchPage from "./components/Searchpage";
 // import SearchBar from "./components/SearchBar";
+import UserPage from "./components/UserPage";
+import EditProfile from "./components/EditProfile";
+import Order from "./components/Order";
+import Address from "./components/Address";
 
 function App() {
   return (
@@ -28,6 +32,12 @@ function App() {
         <Route path="/Designer" element={<Designer />} />
         <Route path="/SingleProductDetail/:id" element={<SingleProductDetail />} />
         <Route path="/search" element={<SearchPage />} />
+
+        <Route path="/UserPage" element={<UserPage />} />
+        <Route path="/EditProfile" element={<EditProfile />} />
+        <Route path="/Order" element={<Order />} />
+        <Route path="/Address" element={<Address />} />
+
         <Route path="/AddToCart" element={<AddToCart />} />
         <Route path="/Login" element={<Login />} />
       </Routes>

@@ -3,12 +3,14 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const multer = require('multer')
 const Products = require('./models/Products');
+const User = require('./models/User');
 const Order = require('./models/Order')
 const OrderProcessingMail = require('./Ordermail/OrderProcessingMail');
 const OrderDeliveredMail = require('./Ordermail/OrderDeliveredMail');
 const path = require("path")
 const cloudinary = require('cloudinary').v2;
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const 
 
 require('dotenv').config()
 
@@ -29,7 +31,7 @@ app.use(cors({
   origin: ["https://thredup-clone-frontend.onrender.com",
     'http://localhost:5173'
   ],
-  
+
 }))
 
 // app.use(cors({
@@ -98,10 +100,10 @@ app.post("/imageUpload", upload.single("image"), async (req, res) => {
   try {
 
     const productImage = req.file.path
-  //  const productImage = req.file.secure_url
+    //  const productImage = req.file.secure_url
 
-  console.log(req.file.path)
-  console.log(req.file.secure_url)
+    console.log(req.file.path)
+    console.log(req.file.secure_url)
 
     const { productName, brand, productDescription, size, color, quantity, oldprice, newprice, discount, category } = req.body
 
@@ -230,24 +232,24 @@ app.put('/imageUpload/:id', upload.single("image"), async (req, res) => {
 
     const publicId = "products/" + path.parse(product.productImage.split('/').pop()).name;
     if (req.file) {
-     // delete old image
-     await cloudinary.uploader.destroy(publicId)
-     // new image 
-    imageUrl = req.file.path;  
-  }
+      // delete old image
+      await cloudinary.uploader.destroy(publicId)
+      // new image 
+      imageUrl = req.file.path;
+    }
 
     const updateProduct = await Products.findByIdAndUpdate(id, {
-    ...req.body,
-    productImage: imageUrl
-  },
-    { new: true }
-  );
-  res.status(200).json(updateProduct)
-}
+      ...req.body,
+      productImage: imageUrl
+    },
+      { new: true }
+    );
+    res.status(200).json(updateProduct)
+  }
   catch (err) {
     console.log(err);
     res.status(500).json(err);
-}
+  }
 });
 
 app.get("/imageUpload/:id", async (req, res) => {
@@ -276,20 +278,35 @@ app.get('/products', (req, res) => {
 //SEARCH PRODUCT
 app.get('/search', async (req, res) => {
   try {
-      const { q } = req.query
+    const { q } = req.query
 
-      const products = await Products.find({
-          $or: [
-              { productName: { $regex: q || "", $options: "i" } },
-              { productDescription: { $regex: q || "", $options: "i" } }
-          ]
-      })
+    const products = await Products.find({
+      $or: [
+        { productName: { $regex: q || "", $options: "i" } },
+        { productDescription: { $regex: q || "", $options: "i" } }
+      ]
+    })
 
-      res.status(200).json({ products })
+    res.status(200).json({ products })
   } catch (error) {
-      res.status(500).json({ message: error.message })
+    res.status(500).json({ message: error.message })
   }
 })
+
+// User Profile
+app.get('/userData/:id', async (req, res) => {
+  try {
+      const user = await User.findById(req.params.id);
+      if (!user) {
+          return res.status(404).json({ message: "User not found" });
+      }
+      res.json(user);
+
+  } catch (err) {
+      res.status(500).json(err);
+  }
+})
+
 
 app.listen(3001, () => {
   console.log("server is running")

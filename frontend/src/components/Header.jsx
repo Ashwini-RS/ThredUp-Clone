@@ -58,7 +58,6 @@ function Header() {
 
             <i className="fa-regular fa-heart"></i>
 
-
             {userEmail ? (
               <Link className="user-icon" onClick={handleLogout}>
                 <CiLogout />
@@ -66,9 +65,21 @@ function Header() {
 
             ) : (
               <Link to="/Login" className="user-icon">
-                <i className="fa-regular fa-user"></i>
+                <i className="fa-regular fa-user">
+                  <div className="dropdown">
+
+                    <div className="dropdown-content">
+                      <Link to="/">My Account </Link>
+                      <Link to="/">My Orders</Link>
+                      <Link to="/">My Address</Link>
+                      <Link to="/">Logout</Link>
+                    </div>
+
+                  </div>
+                </i>
               </Link>
             )}
+
             {/* {userEmail ? (
                 <Link to="/" onClick={handleLogout}>
                   <CiLogout />
