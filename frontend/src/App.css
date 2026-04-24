@@ -2904,6 +2904,11 @@ th {
   border-radius: 50%;
   background: #f1ede4;
   margin-right: 40px;
+  padding: 30px;
+}
+
+.profile-icon FaUser {
+  margin-top: 50px;
 }
 
 .user-info-section {
@@ -3295,10 +3300,11 @@ hr {
   transition: 0.3s;
 }
 
-/* .shop-order-btn:hover {
+.shop-order-btn:hover {
   background: #c0392b;
   color: white;
-} */
+  border: none;
+}
 
 /* .orders-container hr {
   width: 50%;

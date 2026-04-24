@@ -125,6 +125,17 @@ app.get('/manageOrders', (req, res) => {
     .catch(err => res.json(err))
 })
 
+app.get('/manageOrders/:id', async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id)
+    const orders = await Order.find({ userEmail: user.email })
+    res.json(orders)
+  }
+  catch (err) {
+    res.status(500).json(err)
+  }
+})
+
 //update order status in the db
 app.put('/updateOrderStatus/:id', async (req, res) => {
   const { id } = req.params
@@ -295,14 +306,14 @@ app.get('/search', async (req, res) => {
 // USER PROFILE 
 app.get('/userData/:id', async (req, res) => {
   try {
-      const user = await User.findById(req.params.id);
-      if (!user) {
-          return res.status(404).json({ message: "User not found" });
-      }
-      res.json(user);
+    const user = await User.findById(req.params.id);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.json(user);
 
   } catch (err) {
-      res.status(500).json(err);
+    res.status(500).json(err);
   }
 })
 
@@ -310,22 +321,22 @@ app.get('/userData/:id', async (req, res) => {
 app.put('/editProfile/:id', async (req, res) => {
   try {
 
-      const { id } = req.params
-      const { username, phonenumber } = req.body
-      const updateUser = await User.findByIdAndUpdate(
-          id,
-          {
-              username: username,
-              phonenumber: phonenumber
-          },
-          { new: true }
-      );
+    const { id } = req.params
+    const { username, phonenumber } = req.body
+    const updateUser = await User.findByIdAndUpdate(
+      id,
+      {
+        username: username,
+        phonenumber: phonenumber
+      },
+      { new: true }
+    );
 
-      res.status(200).json(updateUser);
+    res.status(200).json(updateUser);
 
   } catch (err) {
-      console.log(err);
-      res.status(500).json(err)
+    console.log(err);
+    res.status(500).json(err)
   }
 
 })
