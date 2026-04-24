@@ -1,10 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from 'axios'
 import { FaUser, FaBox, FaMapMarkerAlt, FaUniversity } from "react-icons/fa";
 
 function UserPage() {
     const userEmail = localStorage.getItem("userEmail");
-
+    const [user, setUser] = useState({})
+ {/* userEmail */}
     useEffect(() => {
         if (userEmail) {
           axios.get(`https://thredup-clone.onrender.com/userData/${userEmail}`)
@@ -12,10 +15,10 @@ function UserPage() {
             .catch(err => console.log(err))
         }
       }, [userEmail])
-      
+
     return (
         <>
-        {/* userEmail */}
+       
             <div className="profile-container">
 
                 <div className="profile-sidebar">
@@ -25,8 +28,8 @@ function UserPage() {
                         </div>
 
                         <div className="user-text">
-                            <h3>Ash R</h3>
-                            <p>ashwinirathna9845@gmail.com</p>
+                            <h3>{user?.username}</h3>
+                            <p>{user?.email}</p>
                         </div>
                     </div>
 
@@ -89,8 +92,8 @@ function UserPage() {
                                     </Link>
                                 </div>
 
-                                <p><strong>Full Name:</strong> ash</p>
-                                <p><strong>Email:</strong> ashwinirathna9845@gmail.com</p>
+                                <p><strong>Full Name:</strong>{user?.username}</p>
+                                <p><strong>Email:</strong> {user?.email}</p>
                             </div>
 
                             <div className="user-section-divider"></div>
@@ -100,7 +103,7 @@ function UserPage() {
                                     <h3>CONTACT INFORMATION</h3>
                                 </div>
 
-                                <h4>Mobile Number:</h4>
+                                <h4>Mobile Number: {user?.phonenumber}</h4>
                             </div>
 
                             <div className="user-section-divider"></div>
