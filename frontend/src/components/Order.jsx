@@ -1,6 +1,7 @@
 import React from "react";
 import { FaBoxOpen } from "react-icons/fa";
 import { useState, useEffect } from "react";
+import axios from 'axios'
 
 function Order() {
     const [orders, setOrders] = useState([])
