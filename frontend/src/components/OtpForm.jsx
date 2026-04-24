@@ -15,7 +15,6 @@ function OtpForm({ email }) {
   };
 
   useEffect(() => {
-
     if (timer === 0) {
       setShowResend(true);
       return;
@@ -47,9 +46,14 @@ function OtpForm({ email }) {
         }
       );
 
-      localStorage.setItem('userEmail',JSON.stringify(email))
-      console.log(response.data);
+      // localStorage.setItem('userEmail',JSON.stringify(email))
+      // console.log(response.data);
+
+      const userId = response.data.userId
+      localStorage.setItem("userId", userId)
+      
       alert("OTP Verified Successfully");
+
       // window.location.reload()
       navigate('/')
 

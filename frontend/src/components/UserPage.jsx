@@ -92,7 +92,7 @@ function UserPage() {
                                     </Link>
                                 </div>
 
-                                <p><strong>Full Name:</strong>{user?.username}</p>
+                                <p><strong>Full Name:</strong>{user.username}</p>
                                 <p><strong>Email:</strong> {user?.email}</p>
                             </div>
 
