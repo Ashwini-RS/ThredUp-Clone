@@ -5,16 +5,16 @@ import axios from 'axios'
 import { FaUser, FaBox, FaMapMarkerAlt, FaUniversity } from "react-icons/fa";
 
 function UserPage() {
-    const userEmail = localStorage.getItem("userEmail");
+    const userId = localStorage.getItem("userId");
     const [user, setUser] = useState({})
  {/* userEmail */}
     useEffect(() => {
-        if (userEmail) {
-          axios.get(`https://thredup-clone.onrender.com/userData/${userEmail}`)
+        if (userId) {
+          axios.get(`https://thredup-clone.onrender.com/userData/${userId}`)
             .then(res => setUser(res.data))
             .catch(err => console.log(err))
         }
-      }, [userEmail])
+      }, [userId])
 
     return (
         <>
@@ -92,7 +92,7 @@ function UserPage() {
                                     </Link>
                                 </div>
 
-                                <p><strong>Full Name:</strong>{user.username}</p>
+                                <p><strong>Full Name:</strong>{user?.username}</p>
                                 <p><strong>Email:</strong> {user?.email}</p>
                             </div>
 
