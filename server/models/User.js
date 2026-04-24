@@ -7,6 +7,16 @@ const UserSchema = new mongoose.Schema({
         trim: true
     },
 
+    username: {
+        type: String,
+        default:"User"
+    },
+
+    phonenumber:{
+        type: String,
+        default: null
+    },
+
     otp: {
         type: String,
         required: true,

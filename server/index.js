@@ -295,7 +295,7 @@ app.get('/search', async (req, res) => {
 // USER PROFILE 
 app.get('/userData/:id', async (req, res) => {
   try {
-      const user = await User.findById(req.params.id);
+      const user = await User.findById(req.params);
       if (!user) {
           return res.status(404).json({ message: "User not found" });
       }
