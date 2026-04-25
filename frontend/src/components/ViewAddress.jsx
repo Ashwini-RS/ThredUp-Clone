@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffectf } from "react";
+import { useState, useEffect } from "react";
 import axios from 'axios'
 import { useNavigate, Link } from "react-router-dom";
 import { FaMapMarkerAlt } from "react-icons/fa";
