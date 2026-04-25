@@ -93,7 +93,7 @@ function Address() {
                         </div>
 
                         <div className="new-add-actions">
-                            <button className="save-add-btn">SAVE NEW ADDRESS</button>
+                            <button className="save-add-btn" type="submit">SAVE NEW ADDRESS</button>
                         </div>
 
                     </form>
