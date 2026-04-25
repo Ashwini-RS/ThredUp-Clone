@@ -9,7 +9,7 @@ function ViewAddress() {
     const navigate = useNavigate()
     const userId = localStorage.getItem("userId");
     const [user, setUser] = useState({})
-    const address = user?.address?.[user?.address?.length - 1]
+    const address = user?.address?.[0]
 
     useEffect(() => {
         if (userId) {
@@ -45,7 +45,7 @@ function ViewAddress() {
 
                             <div className="user-details">
                                 <span className="name">{user?.username}</span>
-                                <span className="phone">{user.phonenumber} </span>
+                                <span className="phone">{user?.phonenumber} </span>
                             </div>
 
                             <p className="address-text">
