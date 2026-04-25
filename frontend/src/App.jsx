@@ -18,6 +18,8 @@ import UserPage from "./components/UserPage";
 import EditProfile from "./components/EditProfile";
 import Order from "./components/Order";
 import Address from "./components/Address";
+import ViewAddress from "./components/ViewAddress";
+import EditAddress from "./components/EditAddress";
 
 function App() {
   return (
@@ -37,6 +39,8 @@ function App() {
         <Route path="/EditProfile" element={<EditProfile />} />
         <Route path="/Order" element={<Order />} />
         <Route path="/Address" element={<Address />} />
+        <Route path="/ViewAddress" element={<ViewAddress />} />
+        <Route path="/EditAddress" element={<EditAddress />} />
 
         <Route path="/AddToCart" element={<AddToCart />} />
         <Route path="/Login" element={<Login />} />

@@ -59,11 +59,11 @@ function Order() {
                             </div>
 
                             <div className="order-center">
-                                <h5>MYSORE SANDAL Soap Pure Sandalwood Oil 75g</h5>
+                                <h5>{orders.products[0].productName}</h5>
                             </div>
 
                             <div className="order-price">
-                                ₹237
+                                ₹23700
                             </div>
 
                             <div className="order-right">
