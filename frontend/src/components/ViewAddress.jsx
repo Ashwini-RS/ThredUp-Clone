@@ -6,7 +6,7 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import { FaPlus, FaEllipsisV } from "react-icons/fa";
 
 function ViewAddress() {
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     const userId = localStorage.getItem("userId");
     const [user, setUser] = useState({})
     const address = user?.address?.[0]

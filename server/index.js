@@ -11,13 +11,14 @@ const path = require("path")
 const cloudinary = require('cloudinary').v2;
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
 const Razorpay = require('razorpay');
+const crypto = require('crypto');
 
-var instance = new Razorpay({
+require('dotenv').config();
+
+var razorpay = new Razorpay({
   key_id: process.env.Test_Key_ID,
   key_secret: process.env.Test_Key_Secret,
 });
-
-require('dotenv').config()
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))
@@ -377,6 +378,81 @@ app.get('/manageUsers/:id', async (req, res) => {
   catch (err) {
       console.log(err)
   }
+})
+
+// PAYMENT RAZORPAY -- BACKEND -- CREATE ORDER API
+
+app.post('/createOrder', async (req, res) => {
+  const { totalAmount } = req.body
+
+  try {
+      const order = await razorpay.orders.create({
+          amount: totalAmount * 100,
+          currency: 'INR',
+          receipt: 'receipt_' + Date.now()
+      })
+      res.status(200).json({
+          order,
+          razorpayKeyId: process.env.RAZORPAY_KEY_ID
+      })
+  }
+  catch (err) {
+      console.log(err)
+  }
+})
+
+// VERIFY PAYMENT
+app.post("/verifyPayment", async (req, res) => {
+
+  const {
+      razorpay_order_id,
+      razorpay_payment_id,
+      razorpay_signature,
+      userId,
+      products,
+      totalAmount
+  } = req.body;
+
+  const generated_signature = crypto
+      .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
+      .update(razorpay_order_id + "|" + razorpay_payment_id)
+      .digest("hex")
+
+  const user = await Users.findById(userId)
+  const userEmail = user?.email
+
+  if (generated_signature === razorpay_signature) {
+
+      await Orders.create({
+          userEmail,
+          products,
+          totalAmount,
+          paymentId: razorpay_payment_id,
+          paymentStatus: "Success",
+          paymentMode: 'Net Bankking / Online Payment'
+      });
+
+      res.status(200).json({
+          success: true,
+          message: "Payment successful and order stored"
+      });
+
+  } else {
+
+      await Orders.create({
+          userEmail,
+          products,
+          totalAmount,
+          paymentStatus: "Failed"
+      });
+
+      res.status(400).json({
+          success: false,
+          message: "Payment verification failed"
+      });
+
+  }
+
 })
 
 app.listen(3001, () => {

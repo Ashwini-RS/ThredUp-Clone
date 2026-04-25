@@ -18,6 +18,19 @@ const OrderSchema = new mongoose.Schema({
         type: Number
     },
 
+    paymentMode:{
+        type: String,
+    },
+
+    paymentId:{
+        type: String,
+    },
+
+    paymentStatus:{
+        type: String,
+        default: 'pending'
+    },
+    
     orderStatus: {
         type: String,
         default: 'Pending'
