@@ -13,7 +13,7 @@ function ViewAddress() {
 
     useEffect(() => {
         if (userId) {
-            axios.get(`https://purplle-ecommerce-clone-backend.onrender.com/manageUsers/${userId}`)
+            axios.get(`https://thredup-clone.onrender.com/manageUsers/${userId}`)
                 .then(res => setUser(res.data))
                 .catch(err => console.log(err))
         }
