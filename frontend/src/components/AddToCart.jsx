@@ -197,9 +197,7 @@ function AddToCart() {
                                 <span>{finalTotal}</span>
                             </div>
 
-                            <button className="checkout-btn" 
-                            // onClick={checkout}
-                             >
+                            <button className="checkout-btn" >
                                 PROCEED TO PAY
                             </button>
                         </div>
