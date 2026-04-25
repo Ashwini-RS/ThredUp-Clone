@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from 'axios'
+import { checkout } from "../../../server/LoginAuth/Auth";
 
 function AddToCart() {
     // const userEmail = JSON.parse(localStorage.getItem('userEmail'))
@@ -11,6 +12,10 @@ function AddToCart() {
 
     const cart = JSON.parse(localStorage.getItem('cart')) || []
     const cartItemsCount = cart.length
+
+    function checkout(){
+        navigate('/Checkout')
+    }
 
     useEffect(() => {
         const cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -193,8 +198,8 @@ function AddToCart() {
                                 <span>{finalTotal}</span>
                             </div>
 
-                            <button className="checkout-btn" onClick={placeAnOrder}>
-                                PLACE ORDER
+                            <button className="checkout-btn" onClick={checkout}>
+                                PROCEED TO PAY
                             </button>
                         </div>
                     </>

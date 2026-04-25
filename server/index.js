@@ -10,6 +10,12 @@ const OrderDeliveredMail = require('./Ordermail/OrderDeliveredMail');
 const path = require("path")
 const cloudinary = require('cloudinary').v2;
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const Razorpay = require('razorpay');
+
+var instance = new Razorpay({
+  key_id: process.env.Test_Key_ID,
+  key_secret: process.env.Test_Key_Secret,
+});
 
 require('dotenv').config()
 
