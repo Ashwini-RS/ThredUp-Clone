@@ -317,7 +317,7 @@ app.get('/userData/:id', async (req, res) => {
   }
 })
 
-// edit profile page
+// edit profile connection
 app.put('/editProfile/:id', async (req, res) => {
   try {
 
@@ -338,7 +338,28 @@ app.put('/editProfile/:id', async (req, res) => {
     console.log(err);
     res.status(500).json(err)
   }
+})
 
+// ADD NEW ADDRESS CONNECTION
+app.put('/profile/myaddress/:id', async (req,res) => {
+  try{
+    const { pincode,location,city,state,username, phonenumber } = req.body
+    const user = await User.findById(req.params.id);
+
+    user.username = username,
+    user.phonenumber = phonenumber
+    user.address[0].pincode = pincode;
+    user.address[0].city = city;
+    user.address[0].location = location;
+    user.address[0].state = state;
+
+    await user.save();
+
+    res.status(200).json(user)
+
+  }catch(error){
+    console.log(error)
+  }
 })
 
 app.listen(3001, () => {
