@@ -362,6 +362,17 @@ app.put('/profile/myaddress/:id', async (req,res) => {
   }
 })
 
+//user side address data
+app.get('/manageUsers/:id', async (req, res) => {
+  try {
+      const user = await Users.findById(req.params.id)
+      res.status(200).json(user)
+  }
+  catch (err) {
+      console.log(err)
+  }
+})
+
 app.listen(3001, () => {
   console.log("server is running")
 })

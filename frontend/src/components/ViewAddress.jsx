@@ -1,8 +1,27 @@
 import React from "react";
+import { useState, useEffectf } from "react";
+import axios from 'axios'
+import { useNavigate, Link } from "react-router-dom";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { FaPlus, FaEllipsisV } from "react-icons/fa";
 
 function ViewAddress() {
+    const navigate = useNavigate()
+    const userId = localStorage.getItem("userId");
+    const [user, setUser] = useState({})
+    const address = user?.address?.[user?.address?.length - 1]
+
+    useEffect(() => {
+        if (userId) {
+            axios.get(`https://purplle-ecommerce-clone-backend.onrender.com/manageUsers/${userId}`)
+                .then(res => setUser(res.data))
+                .catch(err => console.log(err))
+        }
+    }, [userId])
+
+    // const back = () => {
+    //     navigate(-1)
+    // }
     return (
         <>
             <div className="view-address-page">
@@ -14,60 +33,45 @@ function ViewAddress() {
                         <span>ADD A NEW ADDRESS</span>
                     </div> */}
 
-                    <div className="address-card">
+                    {address?.pincode ? (
 
-                        <div className="card-top">
-                            <span className="home-badge">HOME</span>
-                            <FaEllipsisV className="menu-icon" />
+                        < div className="address-card">
+
+                            <div className="card-top">
+                                {/* <span className="home-badge">HOME</span> */}
+                                {/* <FaEllipsisV className="menu-icon" /> */}
+                                <button>Edit </button>
+                            </div>
+
+                            <div className="user-details">
+                                <span className="name">{user?.username}</span>
+                                <span className="phone">{user.phonenumber} </span>
+                            </div>
+
+                            <p className="address-text">
+                                {address.location}, {address.city}, {address.state} <strong>{address.pincode} </strong>
+                            </p>
                         </div>
+                    ) : (
+                        <div className="no-address-container">
+                            <h2 className="no-address-title">MY ADDRESSES</h2>
+                            <hr className="myaddresses-line" />
 
-                        <div className="user-details">
-                            <span className="name">Ashwini</span>
-                            <span className="phone">8618380092</span>
+                            <div className="empty-address">
+
+                                <div className="icon-box">
+                                    <FaMapMarkerAlt size={40} />
+                                </div>
+
+                                <h3>No Address added yet</h3>
+                                <p>
+                                    Click “Add Address” button below to add your delivery address
+                                </p>
+
+                                <button className="myadd-btn">Add New Address</button>
+                            </div>
                         </div>
-
-                        <p className="address-text">
-                            Ganesh Nilaya, Kapikad, MG Road, Mangaluru, Dakshina Kannada,
-                            Karnataka - <strong>575006</strong>
-                        </p>
-                    </div>
-
-                    <div className="address-card">
-                        <div className="card-top">
-                            <span className="home-badge">HOME</span>
-                            <FaEllipsisV className="menu-icon" />
-                        </div>
-
-                        <div className="user-details">
-                            <span className="name">Ashwini</span>
-                            <span className="phone">8618380092</span>
-                        </div>
-
-                        <p className="address-text">
-                            Ganesh Nilaya, Kapikad, MG Road, Mangaluru, Dakshina Kannada,
-                            Karnataka - 575006
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-
-            <div className="no-address-container">
-                <h2 className="no-address-title">MY ADDRESSES</h2>
-                <hr className="myaddresses-line" />
-
-                <div className="empty-address">
-
-                    <div className="icon-box">
-                        <FaMapMarkerAlt size={40} />
-                    </div>
-
-                    <h3>No Address added yet</h3>
-                    <p>
-                        Click “Add Address” button below to add your delivery address
-                    </p>
-
-                    <button className="myadd-btn">Add New Address</button>
+                    )}
                 </div>
             </div>
         </>
