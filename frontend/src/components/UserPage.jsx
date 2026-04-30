@@ -35,7 +35,7 @@ function UserPage() {
 
                     <div className="profile-menu">
 
-                        <Link to="#" className="menu-item">
+                        <Link to="/profile" className="menu-item">
                             <FaUser className="menu-icon" />
 
                             <div className="user-menu-text">
@@ -44,7 +44,7 @@ function UserPage() {
                             </div>
                         </Link>
 
-                        <Link to="#" className="menu-item">
+                        <Link to="/profile" className="menu-item">
                             <FaBox className="menu-icon" />
 
                             <div className="user-menu-text">
@@ -53,7 +53,7 @@ function UserPage() {
                             </div>
                         </Link>
 
-                        <Link to="#" className="menu-item">
+                        <Link to="/profile" className="menu-item">
                             <FaMapMarkerAlt className="menu-icon" />
 
                             <div className="user-menu-text">
@@ -62,7 +62,7 @@ function UserPage() {
                             </div>
                         </Link>
 
-                        <Link to="#" className="menu-item">
+                        <Link to="/profile" className="menu-item">
                             <FaUniversity className="menu-icon" />
 
                             <div className="user-menu-text">

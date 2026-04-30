@@ -20,7 +20,6 @@ import Order from "./components/Order";
 import Address from "./components/Address";
 import ViewAddress from "./components/ViewAddress";
 import EditAddress from "./components/EditAddress";
-import Checkout from "./components/Checkout";
 
 function App() {
   return (
@@ -42,8 +41,6 @@ function App() {
         <Route path="/Address" element={<Address />} />
         <Route path="/ViewAddress" element={<ViewAddress />} />
         <Route path="/EditAddress" element={<EditAddress />} />
-
-        <Route path="/Checkout" element={<Checkout />} />
 
         <Route path="/AddToCart" element={<AddToCart />} />
         <Route path="/Login" element={<Login />} />

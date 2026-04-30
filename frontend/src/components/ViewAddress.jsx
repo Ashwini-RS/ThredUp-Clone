@@ -19,19 +19,11 @@ function ViewAddress() {
         }
     }, [userId])
 
-    // const back = () => {
-    //     navigate(-1)
-    // }
     return (
         <>
             <div className="view-address-page">
                 <div className="myaddress-card">
                     <h2 className="myaddress-title">Manage Addresses</h2>
-
-                    {/* <div className="view-add-box">
-                        <FaPlus className="plus-icon" />
-                        <span>ADD A NEW ADDRESS</span>
-                    </div> */}
 
                     {address?.pincode ? (
 

@@ -2,6 +2,7 @@ import React from "react";
 import { FaBoxOpen } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import axios from 'axios'
+import { FaCheckCircle, FaBox, FaMapMarkerAlt, FaCreditCard } from "react-icons/fa";
 
 function Order() {
     const [orders, setOrders] = useState([])
@@ -46,39 +47,77 @@ function Order() {
                 </div>
 
             ) : (
-                <div className="orders-page">
 
 
-                    <div className="orders-wrapper">
+                <div className="order-page">
+                    <div className="order-container">
 
-                        <h2 className="orders-title">MY ORDERS</h2>
-
-                        <div className="order-card">
-                            <div className="order-left">
-                                <img src="images/athleta.webp" alt="product" />
-                            </div>
-
-                            <div className="order-center">
-                                <h5>{orders.products[0].productName}</h5>
-                            </div>
-
-                            <div className="order-price">
-                                ₹23700
+                        <div className="order-header">
+                            <div>
+                                <h2>Order Summary</h2>
+                                <p>Order #ORD-2026-04-001234</p>
+                                <span>Placed on April 23, 2026</span>
                             </div>
 
                             <div className="order-right">
-                                <p className="status cancelled">
-                                    ● Cancelled Today, Apr 17
-                                </p>
-                                <p className="message">
-                                    Your order was cancelled as per your request.
-                                </p>
+                                Order status : <br />
+                                Pending
                             </div>
+                        </div>
+
+                        <div className="order-body">
+                            <h3 className="order-title-card" >
+                                {/* <FaBox className="order-icon-body" /> */}
+                                Order Items</h3>
+                            <hr />
+
+                            <div className="order-product-card">
+                                <img src="/images/tadashi.webp" alt="product" />
+
+                                <div className="order-product-details">
+                                    <h4>Elegant Evening Dress</h4>
+                                    <p>Color: Black</p>
+                                    <p>Size: M</p>
+                                    <p>Quantity: 1</p>
+                                </div>
+
+                                <button className="view-btn">View Details</button>
+                            </div>
+                        </div>
+
+                        <div className="bottom-grid">
+
+                            <div className="delivery-card">
+                                <h3 className="delivery-card-title">
+                                    {/* <FaMapMarkerAlt className="delivery-icon" /> */}
+                                    Delivery Address
+                                </h3>
+                                <hr />
+                                <p><strong>Sarah Johnson</strong></p>
+                                <p>123 Fashion Avenue</p>
+                                <p>Apartment 4B</p>
+                                <p>New York, NY 10001</p>
+                                <p>United States</p>
+                                <p>Phone: (555) 123-4567</p>
+                            </div>
+
+                            <div className="payment-card">
+                                <h3>
+                                    {/* <FaCreditCard /> */}
+                                    Payment Method</h3>
+                                <hr />
+                                <span className="success">COD</span>
+
+                                <div className="order-price">
+                                    Total:
+                                    129.99
+                                </div>
+                            </div>
+
                         </div>
 
                     </div>
                 </div>
-
             )}
         </>
     );

@@ -69,10 +69,10 @@ function Header() {
                   <div className="dropdown">
 
                     <div className="dropdown-content">
-                      <Link to="/">My Account </Link>
-                      <Link to="/">My Orders</Link>
+                      <Link to="/UserPage">My Account </Link>
+                      <Link to="/Order">My Orders</Link>
                       <Link to="/">My Address</Link>
-                      <Link to="/">Logout</Link>
+                      <Link to="/Home">Logout</Link>
                     </div>
 
                   </div>

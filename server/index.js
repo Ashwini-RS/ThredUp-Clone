@@ -348,13 +348,13 @@ app.put('/editProfile/:id', async (req, res) => {
 })
 
 // ADD NEW ADDRESS CONNECTION
-app.put('/profile/myaddress/:id', async (req,res) => {
-  try{
-    const { pincode,location,city,state,username, phonenumber } = req.body
+app.put('/profile/myaddress/:id', async (req, res) => {
+  try {
+    const { pincode, location, city, state, username, phonenumber } = req.body
     const user = await User.findById(req.params.id);
 
     user.username = username,
-    user.phonenumber = phonenumber
+      user.phonenumber = phonenumber
     user.address[0].pincode = pincode;
     user.address[0].city = city;
     user.address[0].location = location;
@@ -364,7 +364,7 @@ app.put('/profile/myaddress/:id', async (req,res) => {
 
     res.status(200).json(user)
 
-  }catch(error){
+  } catch (error) {
     console.log(error)
   }
 })
@@ -372,88 +372,85 @@ app.put('/profile/myaddress/:id', async (req,res) => {
 //user side address data
 app.get('/manageUsers/:id', async (req, res) => {
   try {
-      const user = await User.findById(req.params.id)
-      res.status(200).json(user)
+    const user = await User.findById(req.params.id)
+    res.status(200).json(user)
   }
   catch (err) {
-      console.log(err)
+    console.log(err)
   }
 })
 
-// PAYMENT RAZORPAY -- BACKEND -- CREATE ORDER API
+//  RAZORPAY-PAYMENT   CREATE ORDER API
 
-// app.post('/createOrder', async (req, res) => {
-//   const { totalAmount } = req.body
+app.post('/createOrder', async (req, res) => {
+  const { finalTotal } = req.body
 
-//   try {
-//       const order = await razorpay.orders.create({
-//           amount: totalAmount * 100,
-//           currency: 'INR',
-//           receipt: 'receipt_' + Date.now()
-//       })
-//       res.status(200).json({
-//           order,
-//           razorpayKeyId: process.env.RAZORPAY_KEY_ID
-//       })
-//   }
-//   catch (err) {
-//       console.log(err)
-//   }
-// })
+  try {
+    const order = await razorpay.orders.create({
+      amount: finalTotal * 100,
+      currency: 'INR',
+      receipt: 'receipt_' + Date.now()
+    })
+    res.status(200).json({
+      order,
+      razorpayKeyId: process.env.RAZORPAY_KEY_ID
+    })
+  }
+  catch (err) {
+    console.log(err)
+  }
+})
 
 // VERIFY PAYMENT
-// app.post("/verifyPayment", async (req, res) => {
+app.post("/verifyPayment", async (req, res) => {
 
-//   const {
-//       razorpay_order_id,
-//       razorpay_payment_id,
-//       razorpay_signature,
-//       userId,
-//       products,
-//       totalAmount
-//   } = req.body;
+  const {
+    razorpay_order_id,
+    razorpay_payment_id,
+    razorpay_signature,
+    userId,
+    products,
+    finalTotal
+  } = req.body;
 
-//   const generated_signature = crypto
-//       .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
-//       .update(razorpay_order_id + "|" + razorpay_payment_id)
-//       .digest("hex")
+  // const generated_signature = crypto
+  //   .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
+  //   .update(razorpay_order_id + "|" + razorpay_payment_id)
+  //   .digest("hex")
 
-//   const user = await Users.findById(userId)
-//   const userEmail = user?.email
+  const user = await User.findById(userId)
+  const userEmail = user?.email
 
-//   if (generated_signature === razorpay_signature) {
+  if (generated_signature === razorpay_signature) {
 
-//       await Orders.create({
-//           userEmail,
-//           products,
-//           totalAmount,
-//           paymentId: razorpay_payment_id,
-//           paymentStatus: "Success",
-//           paymentMode: 'Net Bankking / Online Payment'
-//       });
+    await Order.create({
+      userEmail,
+      products,
+      finalTotal,
+      paymentId: razorpay_payment_id,
+      paymentStatus: "Success",
+      paymentMode: 'Online Payment'
+    });
 
-//       res.status(200).json({
-//           success: true,
-//           message: "Payment successful and order stored"
-//       });
+    res.status(200).json({
+      success: true,
+      message: "Payment Successful and order stored"
+    });
 
-//   } else {
+  } else {
+    await Order.create({
+      userEmail,
+      products,
+      finalTotal,
+      paymentStatus: "Failed"
+    });
 
-//       await Orders.create({
-//           userEmail,
-//           products,
-//           totalAmount,
-//           paymentStatus: "Failed"
-//       });
-
-//       res.status(400).json({
-//           success: false,
-//           message: "Payment verification failed"
-//       });
-
-//   }
-
-// })
+    res.status(400).json({
+      success: false,
+      message: "Payment verification failed"
+    });
+  }
+})
 
 app.listen(3001, () => {
   console.log("server is running")
