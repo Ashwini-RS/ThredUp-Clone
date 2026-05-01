@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import axios from 'axios'
+import axios from 'axios';
 
 function AddToCart() {
     // const userEmail = JSON.parse(localStorage.getItem('userEmail'))
@@ -99,7 +99,8 @@ function AddToCart() {
     const finalTotal = Number(subTotal + shippingCharge + taxAmount)
 
     const placeAnOrder = async () => {
-        const user = JSON.parse(localStorage.getItem('userId'))
+
+        const user = localStorage.getItem('userId')
         if (!user) {
             navigate('/login')
             return
@@ -107,12 +108,20 @@ function AddToCart() {
 
         try {
             const res = await axios.post("https://thredup-clone.onrender.com/placeAnOrder", {
-                userEmail: user,
+                userId: user,
                 products: cartItems,
-                finalTotal: finalTotal
+                finalTotal: finalTotal,
+                paymentMode: 'Cash On Delivery',
+                paymentId: null,
+                paymentStatus: 'Pending'
             })
 
+            // await axios.post("https://thredup-clone.onrender.com/placeAnOrder", {
+            //         userId: userId
+            // })
+
             alert("Order placed successfully")
+            navigate('/Order')
         }
         catch (err) {
             console.log("order failed: ", err)

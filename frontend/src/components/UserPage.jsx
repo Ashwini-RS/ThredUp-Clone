@@ -10,15 +10,15 @@ function UserPage() {
 
     useEffect(() => {
         if (userId) {
-          axios.get(`https://thredup-clone.onrender.com/userData/${userId}`)
-            .then(res => setUser(res.data))
-            .catch(err => console.log(err))
+            axios.get(`https://thredup-clone.onrender.com/userData/${userId}`)
+                .then(res => setUser(res.data))
+                .catch(err => console.log(err))
         }
-      }, [userId])
+    }, [userId])
 
     return (
         <>
-       
+
             <div className="profile-container">
 
                 <div className="profile-sidebar">
@@ -33,13 +33,13 @@ function UserPage() {
                         </div>
                     </div>
 
-                    <div className="profile-menu">
+                    {/* <div className="profile-menu">
 
                         <Link to="/profile" className="menu-item">
                             <FaUser className="menu-icon" />
 
                             <div className="user-menu-text">
-                                <span className="menu-title">My Profile</span>
+                                <span className="menu-title" style={{color:'black'}}>My Profile</span>
                                 <p>All your personal details</p>
                             </div>
                         </Link>
@@ -48,7 +48,7 @@ function UserPage() {
                             <FaBox className="menu-icon" />
 
                             <div className="user-menu-text">
-                                <span className="menu-title">My Orders</span>
+                                <span className="menu-title" >My Orders</span>
                                 <p>All your confirmed orders</p>
                             </div>
                         </Link>
@@ -70,6 +70,28 @@ function UserPage() {
                                 <p>All your saved bank account</p>
                             </div>
                         </Link>
+                    </div> */}
+
+                    <div className="profile-data">
+                        <Link to="/profile" className="menu-item">
+                            <FaUser className="menu-icon" />
+
+                            <div className="user-menu-text">
+                                <span className="menu-title" style={{ color: 'black' }}>My Profile</span>
+                                <p>All your personal details</p>
+                            </div>
+                        </Link>
+
+                        <Link to="/profile" className="menu-item">
+                            <FaUser className="menu-icon" />
+
+                            <div className="user-menu-text">
+                                <span className="menu-title" style={{color:'black'}}>My Profile</span>
+                                <p>All your personal details</p>
+                            </div>
+                        </Link>
+
+
                     </div>
                 </div>
 

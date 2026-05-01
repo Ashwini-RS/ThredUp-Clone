@@ -2865,16 +2865,28 @@ th {
   margin-top: 4px;
 }
 
-.user-menu-text {
+/* .user-menu-text {
   display: flex;
   flex-direction: column;
   text-align: left;
+} */
+
+.profile-data {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-menu-text span {
+  color: black;
+}
+
+.menu-item {
+  padding: 10px;
 }
 
 .menu-item div p {
   font-size: 12px;
-  color: #777;
-  margin: 2px 0 0;
+  color: black;
 }
 
 .menu-item:hover {

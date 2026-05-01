@@ -213,7 +213,7 @@ app.post('/placeAnOrder', async (req, res) => {
 
   const user = await User.findById(userId)
 
-  const orderList = new Orders({
+  const orderList = new Order({
       userEmail: user.email,
       products: products,
       finalTotal: finalTotal,
