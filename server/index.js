@@ -209,11 +209,17 @@ app.delete('/deleteProducts/:id', async (req, res) => {
 
 // ORDER PART in Add to cart
 app.post('/placeAnOrder', async (req, res) => {
-  const { userEmail, products, finalTotal } = req.body
+  const { userId, products, finalTotal, paymentMode } = req.body
 
-  // const user = await User.findById(userId)
-  const orderList = new Order({
-    userEmail, products, finalTotal
+  const user = await User.findById(userId)
+
+  const orderList = new Orders({
+      userEmail: user.email,
+      products: products,
+      finalTotal: finalTotal,
+      paymentMode: paymentMode,
+      paymentId: null,
+      paymentStatus: 'Pending'
   })
 
   await orderList.save()

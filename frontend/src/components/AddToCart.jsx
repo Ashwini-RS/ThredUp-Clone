@@ -99,7 +99,7 @@ function AddToCart() {
     const finalTotal = Number(subTotal + shippingCharge + taxAmount)
 
     const placeAnOrder = async () => {
-        const user = JSON.parse(localStorage.getItem('userEmail'))
+        const user = JSON.parse(localStorage.getItem('userId'))
         if (!user) {
             navigate('/login')
             return
@@ -149,15 +149,18 @@ function AddToCart() {
                             finalTotal: finalTotal
                         })
 
-                        if (verify.data.success) {
+                        // if (verify.data.success) {
 
-                            await axios.post('https://thredup-clone.onrender.com/sendGSTInvoice', {
-                                userId: userId
-                            })
+                        //     await axios.post('https://thredup-clone.onrender.com/sendGSTInvoice', {
+                        //         userId: userId
+                        //     })
 
-                            alert('Payment Successfull and Invoice send to mail')
+                        //     alert('Payment Successfull and Invoice send to mail')
+                        //     navigate('/Order')
+                        // }
+
+                        alert('Payment Successfull and Invoice send to mail')
                             navigate('/Order')
-                        }
                     }
                     catch (err) {
                         console.log(err)
@@ -340,7 +343,7 @@ function AddToCart() {
                                 </div>
 
                                 <div className="checkout-buttons">
-                                    <button className="place-order">PLACE AN ORDER - COD</button>
+                                    <button type="submit" onClick={placeAnOrder} className="place-order">PLACE AN ORDER - COD</button>
                                     <button type="submit" onClick={payNow} className="pay-now">PAY NOW - Online</button>
                                 </div>
 
