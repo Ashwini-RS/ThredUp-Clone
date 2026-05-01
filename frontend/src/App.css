@@ -2076,8 +2076,8 @@ h3 {
   z-index: 1000;
   display: flex;
   position: relative;
-  left: 300px;
-  margin-top: 100px;
+  left: 290px;
+  margin-top: 90px;
   right: 100px;
 }
 
@@ -2108,7 +2108,7 @@ h3 {
 }
 
 table {
-  top:20px;
+  top: 20px;
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 83%;
@@ -2134,7 +2134,7 @@ tr:hover {
 th {
   background-color: #5b6822;
   color: white;
-  top:20px;
+  top: 20px;
 }
 
 .mng-img {
@@ -3698,7 +3698,7 @@ span {
   position: relative;
 }
 
-.checkout-close-btn{
+.checkout-close-btn {
   position: absolute;
   top: 20px;
   right: 50px;
@@ -3719,7 +3719,7 @@ span {
   border-color: #0e0d0d;
   display: flex;
   margin-bottom: 10px;
-  
+
 }
 
 /* .chechout-container {
@@ -3824,7 +3824,7 @@ span {
   margin-right: 10px;
 } */
 
-.payment-option span{
+.payment-option span {
   font-size: 14px;
   font-weight: 600;
 }
@@ -3862,4 +3862,82 @@ span {
   border: none;
   font-size: 14px;
   font-weight: 600;
+}
+
+
+/* ====== MANAGE USER ====== */
+
+.manage-users-container {
+  position: relative;
+  z-index: 999;
+  margin-top: -80px;
+  /* width: 100%; */
+  /* padding: 20px; */
+  left: 300px;
+  right: 100px;
+  /* top: -100px; */
+}
+
+.manage-users-header {
+  margin-bottom: 20px;
+}
+
+.manage-users-table-wrapper {
+  width: 100%;
+  /* overflow-x: auto; */
+  position: relative;
+  z-index: 1;
+} 
+
+.manage-users-table {
+  width: 75%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 10px;
+  /* overflow: hidden; */
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.08);
+}
+
+.manage-users-table thead {
+  background-color: #262d3c;
+}
+
+.manage-users-table thead th {
+  color: white;
+  padding: 16px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.manage-users-table tbody tr {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.manage-users-table tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+.manage-users-table tbody td {
+  padding: 16px;
+  font-size: 15px;
+  color: #374151;
+}
+
+/* Delete Button */
+.delete-user-btn {
+  width: 23%;
+  padding: 8px 18px;
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.delete-user-btn:hover {
+  background-color: #aa7c7c;
 }

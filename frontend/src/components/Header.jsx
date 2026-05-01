@@ -17,7 +17,7 @@ function Header() {
     <>
       <div className="top-bar">
         FREE CLEAN OUT BAG & 50% OFF FEES WHEN YOU SELL WITH US!
-        <a href="#"> ORDER A CLEAN OUT BAG</a>
+        <Link > ORDER A CLEAN OUT BAG</Link>
       </div>
 
       <header className="header">
@@ -46,9 +46,9 @@ function Header() {
             <Link to="/Designer">Designer</Link>
             <Link to="/Premium">Premium</Link>
             <Link to="/TheDresses">Dresses</Link>
-            <a href="#">Shoes</a>
-            <a href="#">Handbags</a>
-            <a href="#">Accessories</a>
+            <Link href="#">Shoes</Link>
+            <Link href="#">Handbags</Link>
+            <Link href="#">Accessories</Link>
             <Link to="/kids">Kids</Link>
             <a href="#">Sale</a>
             <a href="#">Brands</a>
@@ -64,6 +64,7 @@ function Header() {
               </Link>
 
             ) : (
+              <>
               <Link to="/Login" className="user-icon">
                 <i className="fa-regular fa-user">
                   <div className="dropdown">
@@ -78,6 +79,7 @@ function Header() {
                   </div>
                 </i>
               </Link>
+              </>
             )}
 
             {/* {userEmail ? (

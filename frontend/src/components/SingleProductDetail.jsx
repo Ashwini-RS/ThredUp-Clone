@@ -21,13 +21,13 @@ function SingleProductDetail() {
         let cart = JSON.parse(localStorage.getItem("cart")) || [];
         const existing = cart.find(item => item.productId === product._id);
         if (existing) {
-            navigate("/addToCart");
+            navigate("/AddToCart");
         }
         else {
             cart.push({ productId: product._id, quantity: 1 });
         }
         localStorage.setItem("cart", JSON.stringify(cart));
-        navigate("/addToCart");
+        navigate("/AddToCart");
 
         // localStorage.setItem('userEmail', JSON.stringify(email))
         // let cart = JSON.parse(localStorage.getItem("cart")) || []
@@ -46,7 +46,7 @@ function SingleProductDetail() {
 
                                {/* <img src={`http://localhost:3001/${product.productImage}`} alt="" /> */}
                                
-                                <img src={`https://thredup-clone.onrender.com${product.productImage}`} alt="" />
+                                <img src={product.productImage} alt="" />
                             </div>
                         </div>
 

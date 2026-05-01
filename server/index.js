@@ -10,15 +10,15 @@ const OrderDeliveredMail = require('./Ordermail/OrderDeliveredMail');
 const path = require("path")
 const cloudinary = require('cloudinary').v2;
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
-// const Razorpay = require('razorpay');
-// const crypto = require('crypto');
+const Razorpay = require('razorpay');
+const crypto = require('crypto');
 
 require('dotenv').config();
 
-// var razorpay = new Razorpay({
-//   key_id: process.env.Test_Key_ID,
-//   key_secret: process.env.Test_Key_Secret,
-// });
+var razorpay = new Razorpay({
+  key_id: process.env.Test_Key_ID,
+  key_secret: process.env.Test_Key_Secret,
+});
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))
@@ -393,7 +393,7 @@ app.post('/createOrder', async (req, res) => {
     })
     res.status(200).json({
       order,
-      razorpayKeyId: process.env.RAZORPAY_KEY_ID
+      razorpayKeyId: process.env.Test_Key_ID
     })
   }
   catch (err) {
@@ -413,10 +413,10 @@ app.post("/verifyPayment", async (req, res) => {
     finalTotal
   } = req.body;
 
-  // const generated_signature = crypto
-  //   .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
-  //   .update(razorpay_order_id + "|" + razorpay_payment_id)
-  //   .digest("hex")
+  const generated_signature = crypto
+    .createHmac("sha256", process.env.Test_Key_Secret)
+    .update(razorpay_order_id + "|" + razorpay_payment_id)
+    .digest("hex")
 
   const user = await User.findById(userId)
   const userEmail = user?.email

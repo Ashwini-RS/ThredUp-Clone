@@ -52,16 +52,21 @@ function AddToCart() {
     }
 
     const quantity = (index, quant) => {
-        const cart = [...cartItems]
-        cart[index].quantity = Number(quant)
-        setCartItems(cart)
-        localStorage.setItem("cart", JSON.stringify(cart))
+        let cart = JSON.parse(localStorage.getItem("cart"));
+        cart[index].quantity = Number(quant);
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        const updatedItems = [...cartItems];
+        updatedItems[index].quantity = Number(quant);
+        setCartItems(updatedItems);
     }
 
     const removeCartItem = (index) => {
-        const cart = cartItems.filter((item, i) => i !== index)
-        setCartItems(cart)
-        localStorage.setItem("cart", JSON.stringify(cart))
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const updatedCart = cart.filter((item, i) => i !== index);
+        localStorage.setItem("cart", JSON.stringify(updatedCart));
+        const updatedItems = cartItems.filter((item, i) => i !== index);
+        setCartItems(updatedItems);
     }
 
     //CALCULATION
@@ -120,7 +125,7 @@ function AddToCart() {
         try {
             //create razorpay order
             const res = await axios.post('https://thredup-clone.onrender.com/createOrder', {
-                finalTotal: orderTotal
+                finalTotal: finalTotal
             })
 
             const { order, razorpayKeyId } = res.data
@@ -196,7 +201,7 @@ function AddToCart() {
 
                             {cartItems.map((item, index) => (
                                 <div className="cart-item" key={index}>
-                                    <img src={`https://thredup-clone.onrender.com/${item.productImage}`} alt="product" />
+                                    <img src={item.productImage} alt="product" />
 
                                     <div className="item-details">
                                         <h3>{item.productName}</h3>
@@ -323,7 +328,7 @@ function AddToCart() {
                                         {/* <FaCreditCard /> */}
                                         Payment Methods</h3>
 
-                                    <label className="payment-option">
+                                    {/* <label className="payment-option">
                                         <input type="radio" name="pay" />
                                         <span>Cash on Delivery</span>
                                     </label>
@@ -331,12 +336,12 @@ function AddToCart() {
                                     <label className="payment-option">
                                         <input type="radio" name="pay" />
                                         <span>Online Payment</span>
-                                    </label>
+                                    </label> */}
                                 </div>
 
                                 <div className="checkout-buttons">
-                                    <button className="place-order">PLACE AN ORDER</button>
-                                    <button className="pay-now">PAY NOW</button>
+                                    <button className="place-order">PLACE AN ORDER - COD</button>
+                                    <button type="submit" onClick={payNow} className="pay-now">PAY NOW - Online</button>
                                 </div>
 
                             </div>
