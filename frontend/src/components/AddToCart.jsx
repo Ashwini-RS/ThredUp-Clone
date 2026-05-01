@@ -146,7 +146,7 @@ function AddToCart() {
                             razorpay_signature: response.razorpay_signature,
                             userId: userId,
                             products: cartItems,
-                            totalAmount: orderTotal
+                            finalTotal: finalTotal
                         })
 
                         if (verify.data.success) {
