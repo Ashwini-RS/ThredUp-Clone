@@ -1,5 +1,6 @@
-const {GSTpdf} = require('../Service/GSTpdf')
+
 const sgMail = require('@sendgrid/mail');
+const {GSTpdf} = require('../Service/GSTpdf')
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
