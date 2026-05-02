@@ -1,10 +1,12 @@
 import React from "react";
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import { FaCrosshairs } from "react-icons/fa";
 
 function EditAddress() {
   const userId = localStorage.getItem("userId");
+  const navigate = useNavigate()
 
   const [user, setUser] = useState({
     username: "",
@@ -39,7 +41,7 @@ function EditAddress() {
     e.preventDefault();
 
     try {
-      await axios.put(`https://purplle-ecommerce-clone-backend.onrender.com/profile/myaddress/${userId}`, {
+      await axios.put(`https://thredup-clone.onrender.com/profile/myaddress/${userId}`, {
         username: user.username,
         phonenumber: user.phonenumber,
         pincode: user.address.pincode,
@@ -49,6 +51,7 @@ function EditAddress() {
       });
 
       alert("Address Updated Successfully");
+      navigate(-1);
     } catch (err) {
       console.log(err);
     }
@@ -90,7 +93,7 @@ function EditAddress() {
           </div>
 
           <div className="address-actions">
-            <button className="update-address-btn">UPDATE</button>
+            <button className="update-address-btn" type="submit" >UPDATE</button>
           </div>
         </form>
 
