@@ -9,6 +9,7 @@ function AddToCart() {
     const [showCheckoutModal, setShowCheckoutModal] = useState(false);
 
     // const [user, setUser] = useState({})
+    const address = user?.address?.[0]
     const navigate = useNavigate()
     const location = useLocation();
 
@@ -145,7 +146,7 @@ function AddToCart() {
             navigate('/login')
         }
         
-        if (!address.pincode) {
+        if (!address?.pincode) {
             navigate('/Address')
             return
         }
