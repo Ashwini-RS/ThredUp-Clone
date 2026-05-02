@@ -219,10 +219,12 @@ function Editproducts() {
                         value={category}
                         onChange={(e) => setCategory(e.target.value)}>
                         <option value="">Select Category</option>
-                        <option value="dress">Dress</option>
-                        <option value="tops">Tops</option>
-                        <option value="jeans">Jeans</option>
-                        <option value="kids">Kids</option>
+                        <option value="NewArrival">New Arrivals</option>
+                        <option value="Women">Women</option>
+                        <option value="Designer">Designer</option>
+                        <option value="Premium">Premium</option>
+                        <option value="Dresses">Dresses</option>
+                        <option value="Kids">Kids</option>
                     </select>
 
                     <br />

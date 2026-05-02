@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , Link} from "react-router-dom";
 import axios from "axios";
 
 function SearchBar() {
@@ -69,7 +69,8 @@ function SearchBar() {
                                 <div className="search-links">
                                     {products && products.filter((product) =>
                                         product.productName?.toLowerCase().includes(query.toLowerCase())).slice(0, 5).map((product) => (
-                                            <p key={product._id}> onClick={() => searchHandleProductName(product.productName)}  {product.productName}</p>
+                                            <p key={product._id} 
+                                            onClick={() => searchHandleProductName(product.productName)}>{product.productName}</p>
                                         ))}
                                 </div>
                             </div>
@@ -79,11 +80,12 @@ function SearchBar() {
                             {products && products.filter((product) =>
                                 product.productName.toLowerCase().includes(query.toLowerCase())).slice(0, 4).map((product) => (
                                     <>
-                                        <a href="#" className="search-products">
+                                      
+                                        <Link to={`/SingleProductDetail/${product._id}`} className="search-products">
                                             <img src={product.productImage} style={{ width: '150px' }} alt="" />
                                             <p>{product.productName}</p>
                                             <span>${product.oldprice}</span>
-                                        </a>
+                                        </Link>
                                     </>
                                 ))}
                         </div>

@@ -4,19 +4,18 @@ function ManageUser() {
 
     useEffect(() => {
         axios.get("https://thredup-clone.onrender.com/manageUsers")
-          .then(users => setUsers(users.data))
-          .catch(err => console.log(err))
-      }, [])
-    
-      const deleteUser = async (id) => {
+            .then(users => setUsers(users.data))
+            .catch(err => console.log(err))
+    }, [])
+
+    const deleteUser = async (id) => {
         axios.delete(`https://thredup-clone.onrender.com/deleteUsers/${id}`)
         alert("User Deleted")
         window.location.reload();
-      }
+    }
 
     return (
         <>
-
             <Adminsidebar />
             <div className="manage-users-container">
 
@@ -35,29 +34,21 @@ function ManageUser() {
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td>xyz@gmail.com</td>
-                                <td>9988776655</td>
-                                <td>
-                                    <button className="delete-user-btn">
-                                        Delete
-                                    </button>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>abc@gmail.com</td>
-                                <td>9876543210</td>
-                                <td>
-                                    <button className="delete-user-btn">
-                                        Delete
-                                    </button>
-                                </td>
-                            </tr>
+                            {users.map(user => {
+                                return <tr key={user._id}>
+                                    <td> {user.email} </td>
+                                    <td> {user.phonenumber} </td>
+                                    <td>
+                                        <button className="delete-user-btn" onClick={() => deleteUser(user._id)} >
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                            })
+                            }
                         </tbody>
                     </table>
                 </div>
-
             </div>
         </>
     );

@@ -35,7 +35,7 @@ function FavoritesSection() {
             </div>
 
             <div className="carousel">
-                {products && products.map((product) => (
+                {products && products.map((product) => ( //condition
                     <div className="product-card" key={product._id}>
                         <Link to={`/SingleProductDetail/${product._id}`}>
                         <img src={product.productImage}  alt={product.productName} />

@@ -47,12 +47,12 @@ function Header() {
             <Link to="/Designer">Designer</Link>
             <Link to="/Premium">Premium</Link>
             <Link to="/TheDresses">Dresses</Link>
-            <Link href="#">Shoes</Link>
+            {/* <Link href="#">Shoes</Link>
             <Link href="#">Handbags</Link>
-            <Link href="#">Accessories</Link>
+            <Link href="#">Accessories</Link> */}
             <Link to="/kids">Kids</Link>
-            <a href="#">Sale</a>
-            <a href="#">Brands</a>
+            {/* <a href="#">Sale</a>
+            <a href="#">Brands</a> */}
           </nav>
 
           <div className="icons">
