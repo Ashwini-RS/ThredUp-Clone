@@ -146,7 +146,7 @@ function AddToCart() {
         }
         
         if (!address?.pincode) {
-            navigate('/userprofile/Address')
+            navigate('/UserPage/Address')
             return
         }
         setShowCheckoutModal(true)
