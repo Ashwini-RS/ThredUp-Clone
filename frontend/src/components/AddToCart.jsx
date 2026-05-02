@@ -43,7 +43,8 @@ function AddToCart() {
     // }, [])
 
     const handleLogout = () => {
-        localStorage.removeItem("userEmail")
+        localStorage.removeItem("userId")
+        localStorage.removeItem('cart')
         window.location.reload()
     }
 
@@ -116,9 +117,9 @@ function AddToCart() {
                 paymentStatus: 'Pending'
             })
 
-            // await axios.post("https://thredup-clone.onrender.com/placeAnOrder", {
-            //         userId: userId
-            // })
+            await axios.post("https://thredup-clone.onrender.com/sendGSTInvoice", {
+                    userId: user
+            })
 
             alert("Order placed successfully")
             navigate('/Order')
@@ -126,6 +127,16 @@ function AddToCart() {
         catch (err) {
             console.log("order failed: ", err)
         }
+    }
+
+    const proceedTopay = async () => {
+        const userId = localStorage.getItem("userId")
+
+        if(!userId) {
+            navigate('/login')
+        }
+
+        setShowCheckoutModal(true)
     }
 
     const payNow = async () => {
@@ -158,18 +169,17 @@ function AddToCart() {
                             finalTotal: finalTotal
                         })
 
-                        // if (verify.data.success) {
+                        if (verify.data.success) {
 
-                        //     await axios.post('https://thredup-clone.onrender.com/sendGSTInvoice', {
-                        //         userId: userId
-                        //     })
+                            await axios.post('https://thredup-clone.onrender.com/sendGSTInvoice', {
+                                userId: userId
+                            })
 
-                        //     alert('Payment Successfull and Invoice send to mail')
-                        //     navigate('/Order')
-                        // }
-
-                        alert('Payment Successfull and Invoice send to mail')
+                            alert('Payment Successfull and Invoice send to mail')
                             navigate('/Order')
+                        }
+
+                       
                     }
                     catch (err) {
                         console.log(err)
@@ -256,7 +266,7 @@ function AddToCart() {
 
                             <div className="summary-row">
                                 <span>Shipping</span>
-                                <p> {shippingCharge === 0 ? "FREE" : `$${shippingCharge}`}</p>
+                                <p> {shippingCharge === 0 ? "FREE" : `₹${shippingCharge}`}</p>
                             </div>
 
                             <div className="summary-row">
@@ -272,7 +282,7 @@ function AddToCart() {
                             </div>
 
                             <button className="checkout-btn"
-                                onClick={() => setShowCheckoutModal(true)} >
+                                onClick={proceedTopay} >
                                 PROCEED TO PAY
                             </button>
                         </div>

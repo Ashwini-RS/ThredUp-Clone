@@ -9,9 +9,10 @@ function Header() {
   const cartItemsCount = cart.length;
 
   const handleLogout = () => {
-    localStorage.removeItem("userEmail")
+    localStorage.removeItem("userId")
+    localStorage.removeItem('cart')
     window.location.reload()
-  }
+}
 
   return (
     <>
@@ -73,7 +74,7 @@ function Header() {
                       <Link to="/UserPage">My Account </Link>
                       <Link to="/Order">My Orders</Link>
                       <Link to="/">My Address</Link>
-                      <Link to="/Home">Logout</Link>
+                      <Link onClick={handleLogout}>Logout</Link>
                     </div>
 
                   </div>

@@ -12,6 +12,7 @@ const cloudinary = require('cloudinary').v2;
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
 const Razorpay = require('razorpay');
 const crypto = require('crypto');
+const GSTbill = require('./Invoicemail/GSTbill');
 
 require('dotenv').config();
 
@@ -457,6 +458,23 @@ app.post("/verifyPayment", async (req, res) => {
     });
   }
 })
+
+//
+app.post('/sendGSTInvoice', async (req, res) => {
+  const {userId} = req.body
+
+  try {
+      const user = await User.findById(userId)
+      const order = await Order.findOne({ userEmail: user.email}).sort({ orderDate: -1 })
+
+      await GSTbill(order.userEmail, order, user)
+      res.json({success:true})
+  }
+  catch(err) {
+      console.log(err)
+  }
+})
+
 
 app.listen(3001, () => {
   console.log("server is running")
