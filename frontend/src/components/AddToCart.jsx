@@ -145,8 +145,8 @@ function AddToCart() {
             navigate('/login')
         }
         
-        if (!address?.pincode) {
-            navigate('/UserPage/Address')
+        if (!address.pincode) {
+            navigate('/Address')
             return
         }
         setShowCheckoutModal(true)
@@ -191,8 +191,6 @@ function AddToCart() {
                             alert('Payment Successfull and Invoice send to mail')
                             navigate('/Order')
                         }
-
-                       
                     }
                     catch (err) {
                         console.log(err)
