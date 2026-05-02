@@ -21,13 +21,13 @@ function Order() {
             .catch(err => console.log(err))
     }, [userId])
 
-    // useEffect(() => {
-    //     if (userId) {
-    //       axios.get(`https://thredup-clone.onrender.com/manageUsers/${userId}`)
-    //         .then(res => setUser(res.data))
-    //         .catch(err => console.log(err))
-    //     }
-    //   }, [userId])
+    useEffect(() => {
+        if (userId) {
+          axios.get(`https://thredup-clone.onrender.com/manageUsers/${userId}`)
+            .then(res => setUser(res.data))
+            .catch(err => console.log(err))
+        }
+      }, [userId])
 
     const continueShopping = () => {
         navigate('/')

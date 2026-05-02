@@ -1,6 +1,19 @@
 import Adminsidebar from "./Adminsidebar";
 
 function ManageUser() {
+
+    useEffect(() => {
+        axios.get("https://thredup-clone.onrender.com/manageUsers")
+          .then(users => setUsers(users.data))
+          .catch(err => console.log(err))
+      }, [])
+    
+      const deleteUser = async (id) => {
+        axios.delete(`https://thredup-clone.onrender.com/deleteUsers/${id}`)
+        alert("User Deleted")
+        window.location.reload();
+      }
+
     return (
         <>
 
