@@ -376,6 +376,13 @@ app.put('/profile/myaddress/:id', async (req, res) => {
   }
 })
 
+// MANAGE USER DB
+app.get('/manageUsers', (req, res) => {
+  User.find()
+      .then(users => res.json(users))
+      .catch(err => res.json(err))
+})
+
 //user side address data
 app.get('/manageUsers/:id', async (req, res) => {
   try {
@@ -459,7 +466,7 @@ app.post("/verifyPayment", async (req, res) => {
   }
 })
 
-//
+// GST bill/invoice
 app.post('/sendGSTInvoice', async (req, res) => {
   const {userId} = req.body
 

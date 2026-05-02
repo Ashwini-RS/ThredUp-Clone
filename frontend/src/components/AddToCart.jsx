@@ -8,11 +8,12 @@ function AddToCart() {
 
     const [showCheckoutModal, setShowCheckoutModal] = useState(false);
 
-    // const [user, setUser] = useState({})
+    const [user, setUser] = useState({})
     const address = user?.address?.[0]
     const navigate = useNavigate()
     const location = useLocation();
 
+    const userId = localStorage.getItem("userId");
     const [cartItems, setCartItems] = useState([])
 
     const cart = JSON.parse(localStorage.getItem('cart')) || []
@@ -27,6 +28,14 @@ function AddToCart() {
             setShowPaymentModal(true);
         }
     }, [location.state]);
+
+    useEffect(() => {
+        if (userId) {
+            axios.get(`https://thredup-clone.onrender.com/manageUsers/${userId}`)
+                .then(res => setUser(res.data))
+                .catch(err => console.log(err))
+        }
+    }, [userId])
 
     useEffect(() => {
         const cart = JSON.parse(localStorage.getItem("cart")) || [];
