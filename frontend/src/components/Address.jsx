@@ -46,7 +46,7 @@ function Address() {
 
             console.log(response.data)
             alert("Address added successfully !!")
-            // navigate('/AddToCart', { state: { openPayment: true } })
+            navigate('/AddToCart', { state: { openPayment: true } })
 
             setPincode("")
             setLocation("")

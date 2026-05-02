@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import axios from 'axios';
 
 function AddToCart() {
@@ -7,7 +8,9 @@ function AddToCart() {
 
     const [showCheckoutModal, setShowCheckoutModal] = useState(false);
 
+    // const [user, setUser] = useState({})
     const navigate = useNavigate()
+    const location = useLocation();
 
     const [cartItems, setCartItems] = useState([])
 
@@ -17,6 +20,12 @@ function AddToCart() {
     // function checkout(){
     //     navigate('/Checkout')
     // }
+
+    useEffect(() => {
+        if (location.state?.openPayment) {
+            setShowPaymentModal(true);
+        }
+    }, [location.state]);
 
     useEffect(() => {
         const cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -135,7 +144,11 @@ function AddToCart() {
         if(!userId) {
             navigate('/login')
         }
-
+        
+        if (!address?.pincode) {
+            navigate('/userprofile/Address')
+            return
+        }
         setShowCheckoutModal(true)
     }
 
