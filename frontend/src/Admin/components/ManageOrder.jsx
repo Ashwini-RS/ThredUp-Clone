@@ -27,7 +27,7 @@ function ManageOrder() {
 
     useEffect(() => {
         orders.forEach((order) => {
-            axios.get(`https://purplle-ecommerce-clone-backend.onrender.com/manageOrderAddress/${order.userEmail}`)
+            axios.get(`https://thredup-clone.onrender.com/manageOrderAddress/${order.userEmail}`)
                 .then(res => {
                     setAddresses(prev => ({
                         ...prev,

@@ -144,6 +144,16 @@ app.get('/manageOrders/:id', async (req, res) => {
   }
 })
 
+app.get("/manageOrderAddress/:email", async (req, res) => {
+  try {
+      const user = await User.findOne({ email: req.params.email })
+      res.json(user)
+
+  } catch (err) {
+      console.log(err)
+  }
+})
+
 //update order status in the db
 app.put('/updateOrderStatus/:id', async (req, res) => {
   const { id } = req.params
