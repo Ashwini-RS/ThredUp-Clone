@@ -14,7 +14,7 @@ const GSTpdf = (orders, user) => {
         const date = new Date(orders.orderDate)
         const formattedOrderDate = `${String(date.getDate()).padStart(2, '0')}-${String(date.getMonth() + 1).padStart(2, '0')}-${date.getFullYear()}`
 
-        doc.image('./image/purpllelogo.jpg', 50, 45, { width: 100 })
+        doc.image('./image/threduplogo.jpg', 50, 45, { width: 100 })
             .fontSize(10)
             .text('101-B, 1st Floor, Raheja Plaza -I, LBS Marg', 200, 50, { align: 'right' })
             .text('Mumbai, Maharashtra, India, 400086', 200, 65, { align: 'right' })
