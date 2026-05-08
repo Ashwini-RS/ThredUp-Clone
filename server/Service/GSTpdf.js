@@ -82,11 +82,11 @@ const GSTpdf = (orders, user) => {
         doc.font('Helvetica')
             .fontSize(10)
 
-        doc.text('ThreadUp Fashion Pvt Ltd,', 40, 180)
+        doc.text('ThreadUp Inc,', 40, 180)
 
-        doc.text('101-B, Raheja Plaza,', 40, 195)
+        doc.text('New Marine Lines,', 40, 195)
 
-        doc.text('LBS Marg, Mumbai - 400086', 40, 210)
+        doc.text('Churchgate, Mumbai, Maharashtra - 400020', 40, 210)
 
         doc.text('GST: 29ABCDE1234F1Z5', 40, 225)
 
@@ -135,10 +135,6 @@ const GSTpdf = (orders, user) => {
             320,
             320
         )
-
-        // =========================
-        // TABLE
-        // =========================
 
         let y = 370
 
@@ -236,10 +232,6 @@ const GSTpdf = (orders, user) => {
             y += 35
         })
 
-        // =========================
-        // SHIPPING
-        // =========================
-
         const subTotal = products.reduce((total, item) => {
 
             const price = Number(item.newprice) || 0
@@ -300,10 +292,6 @@ const GSTpdf = (orders, user) => {
             .lineTo(555, y)
             .stroke()
 
-        // =========================
-        // TABLE BORDER
-        // =========================
-
         const tableBottom = y
 
         doc.rect(
@@ -312,8 +300,6 @@ const GSTpdf = (orders, user) => {
             tableWidth,
             tableBottom - tableTop
         ).stroke()
-
-        // Vertical lines
 
         doc.moveTo(240, tableTop)
             .lineTo(240, tableBottom)
@@ -335,10 +321,6 @@ const GSTpdf = (orders, user) => {
             .lineTo(515, tableBottom)
             .stroke()
 
-        // =========================
-        // TOTALS
-        // =========================
-
         y += 20
 
         doc.font('Helvetica-Bold')
@@ -356,10 +338,6 @@ const GSTpdf = (orders, user) => {
             y
         )
 
-        // =========================
-        // SELLER ADDRESS
-        // =========================
-
         y += 40
 
         doc.font('Helvetica-Bold')
@@ -375,7 +353,7 @@ const GSTpdf = (orders, user) => {
         doc.font('Helvetica')
             .fontSize(10)
             .text(
-                'ThreadUp Inc, New Marine Lines, Churchgate, Mumbai, Maharashtra - 400020',
+                'ThredUp Inc. HQ- 969 Broadway, Suite 200, Oakland, California, 94607',
                 40,
                 y,
                 {
@@ -384,10 +362,6 @@ const GSTpdf = (orders, user) => {
             )
 
         y += 45
-
-        // =========================
-        // FOOTER
-        // =========================
 
         doc.font('Helvetica')
             .fontSize(10)
