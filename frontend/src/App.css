@@ -2516,7 +2516,7 @@ th {
 
 /* =====Manage order styling page===== */
 .admin-order {
-  margin: 0px 0px 360px 250px;
+  margin: 0px 0px 100px 260px;
   padding: 0px 30px;
   /* margin-left: 270px;
   padding: 20px; */
@@ -2524,12 +2524,13 @@ th {
 }
 
 .admin-order h3 {
-  text-align: center;
+  text-align: left;
+  font-size: 26px;
   padding-bottom: 10px;
 }
 
 .mod-order-details table {
-  width: 90%;
+  width: 100%;
   border-collapse: collapse;
 }
 
@@ -2557,9 +2558,9 @@ th {
 
 .mod-order-details {
   position: fixed;
-  top: 35%;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%, -50%);
 
   width: 70%;
   max-width: 700px;
@@ -2583,6 +2584,12 @@ th {
   border-radius: 3px;
 }
 
+/* .slno {
+  width: 20px;
+  min-width: 35px;
+  width: 40px;
+  padding: 8px 5px !important;
+} */
 .close-btn {
   position: absolute;
   top: 10px;

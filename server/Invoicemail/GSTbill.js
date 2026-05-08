@@ -22,7 +22,7 @@ const GSTbill = async (email, orders, user) => {
             attachments: [
                 {
                     content: pdfBuffer.toString("base64"),
-                    filename: "GSTInvoice.pdf",
+                    filename: "DOWNLOAD-GSTInvoice.pdf",
                     type: "application/pdf",
                     disposition: "attachment"
                 }

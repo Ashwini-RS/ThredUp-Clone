@@ -86,7 +86,8 @@ function ManageOrder() {
                             const date = new Date(order.orderDate)
                             const formattedOrderDate = `${String(date.getDate()).padStart(2, '0')}-${String(date.getMonth() + 1).padStart(2, '0')}-${date.getFullYear()}`
                             return <tr key={order._id}>
-                                <td>{index + 1}</td>
+                                <td style={{ width: "10px", textAlign: "center" }} >{index + 1}</td>
+                                <td>{order.userEmail} </td>
                                 <td>{addresses[order.userEmail]?.location} </td>
                                 <td>{formattedOrderDate}</td>
                                 <td className='click' onClick={() => {

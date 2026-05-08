@@ -3,201 +3,339 @@ const PDFDocument = require('pdfkit');
 // function gstInvoicePdf() {
 
 const GSTpdf = (orders, user) => {
+
     return new Promise((resolve) => {
-        const doc = new PDFDocument()
+
+        const doc = new PDFDocument({
+            margin: 40,
+            size: 'A4'
+        })
+
         const buffers = []
+
         doc.on('data', buffers.push.bind(buffers))
+
         doc.on('end', () => {
             resolve(Buffer.concat(buffers))
         })
 
         const date = new Date(orders.orderDate)
-        const formattedOrderDate = `${String(date.getDate()).padStart(2, '0')}-${String(date.getMonth() + 1).padStart(2, '0')}-${date.getFullYear()}`
 
-        doc.image('./images/threduplogo.jpg', 50, 45, { width: 100 })
-            .fontSize(10)
-            .text('101-B, 1st Floor, Raheja Plaza -I, LBS Marg', 200, 50, { align: 'right' })
-            .text('Mumbai, Maharashtra, India, 400086', 200, 65, { align: 'right' })
-            .text('Support: purplle@supportcare.com', 200, 80, { align: 'right' })
-            .moveDown();
-
-        doc.moveTo(50, 105)
-            .lineTo(550, 105)
-            .lineWidth(1)
-            .strokeColor('#9d9696')
-            .stroke();
+        const formattedDate =
+            `${String(date.getDate()).padStart(2, '0')}-` +
+            `${String(date.getMonth() + 1).padStart(2, '0')}-` +
+            `${date.getFullYear()}`
 
         doc.font('Helvetica-Bold')
-            .fontSize(14)
-            .text('GST INVOICE RECEIPT', 50, 120, { align: 'left' })
-
-        doc.font('Helvetica-Bold')
-            .fontSize(10)
-            .text('Invoice No.: ', 50, 150, { align: 'left' })
+            .fontSize(18)
+            .text('Tax Invoice', 40, 35)
 
         doc.font('Helvetica')
             .fontSize(10)
-            .text(`INV${Math.floor(Math.random() * (1000000 - 100000)) + 100000}`, 120, 150, { align: 'left' })
+
+        doc.text(
+            `Order Id: ORD${orders._id.toString().slice(-6)}`,
+            40,
+            70
+        )
+
+        doc.text(
+            `Order Date: ${formattedDate}`,
+            40,
+            85
+        )
+
+        doc.text(
+            `Invoice No: INV${Math.floor(Math.random() * 1000000)}`,
+            330,
+            70
+        )
+
+        doc.text(
+            `Invoice Date: ${formattedDate}`,
+            330,
+            85
+        )
+
+        doc.text(
+            'GSTIN: 29ABCDE1234F1Z5',
+            330,
+            100
+        )
+
+        doc.text(
+            'PAN: ABCDE1234F',
+            330,
+            115
+        )
+
+        doc.moveTo(40, 145)
+            .lineTo(555, 145)
+            .stroke()
+
+        doc.font('Helvetica-Bold')
+            .fontSize(11)
+            .text('Sold By', 40, 160)
+
+        doc.font('Helvetica')
+            .fontSize(10)
+
+        doc.text('ThreadUp Fashion Pvt Ltd,', 40, 180)
+
+        doc.text('101-B, Raheja Plaza,', 40, 195)
+
+        doc.text('LBS Marg, Mumbai - 400086', 40, 210)
+
+        doc.text('GST: 29ABCDE1234F1Z5', 40, 225)
+
+        doc.font('Helvetica-Bold')
+            .fontSize(11)
+            .text('Billing Address', 320, 160)
+
+        doc.font('Helvetica')
+            .fontSize(10)
+
+        doc.text(user.username, 320, 180)
+
+        doc.text(user.address[0].location, 320, 195)
+
+        doc.text(user.address[0].city, 320, 210)
+
+        doc.text(
+            `${user.address[0].state} - ${user.address[0].pincode}`,
+            320,
+            225
+        )
+
+
+        doc.font('Helvetica-Bold')
+            .fontSize(11)
+            .text('Shipping Address', 320, 255)
+
+        doc.font('Helvetica')
+            .fontSize(10)
+
+        doc.text(user.username, 320, 275)
+
+        doc.text(user.address[0].location, 320, 290)
+
+        doc.text(user.address[0].city, 320, 305)
+
+        doc.text(
+            `${user.address[0].state} - ${user.address[0].pincode}`,
+            320,
+            320
+        )
 
         doc.font('Helvetica-Bold')
             .fontSize(10)
-            .text('Order ID: ', 50, 170, { align: 'left' })
+            .text(
+                'Seller Registered Address:',
+                40,
+                270
+            )
 
         doc.font('Helvetica')
             .fontSize(10)
-            .text( `ORD${orders._id.toString().slice(-6)}`, 120, 170, { align: 'left' })
+            .text(
+                'ThreadUp Fashion Pvt Ltd, 101-B, Raheja Plaza, Mumbai - 400086',
+                40,
+                285,
+                {
+                    width: 230
+                }
+            )
+
+        doc.font('Helvetica-Bold')
+            .text('E. & O.E.', 40, 330)
+
+        let y = 370
 
         doc.font('Helvetica-Bold')
             .fontSize(10)
-            .text('Order Date: ', 50, 190, { align: 'left' })
 
-        doc.font('Helvetica')
-            .fontSize(10)
-            .text(formattedOrderDate, 120, 190, { align: 'left' })
+        doc.text('Product Description', 40, y)
 
-        doc.font('Helvetica-Bold')
-            .fontSize(10)
-            .text('GSTIN.: ', 320, 150, { align: 'right', width: 100 })
+        doc.text('Qty', 250, y)
 
-        doc.font('Helvetica')
-            .fontSize(10)
-            .text('2ACC4455KL57231', 430, 150, { align: 'left' })
+        doc.text('Gross', 290, y)
 
-        doc.font('Helvetica-Bold')
-            .fontSize(10)
-            .text('Payment: ', 330, 170, { align: 'right', width: 100 })
+        doc.text('Taxable', 350, y)
 
-        doc.font('Helvetica')
-            .fontSize(10)
-            .text(orders.paymentMode, 430, 170, { align: 'left' })
+        doc.text('IGST', 430, y)
 
-        doc.font('Helvetica-Bold')
-            .fontSize(10)
-            .text('Status: ', 320, 190, { align: 'right', width: 100 })
+        doc.text('Total', 500, y)
 
-        doc.font('Helvetica')
-            .fontSize(10)
-            .text(orders.paymentStatus, 430, 190, { align: 'left' })
+        y += 18
 
-        doc.moveTo(50, 210)
-            .lineTo(550, 210)
-            .lineWidth(1)
-            .strokeColor('#9d9696')
-            .stroke();
-
-        doc.font('Helvetica-Bold')
-            .fontSize(14)
-            .text('Billing Address: ', 50, 220, { align: 'left' })
-
-        doc.font('Helvetica')
-            .fontSize(10)
-            .text(user.username, 50, 240, { align: 'left' })
-
-        doc.font('Helvetica')
-            .fontSize(10)
-            .text(`${user.address[0].location},${user.address[0].city}, ${user.address[0].state} - ${user.address[0].pincode}`, 50, 260, { align: 'left' })
-
-        doc.moveTo(50, 280)
-            .lineTo(550, 280)
-            .lineWidth(1)
-            .strokeColor('#9d9696')
-            .stroke();
-
-        doc.font('Helvetica-Bold')
-            .fontSize(12)
-            .text('Product Details (GST Inclusive Taxes)', 50, 300);
-
-        //Products items
-
-        doc.font('Helvetica-Bold')
-            .fontSize(10);
-
-        doc.text('Product', 50, 325);
-        doc.text('Qty', 180, 325);
-        doc.text('Base Price', 240, 325);
-        doc.text('CGST (9%)', 340, 325);
-        doc.text('SGST (9%)', 420, 325);
-        doc.text('Total', 500, 325);
-
-        doc.moveTo(50, 340)
-            .lineTo(550, 340)
-            .stroke();
-
-        doc.font('Helvetica');
-
-        const gst = 18
-        let y = 350
-
-        const products = orders.products
-
-        products.forEach((product) => {
-
-            const totalPrice = Number(product.newPrice)
-            const productQuantity = Number(product.quantity)
-
-            const totalProductPrice = totalPrice * productQuantity
-            const gstAmount = (totalProductPrice * gst) / (100 + gst)
-            const basePrice = totalProductPrice - gstAmount
-
-            const cgst = gstAmount / 2
-            const sgst = gstAmount / 2
-
-            doc.text(product.productName, 50, y);
-            doc.text(productQuantity, 180, y);
-            doc.text(`Rs.${basePrice.toFixed(2)}`, 240, y);
-            doc.text(`Rs.${cgst.toFixed(2)}`, 340, y);
-            doc.text(`Rs.${sgst.toFixed(2)}`, 420, y);
-            doc.text(`Rs.${totalProductPrice}`, 500, y);
-
-            y += 25
-        })
-
-        y += 10;
-
-        doc.moveTo(50, y)
-            .lineTo(550, y)
-            .stroke();
-
-        doc.font('Helvetica')
-            .fontSize(10);
-
-        doc.font('Helvetica')
-            .fontSize(10);
-
-        const subTotal = products.reduce((total, item) => {
-            return total + Number(item.newPrice) * Number(item.quantity)
-        }, 0)
-
-        const platformFee = 5
-        const shipping = 25
-        const grandTotal = subTotal + platformFee + shipping
-
-        y += 10;
-
-        doc.text('Subtotal', 380, y);
-        doc.text(`Rs.${subTotal}`, 500, y);
-
-        y += 15;
-
-        doc.text('Platform Fee', 380, y);
-        doc.text(`Rs.${platformFee}`, 500, y);
-
-        y += 15;
-
-        doc.text('Shipping & Other Charges', 380, y);
-        doc.text(`Rs.${shipping}`, 500, y);
-
-        y += 15;
-        doc.moveTo(50, y) 
-            .lineTo(550, y) 
-            .stroke();
-
-        doc.font('Helvetica-Bold');
+        doc.moveTo(40, y)
+            .lineTo(555, y)
+            .stroke()
 
         y += 15
 
-        doc.text('Grand Total', 380, y);
-        doc.text(`Rs.${grandTotal}`, 500, y);
+        doc.font('Helvetica')
+            .fontSize(10)
+
+        const products = orders.products
+
+        let totalQty = 0
+
+        products.forEach((product) => {
+
+            const price = Number(product.newprice) || 0
+
+            const qty = Number(product.quantity) || 0
+
+            const grossAmount = price * qty
+
+            const taxRate = grossAmount > 1000 ? 0.10 : 0.05
+
+            const taxAmount = grossAmount * taxRate
+
+            const taxableValue = grossAmount
+
+            const total = taxableValue + taxAmount
+
+            totalQty += qty
+
+            doc.text(
+                product.productName,
+                40,
+                y,
+                {
+                    width: 180
+                }
+            )
+
+            doc.text(qty.toString(), 255, y)
+
+            doc.text(
+                grossAmount.toFixed(2),
+                285,
+                y
+            )
+
+            doc.text(
+                taxableValue.toFixed(2),
+                350,
+                y
+            )
+
+            doc.text(
+                taxAmount.toFixed(2),
+                430,
+                y
+            )
+
+            doc.text(
+                total.toFixed(2),
+                495,
+                y
+            )
+
+            y += 40
+        })
+
+        const subTotal = products.reduce((total, item) => {
+
+            const price = Number(item.newprice) || 0
+
+            const qty = Number(item.quantity) || 0
+
+            return total + (price * qty)
+
+        }, 0)
+
+        const shippingCharge =
+            subTotal > 1500 ? 0 : 200
+
+        const taxRate =
+            subTotal > 1000 ? 0.10 : 0.05
+
+        const taxAmount =
+            subTotal * taxRate
+
+        const finalTotal =
+            subTotal + shippingCharge + taxAmount
+
+        doc.text(
+            'Shipping and Handling Charges',
+            40,
+            y
+        )
+
+        doc.text('1', 255, y)
+
+        doc.text(
+            shippingCharge.toFixed(2),
+            285,
+            y
+        )
+
+        doc.text(
+            shippingCharge.toFixed(2),
+            350,
+            y
+        )
+
+        doc.text(
+            '0.00',
+            430,
+            y
+        )
+
+        doc.text(
+            shippingCharge.toFixed(2),
+            495,
+            y
+        )
+
+        y += 35
+
+        doc.moveTo(40, y)
+            .lineTo(555, y)
+            .stroke()
+
+      
+        y += 20
+
+        doc.font('Helvetica-Bold')
+            .fontSize(11)
+
+        doc.text(
+            `TOTAL QTY: ${totalQty}`,
+            40,
+            y
+        )
+
+        doc.text(
+            `TOTAL PRICE: ${finalTotal.toFixed(2)}`,
+            380,
+            y
+        )
+
+        y += 40
+
+        doc.font('Helvetica')
+            .fontSize(10)
+
+        doc.text(
+            'All values are in INR',
+            40,
+            y
+        )
+
+        doc.font('Helvetica-Bold')
+
+        doc.image(
+            './images/threduplogo.jpg',
+            400,
+            y + 10,
+            {
+                width: 90
+            }
+        )
 
         doc.end()
     })

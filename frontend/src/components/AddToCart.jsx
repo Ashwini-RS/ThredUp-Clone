@@ -25,7 +25,7 @@ function AddToCart() {
 
     useEffect(() => {
         if (location.state?.openPayment) {
-            setShowPaymentModal(true);
+            setShowCheckoutModal(true);
         }
     }, [location.state]);
 
@@ -137,7 +137,7 @@ function AddToCart() {
             })
 
             await axios.post("https://thredup-clone.onrender.com/sendGSTInvoice", {
-                    userId: user
+                userId: user
             })
 
             alert("Order placed successfully")
@@ -151,10 +151,10 @@ function AddToCart() {
     const proceedTopay = async () => {
         const userId = localStorage.getItem("userId")
 
-        if(!userId) {
+        if (!userId) {
             navigate('/login')
         }
-        
+
         if (!address?.pincode) {
             navigate('/Address')
             return
@@ -238,7 +238,7 @@ function AddToCart() {
                 ) : (
 
                     <>
-                        {/* to show the items when there is an items in the cart */}
+                        {/* to show the items when there are items in the cart */}
                         <div className="cart-left">
                             <h2>YOUR CART ({cartItems.length})</h2>
 
@@ -314,7 +314,7 @@ function AddToCart() {
             {/*----------- CHECKOUT PAGE ------------*/}
 
             {
-                showCheckoutModal && (
+                showCheckoutModal && userId && (
                     <div className="modal-overlay">
                         <div className="modal-box">
 
@@ -340,28 +340,29 @@ function AddToCart() {
 
                                         <div className="shipping-content">
                                             <div className="shipping-block">
-                                                <p className="name">Jane Smith</p>
-                                                <p>742 Evergreen Terrace</p>
-                                                <p>Unit 12, Seattle, WA 98101</p>
-                                                <p><strong>(206) 555-0199</strong></p>
+                                                <p className="name">{user?.username} </p>
+                                                <p>{user?.phonenumber} </p>
+                                                <p>{address.location},</p>
+                                                <p>{address.city},</p>
+                                                <p>{address.state} <strong>{address.pincode} </strong></p>
                                             </div>
                                         </div>
 
                                     </div>
 
                                     <div className="order-box">
-                                        <h3>Your Order</h3>
+                                        <h3>Your Orders</h3>
 
                                         <div className="checkout-order-item">
 
-                                            <img src="/images/madwell.webp" alt="product" />
+                                            <img src={cartItems[0]?.productImage}  alt="product" />
                                             <div className="chechout-order-details">
-                                                <p>Blazer </p>
-                                                <p>$25.09</p>
+                                                <p>Selected Items: {cartItems.length} </p>
+                                                <p>Subtotal: ₹{subTotal} </p>
                                             </div>
                                         </div>
 
-                                        <h2 className="checkout-total">Total: $25.99</h2>
+                                        <h2 className="checkout-total">Total Price: ₹{finalTotal}</h2>
                                     </div>
 
                                 </div>
