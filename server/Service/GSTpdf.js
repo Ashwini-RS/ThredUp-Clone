@@ -2,8 +2,6 @@ const PDFDocument = require('pdfkit');
 
 // function gstInvoicePdf() {
 
-const PDFDocument = require('pdfkit')
-
 const GSTpdf = (orders, user) => {
 
     return new Promise((resolve) => {
