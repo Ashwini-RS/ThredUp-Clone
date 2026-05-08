@@ -47,13 +47,13 @@ const GSTpdf = (orders, user) => {
 
         doc.text(
             `Invoice No: INV${Math.floor(Math.random() * 1000000)}`,
-            330,
+            230,
             70
         )
 
         doc.text(
             `Invoice Date: ${formattedDate}`,
-            330,
+            230,
             85
         )
 
@@ -61,12 +61,6 @@ const GSTpdf = (orders, user) => {
             'GSTIN: 29ABCDE1234F1Z5',
             330,
             100
-        )
-
-        doc.text(
-            'PAN: ABCDE1234F',
-            330,
-            115
         )
 
         doc.moveTo(40, 145)
@@ -127,28 +121,6 @@ const GSTpdf = (orders, user) => {
             320
         )
 
-        doc.font('Helvetica-Bold')
-            .fontSize(10)
-            .text(
-                'Seller Registered Address:',
-                40,
-                270
-            )
-
-        doc.font('Helvetica')
-            .fontSize(10)
-            .text(
-                'ThreadUp Fashion Pvt Ltd, 101-B, Raheja Plaza, Mumbai - 400086',
-                40,
-                285,
-                {
-                    width: 230
-                }
-            )
-
-        doc.font('Helvetica-Bold')
-            .text('E. & O.E.', 40, 330)
-
         let y = 370
 
         doc.font('Helvetica-Bold')
@@ -158,7 +130,7 @@ const GSTpdf = (orders, user) => {
 
         doc.text('Qty', 250, y)
 
-        doc.text('Gross', 290, y)
+        doc.text('Gross Amount', 290, y)
 
         doc.text('Taxable', 350, y)
 
@@ -297,7 +269,6 @@ const GSTpdf = (orders, user) => {
             .lineTo(555, y)
             .stroke()
 
-      
         y += 20
 
         doc.font('Helvetica-Bold')
@@ -327,13 +298,32 @@ const GSTpdf = (orders, user) => {
         )
 
         doc.font('Helvetica-Bold')
+            .fontSize(10)
+            .text(
+                'Seller Registered Address:',
+                40,
+                270
+            )
+
+        doc.font('Helvetica')
+            .fontSize(10)
+            .text(
+                'ThredUp Inc, New Marine Lines, Churchgate, Mumbai, Manharahtra - 400020',
+                40,
+                285,
+                {
+                    width: 230
+                }
+            )
+
+        doc.font('Helvetica-Bold')
 
         doc.image(
             './images/threduplogo.jpg',
-            400,
+            300,
             y + 10,
             {
-                width: 90
+                width: 50
             }
         )
 
