@@ -2,6 +2,8 @@ const PDFDocument = require('pdfkit');
 
 // function gstInvoicePdf() {
 
+const PDFDocument = require('pdfkit')
+
 const GSTpdf = (orders, user) => {
 
     return new Promise((resolve) => {
@@ -25,10 +27,6 @@ const GSTpdf = (orders, user) => {
             `${String(date.getDate()).padStart(2, '0')}-` +
             `${String(date.getMonth() + 1).padStart(2, '0')}-` +
             `${date.getFullYear()}`
-
-        // =========================
-        // HEADER
-        // =========================
 
         doc.font('Helvetica-Bold')
             .fontSize(18)
@@ -71,10 +69,6 @@ const GSTpdf = (orders, user) => {
             .lineTo(555, 145)
             .stroke()
 
-        // =========================
-        // SOLD BY
-        // =========================
-
         doc.font('Helvetica-Bold')
             .fontSize(11)
             .text('Sold By', 40, 160)
@@ -88,11 +82,9 @@ const GSTpdf = (orders, user) => {
 
         doc.text('Churchgate, Mumbai, Maharashtra - 400020', 40, 210)
 
-        doc.text('GST: 29ABCDE1234F1Z5', 40, 225)
+        doc.text('Maharashtra - 400020', 40, 220)
 
-        // =========================
-        // BILLING ADDRESS
-        // =========================
+        doc.text('GST: 29ABCDE1234F1Z5', 40, 225)
 
         doc.font('Helvetica-Bold')
             .fontSize(11)
@@ -112,10 +104,6 @@ const GSTpdf = (orders, user) => {
             320,
             225
         )
-
-        // =========================
-        // SHIPPING ADDRESS
-        // =========================
 
         doc.font('Helvetica-Bold')
             .fontSize(11)
@@ -137,10 +125,6 @@ const GSTpdf = (orders, user) => {
         )
 
         let y = 370
-
-        const tableTop = y
-        const tableLeft = 40
-        const tableWidth = 515
 
         doc.font('Helvetica-Bold')
             .fontSize(10)
@@ -232,6 +216,7 @@ const GSTpdf = (orders, user) => {
             y += 35
         })
 
+
         const subTotal = products.reduce((total, item) => {
 
             const price = Number(item.newprice) || 0
@@ -292,35 +277,6 @@ const GSTpdf = (orders, user) => {
             .lineTo(555, y)
             .stroke()
 
-        const tableBottom = y
-
-        doc.rect(
-            tableLeft,
-            tableTop,
-            tableWidth,
-            tableBottom - tableTop
-        ).stroke()
-
-        doc.moveTo(240, tableTop)
-            .lineTo(240, tableBottom)
-            .stroke()
-
-        doc.moveTo(290, tableTop)
-            .lineTo(290, tableBottom)
-            .stroke()
-
-        doc.moveTo(385, tableTop)
-            .lineTo(385, tableBottom)
-            .stroke()
-
-        doc.moveTo(465, tableTop)
-            .lineTo(465, tableBottom)
-            .stroke()
-
-        doc.moveTo(515, tableTop)
-            .lineTo(515, tableBottom)
-            .stroke()
-
         y += 20
 
         doc.font('Helvetica-Bold')
@@ -361,18 +317,34 @@ const GSTpdf = (orders, user) => {
                 }
             )
 
-        y += 45
+        y += 50
 
         doc.font('Helvetica')
             .fontSize(10)
 
         doc.text(
             'All values are in INR',
-            40,
+            360,
             y
         )
 
-        const logoWidth = 60
+        y += 25
+
+        doc.font('Helvetica-Bold')
+            .fontSize(10)
+
+        doc.text(
+            'Ordered Through',
+            0,
+            y,
+            {
+                align: 'center'
+            }
+        )
+
+        y += 20
+
+        const logoWidth = 70
 
         const pageWidth = doc.page.width
 
@@ -381,7 +353,7 @@ const GSTpdf = (orders, user) => {
         doc.image(
             './images/threduplogo.jpg',
             centerX,
-            y + 10,
+            y,
             {
                 width: logoWidth
             }
