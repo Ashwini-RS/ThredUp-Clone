@@ -26,6 +26,10 @@ const GSTpdf = (orders, user) => {
             `${String(date.getMonth() + 1).padStart(2, '0')}-` +
             `${date.getFullYear()}`
 
+        // =========================
+        // HEADER
+        // =========================
+
         doc.font('Helvetica-Bold')
             .fontSize(18)
             .text('Tax Invoice', 40, 35)
@@ -59,13 +63,17 @@ const GSTpdf = (orders, user) => {
 
         doc.text(
             'GSTIN: 29ABCDE1234F1Z5',
-            330,
-            100
+            400,
+            70
         )
 
         doc.moveTo(40, 145)
             .lineTo(555, 145)
             .stroke()
+
+        // =========================
+        // SOLD BY
+        // =========================
 
         doc.font('Helvetica-Bold')
             .fontSize(11)
@@ -81,6 +89,10 @@ const GSTpdf = (orders, user) => {
         doc.text('LBS Marg, Mumbai - 400086', 40, 210)
 
         doc.text('GST: 29ABCDE1234F1Z5', 40, 225)
+
+        // =========================
+        // BILLING ADDRESS
+        // =========================
 
         doc.font('Helvetica-Bold')
             .fontSize(11)
@@ -101,6 +113,9 @@ const GSTpdf = (orders, user) => {
             225
         )
 
+        // =========================
+        // SHIPPING ADDRESS
+        // =========================
 
         doc.font('Helvetica-Bold')
             .fontSize(11)
@@ -121,24 +136,32 @@ const GSTpdf = (orders, user) => {
             320
         )
 
+        // =========================
+        // TABLE
+        // =========================
+
         let y = 370
+
+        const tableTop = y
+        const tableLeft = 40
+        const tableWidth = 515
 
         doc.font('Helvetica-Bold')
             .fontSize(10)
 
-        doc.text('Product Description', 40, y)
+        doc.text('Product Description', 50, y)
 
         doc.text('Qty', 250, y)
 
-        doc.text('Gross Amount', 290, y)
+        doc.text('Gross Amount', 305, y)
 
-        doc.text('Taxable', 350, y)
+        doc.text('Taxable', 395, y)
 
-        doc.text('IGST', 430, y)
+        doc.text('IGST', 470, y)
 
-        doc.text('Total', 500, y)
+        doc.text('Total', 525, y)
 
-        y += 18
+        y += 20
 
         doc.moveTo(40, y)
             .lineTo(555, y)
@@ -173,41 +196,49 @@ const GSTpdf = (orders, user) => {
 
             doc.text(
                 product.productName,
-                40,
+                50,
                 y,
                 {
-                    width: 180
+                    width: 170
                 }
             )
 
-            doc.text(qty.toString(), 255, y)
+            doc.text(
+                qty.toString(),
+                255,
+                y
+            )
 
             doc.text(
                 grossAmount.toFixed(2),
-                285,
+                300,
                 y
             )
 
             doc.text(
                 taxableValue.toFixed(2),
-                350,
+                390,
                 y
             )
 
             doc.text(
                 taxAmount.toFixed(2),
-                430,
+                470,
                 y
             )
 
             doc.text(
                 total.toFixed(2),
-                495,
+                520,
                 y
             )
 
-            y += 40
+            y += 35
         })
+
+        // =========================
+        // SHIPPING
+        // =========================
 
         const subTotal = products.reduce((total, item) => {
 
@@ -232,8 +263,8 @@ const GSTpdf = (orders, user) => {
             subTotal + shippingCharge + taxAmount
 
         doc.text(
-            'Shipping and Handling Charges',
-            40,
+            'Shipping Charges',
+            50,
             y
         )
 
@@ -241,33 +272,72 @@ const GSTpdf = (orders, user) => {
 
         doc.text(
             shippingCharge.toFixed(2),
-            285,
+            300,
             y
         )
 
         doc.text(
             shippingCharge.toFixed(2),
-            350,
+            390,
             y
         )
 
         doc.text(
             '0.00',
-            430,
+            470,
             y
         )
 
         doc.text(
             shippingCharge.toFixed(2),
-            495,
+            520,
             y
         )
 
-        y += 35
+        y += 30
 
         doc.moveTo(40, y)
             .lineTo(555, y)
             .stroke()
+
+        // =========================
+        // TABLE BORDER
+        // =========================
+
+        const tableBottom = y
+
+        doc.rect(
+            tableLeft,
+            tableTop,
+            tableWidth,
+            tableBottom - tableTop
+        ).stroke()
+
+        // Vertical lines
+
+        doc.moveTo(240, tableTop)
+            .lineTo(240, tableBottom)
+            .stroke()
+
+        doc.moveTo(290, tableTop)
+            .lineTo(290, tableBottom)
+            .stroke()
+
+        doc.moveTo(385, tableTop)
+            .lineTo(385, tableBottom)
+            .stroke()
+
+        doc.moveTo(465, tableTop)
+            .lineTo(465, tableBottom)
+            .stroke()
+
+        doc.moveTo(515, tableTop)
+            .lineTo(515, tableBottom)
+            .stroke()
+
+        // =========================
+        // TOTALS
+        // =========================
 
         y += 20
 
@@ -281,12 +351,43 @@ const GSTpdf = (orders, user) => {
         )
 
         doc.text(
-            `TOTAL PRICE: ${finalTotal.toFixed(2)}`,
-            380,
+            `TOTAL PRICE: ₹${finalTotal.toFixed(2)}`,
+            360,
             y
         )
 
+        // =========================
+        // SELLER ADDRESS
+        // =========================
+
         y += 40
+
+        doc.font('Helvetica-Bold')
+            .fontSize(10)
+            .text(
+                'Seller Registered Address:',
+                40,
+                y
+            )
+
+        y += 15
+
+        doc.font('Helvetica')
+            .fontSize(10)
+            .text(
+                'ThreadUp Inc, New Marine Lines, Churchgate, Mumbai, Maharashtra - 400020',
+                40,
+                y,
+                {
+                    width: 300
+                }
+            )
+
+        y += 45
+
+        // =========================
+        // FOOTER
+        // =========================
 
         doc.font('Helvetica')
             .fontSize(10)
@@ -297,33 +398,18 @@ const GSTpdf = (orders, user) => {
             y
         )
 
-        doc.font('Helvetica-Bold')
-            .fontSize(10)
-            .text(
-                'Seller Registered Address:',
-                40,
-                270
-            )
+        const logoWidth = 60
 
-        doc.font('Helvetica')
-            .fontSize(10)
-            .text(
-                'ThredUp Inc, New Marine Lines, Churchgate, Mumbai, Manharahtra - 400020',
-                40,
-                285,
-                {
-                    width: 230
-                }
-            )
+        const pageWidth = doc.page.width
 
-        doc.font('Helvetica-Bold')
+        const centerX = (pageWidth - logoWidth) / 2
 
         doc.image(
             './images/threduplogo.jpg',
-            300,
+            centerX,
             y + 10,
             {
-                width: 50
+                width: logoWidth
             }
         )
 
