@@ -47,6 +47,8 @@ function ManageProducts() {
     return (
         <>
             <Adminsidebar />
+
+            <div className="manages">
             <div className="manage-header">
                 <div className="manage-title">
                     <h4>Manage Products</h4>
@@ -89,7 +91,6 @@ function ManageProducts() {
                                         src={product.productImage}
                                         className="mng-img" alt={product.productName} />
                                 </td>
-
                                 <td>{product.productName}</td>
                                 <td>{product.brand}</td>
                                 <td>{product.productDescription}</td>
@@ -117,6 +118,7 @@ function ManageProducts() {
                     </tbody>
                 </table>
 
+            </div>
             </div>
         </>
     );

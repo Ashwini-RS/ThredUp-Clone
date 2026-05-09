@@ -502,6 +502,24 @@ app.post('/sendGSTInvoice', async (req, res) => {
   }
 })
 
+app.get("/admin/revenue", async (req, res) => {
+  try {
+      const orders = await Order.find()
+      let revenue = 0
+
+      orders.forEach(order => {
+          if (order.paymentStatus === "Success") {
+              revenue += order.totalAmount
+          }
+      })
+
+      res.json({ revenue })
+  }
+
+  catch (err) {
+      console.log(err)
+  }
+})
 
 app.listen(3001, () => {
   console.log("server is running")

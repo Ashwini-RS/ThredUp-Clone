@@ -23,7 +23,7 @@ function EditStatus() {
                 orderStatus
             });
             alert("Status Updated and mail sent");
-            navigate("/Admin/ManageOrders");
+            navigate('/admin/ManageOrder')
 
         } catch (err) {
             console.error(err);

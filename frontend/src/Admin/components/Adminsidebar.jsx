@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function Adminsidebar() {
     return (
         <>
-            <div className="admin-topbar">
+            <div className="admin-topbar" style={{position:'sticky', top:0}}>
 
                 <div className="admin-logo-section">
                     <img src="/images/logo-thredup.svg" className="admin-logo" />

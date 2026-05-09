@@ -1862,7 +1862,8 @@ h3 {
   height: 70px;
   background-color: #daefc6;
   display: flex;
-  position: fixed;
+  position: sticky;
+  z-index: 1000;
   top: 0;
   /* justify-content: space-between; */
   /* align-items: center; */
@@ -1923,9 +1924,7 @@ h3 {
   background: #daefc6;
   display: flex;
   flex-direction: column;
-  top: 70px;
   position: fixed;
-  z-index: 100;
 }
 
 .admin-task {
@@ -2165,6 +2164,11 @@ h3 {
   width: 100%;
 }
 
+.manages {
+  margin-top: -50px;
+  z-index: 100;
+}
+
 .admin-layout {
   margin-left: 270px;
   padding: 20px;
@@ -2174,11 +2178,12 @@ h3 {
 }
 
 table {
-  top: 20px;
+  top: 10px;
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 83%;
   table-layout: fixed;
+  overflow-y: auto;
 }
 
 td,
