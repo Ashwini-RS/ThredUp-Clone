@@ -254,7 +254,7 @@ function AdminDashboard() {
                                     <Line
                                         type="monotone"
                                         dataKey="amount"
-                                        stroke="black"
+                                        stroke="#2b371f"
                                         strokeWidth={2}
                                         dot={{
                                             r: 4,
@@ -262,7 +262,6 @@ function AdminDashboard() {
                                             stroke: "#8e24aa",
                                             strokeWidth: 1
                                         }}
-
                                     />
 
                                 </LineChart>

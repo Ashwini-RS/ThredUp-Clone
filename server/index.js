@@ -502,14 +502,15 @@ app.post('/sendGSTInvoice', async (req, res) => {
   }
 })
 
+// Dashboard Revenue
 app.get("/admin/revenue", async (req, res) => {
   try {
       const orders = await Order.find()
       let revenue = 0
 
       orders.forEach(order => {
-          if (order.paymentStatus === "Success") {
-              revenue += order.totalAmount
+          if (orders.paymentStatus === "Success") {
+              revenue += orders.finalTotal
           }
       })
 
