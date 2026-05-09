@@ -110,7 +110,7 @@ app.post("/imageUpload", upload.single("image"), async (req, res) => {
     //  const productImage = req.file.secure_url
 
     console.log(req.file.path)
-    console.log(req.file.secure_url)
+    // console.log(req.file.secure_url)
 
     const { productName, brand, productDescription, size, color, quantity, oldprice, newprice, discount, category } = req.body
 
