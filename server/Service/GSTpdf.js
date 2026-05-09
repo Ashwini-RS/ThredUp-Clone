@@ -69,7 +69,7 @@ const GSTpdf = (orders, user) => {
         doc.font('Helvetica')
             .fontSize(10)
 
-        doc.text('ThreadUp Inc,', 40, 180)
+        doc.text('ThredUp Inc,', 40, 180)
 
         doc.text('New Marine Lines,', 40, 195)
 
@@ -77,7 +77,7 @@ const GSTpdf = (orders, user) => {
 
         doc.text('Maharashtra - 400020', 40, 220)
 
-        doc.text('GST: 29ABCDE1234F1Z5', 40, 225)
+        doc.text('GST: 29ABCDE1234F1Z5', 40, 235)
 
         doc.font('Helvetica-Bold')
             .fontSize(11)
@@ -96,30 +96,9 @@ const GSTpdf = (orders, user) => {
             `${user.address[0].state} - ${user.address[0].pincode}`,
             320,
             225
-        )
+        )   
 
-        doc.font('Helvetica-Bold')
-            .fontSize(11)
-            .text('Shipping Address', 470, 160)
-
-        doc.font('Helvetica')
-            .fontSize(10)
-
-        doc.text(user.username, 470, 180)
-
-        doc.text(user.address[0].location, 470, 195, {
-            width: 90
-        })
-
-        doc.text(user.address[0].city, 470, 225)
-
-        doc.text(
-            `${user.address[0].state} - ${user.address[0].pincode}`,
-            470,
-            240
-        )
-
-        let y = 370
+        let y = 270
 
         doc.font('Helvetica-Bold')
             .fontSize(10)

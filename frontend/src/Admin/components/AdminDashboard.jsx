@@ -27,7 +27,7 @@ function AdminDashboard() {
     const [users, setUsers] = useState([])
     const [revenue, setRevenue] = useState([])
     const [statusData, setStatusData] = useState([]);
-   
+    const [areaChart, setAreaChart] = useState([]);
 
     const COLORS = ["#FFC20A", "#17BECF", "#4caf50"];
 
