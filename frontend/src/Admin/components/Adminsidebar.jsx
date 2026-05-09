@@ -25,7 +25,7 @@ function Adminsidebar() {
                         <h2 className="admin-title">Admin</h2>
                     </div> */}
 
-                    <Link to="/Admin/AdminDashboard" className="admin-task">
+                    <Link to="/admin/dashboard" className="admin-task">
                         <i className="fa-solid fa-table-columns"></i>  Dashboard
                     </Link>
                     <hr className="sidebar-line" />

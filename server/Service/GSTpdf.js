@@ -1,20 +1,15 @@
 const PDFDocument = require('pdfkit');
 
-// function gstInvoicePdf() {
-
 const GSTpdf = (orders, user) => {
 
     return new Promise((resolve) => {
-
         const doc = new PDFDocument({
             margin: 40,
             size: 'A4'
         })
 
         const buffers = []
-
         doc.on('data', buffers.push.bind(buffers))
-
         doc.on('end', () => {
             resolve(Buffer.concat(buffers))
         })
@@ -105,21 +100,23 @@ const GSTpdf = (orders, user) => {
 
         doc.font('Helvetica-Bold')
             .fontSize(11)
-            .text('Shipping Address', 320, 255)
+            .text('Shipping Address', 470, 160)
 
         doc.font('Helvetica')
             .fontSize(10)
 
-        doc.text(user.username, 320, 275)
+        doc.text(user.username, 470, 180)
 
-        doc.text(user.address[0].location, 320, 290)
+        doc.text(user.address[0].location, 470, 195, {
+            width: 90
+        })
 
-        doc.text(user.address[0].city, 320, 305)
+        doc.text(user.address[0].city, 470, 225)
 
         doc.text(
             `${user.address[0].state} - ${user.address[0].pincode}`,
-            320,
-            320
+            470,
+            240
         )
 
         let y = 370
@@ -213,7 +210,6 @@ const GSTpdf = (orders, user) => {
 
             y += 35
         })
-
 
         const subTotal = products.reduce((total, item) => {
 

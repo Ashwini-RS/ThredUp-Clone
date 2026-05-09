@@ -8,7 +8,6 @@ router.post('/sendOtp', async (req, res) => {
     try {
 
         const { email } = req.body;
-
         const otp = otpGenerator.generate(6, {
             upperCaseAlphabets: false,
             lowerCaseAlphabets: false,
@@ -29,9 +28,6 @@ router.post('/sendOtp', async (req, res) => {
             await user.save();
         }
         else {
-            // user = await User.create( {
-            //     email, otp, otpExpiry
-            // });
             user = new User({
                 email,
                 otp,
@@ -46,11 +42,9 @@ router.post('/sendOtp', async (req, res) => {
             });
 
             await user.save();
-            // console.log("Saved user:", user);
         }
 
         await sendMail(email, otp);
-
         res.json({ message: "OTP sent successfully" });
     }
     catch (error) {
@@ -62,7 +56,7 @@ router.post('/sendOtp', async (req, res) => {
     }
 });
 
-//otp verification
+//OTP Verification 
 router.post("/verifyOtp", async (req, res) => {
     try {
         const { email, otp } = req.body;

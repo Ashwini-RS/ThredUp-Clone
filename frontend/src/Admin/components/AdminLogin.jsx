@@ -19,13 +19,11 @@ function AdminLogin() {
         try {
             if (email === 'thredup.admin@gmail.com' && password === "thredup-admin") {
                 alert("Successfully Logined")
-                navigate('/Admin/Components/AdminDashboard')
+                navigate('/admin/dashboard')
             }
             else {
                 alert("Login Failed")
             }
-
-
         } catch (err) {
             console.log("Error:", err);
         }

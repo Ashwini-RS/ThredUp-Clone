@@ -94,9 +94,7 @@ function Editproducts() {
                     <h2 className="addproduct-title">EDIT PRODUCTS</h2>
 
                     <label>Image Upload</label> <br />
-                    <input type="file"
-                        name="image"
-                        id="imageupload"
+                    <input type="file" id="imageupload"
                         onChange={(e) => {
                             setImage(e.target.files[0])
                         }}
@@ -104,43 +102,31 @@ function Editproducts() {
                     <br />
 
                     <label>Product Name</label> <br />
-                    <input type="text"
-                        name="product-name"
-                        id="product-name"
-                        placeholder="Product Name"
-                        value={name}
+                    <input type="text" name="product-name" id="product-name"
+                        placeholder="Product Name" value={name}
                         onChange={(e) => setName(e.target.value)}
                     />
 
                     <br />
 
                     <label>Brand</label> <br />
-                    <input
-                        type="text"
-                        name="brand"
-                        placeholder="Brand"
-                        value={brand}
+                    <input type="text" name="brand"
+                        placeholder="Brand" value={brand}
                         onChange={(e) => setBrand(e.target.value)}
                     />
 
                     <br />
 
                     <label>Product Description</label> <br />
-                    <input type="text"
-                        name="description"
-                        id="description"
-                        placeholder="Description"
-                        value={description}
+                    <input type="text" name="description" id="description"
+                        placeholder="Description" value={description}
                         onChange={(e) => setDescription(e.target.value)}
                     />
 
                     <br />
 
                     <label>Size</label> <br />
-                    <select
-                        name="size"
-                        id="size"
-                        value={size}
+                    <select name="size" id="size" value={size}
                         onChange={(e) => setSize(e.target.value)}>
                         <option value="">Select Size</option>
                         <option value="S">S</option>
@@ -153,10 +139,7 @@ function Editproducts() {
                     <br />
 
                     <label>Color</label> <br />
-                    <select
-                        name="color"
-                        id="color"
-                        value={color}
+                    <select name="color" id="color" value={color}
                         onChange={(e) => setColor(e.target.value)}>
                         <option value="">Select Color</option>
                         <option value="Red">Red</option>
@@ -169,53 +152,39 @@ function Editproducts() {
                     <br />
 
                     <label>Quantity</label> <br />
-                    <input type="text"
-                        name="quantity"
-                        id="quantity"
-                        placeholder="Quality"
-                        value={quantity}
+                    <input type="text" name="quantity" id="quantity"
+                        placeholder="Quality" value={quantity}
                         onChange={(e) => setQuantity(e.target.value)}
                     />
 
                     <br />
 
                     <label>Old Price</label> <br />
-                    <input
-                        type="number"
-                        name="oldprice"
-                        placeholder="Old Price"
-                        value={oldprice}
+                    <input type="number" name="oldprice"
+                        placeholder="Old Price" value={oldprice}
                         onChange={(e) => setOldprice(e.target.value)}
                     />
 
                     <br />
 
                     <label>New Price</label> <br />
-                    <input
-                        type="number"
-                        name="newprice"
-                        placeholder="New Price"
-                        value={newprice}
+                    <input type="number" name="newprice"
+                        placeholder="New Price" value={newprice}
                         onChange={(e) => setNewprice(e.target.value)}
                     />
 
                     <br />
 
                     <label>Discount</label> <br />
-                    <input
-                        type="number"
-                        name="discount"
-                        placeholder="Discount %"
-                        value={discount}
+                    <input type="number" name="discount"
+                        placeholder="Discount %" value={discount}
                         onChange={(e) => setDiscount(e.target.value)}
                     />
 
                     <br />
 
                     <label className="category-label">Category</label>  <br />
-                    <select
-                        name="category"
-                        className="category-box"
+                    <select name="category" className="category-box"
                         value={category}
                         onChange={(e) => setCategory(e.target.value)}>
                         <option value="">Select Category</option>

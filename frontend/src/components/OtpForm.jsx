@@ -37,7 +37,6 @@ function OtpForm({ email }) {
     }
 
     try {
-
       const response = await axios.post(
         "https://thredup-clone.onrender.com/login/verifyOtp",
         {
@@ -46,15 +45,9 @@ function OtpForm({ email }) {
         }
       );
 
-      // localStorage.setItem('userEmail',JSON.stringify(email))
-      // console.log(response.data);
-
       const userId = response.data.userId
       localStorage.setItem("userId", userId)
-      
       alert("OTP Verified Successfully");
-
-      // window.location.reload()
       navigate('/')
 
     } catch (error) {
@@ -64,16 +57,14 @@ function OtpForm({ email }) {
       } else {
         setErrorMessage("Something went wrong");
       }
-
     }
   };
 
   const handleResend = async () => {
 
     try {
-
       await axios.post(
-         "https://thredup-clone.onrender.com/login/sendOtp",
+        "https://thredup-clone.onrender.com/login/sendOtp",
         { email }
       );
 

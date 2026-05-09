@@ -6,17 +6,14 @@ const UserSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
-
     username: {
         type: String,
         default:"User"
     },
-
     phonenumber:{
         type: String,
         default: null
     },
-
     address:[{
         pincode:{
             type:  String,
@@ -35,13 +32,11 @@ const UserSchema = new mongoose.Schema({
             default: null
         }
     }],
-
     otp: {
         type: String,
         required: true,
         trim: true
     },
-
     otpExpiry: {
         type: Date,
         default: Date.now()

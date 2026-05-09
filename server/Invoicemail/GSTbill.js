@@ -1,9 +1,7 @@
-
 const sgMail = require('@sendgrid/mail');
 const {GSTpdf} = require('../Service/GSTpdf')
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
 const GSTbill = async (email, orders, user) => {
 
     try {
@@ -14,7 +12,8 @@ const GSTbill = async (email, orders, user) => {
             subject: 'Your Order Confirmation ',
             html: `
             <h3>Dear Customer,</h3>
-            <p>Good news! Your order has been delivery has been confirmed successfully. Your order details has been attached in this Email.  View attachment. Thank you for shopping with us!</p>
+            <p>Good news! Your order has been delivery has been confirmed successfully. Your order details has been attached in this Email.  
+            View attachment. Thank you for shopping with us!</p>
             <h3>Thank You, Team ThredUp</h3>
             `,
 
@@ -30,7 +29,6 @@ const GSTbill = async (email, orders, user) => {
         };
 
         await sgMail.send(msg);
-
         console.log("Order Confirmed Email sent successfully");
 
     } catch (error) {

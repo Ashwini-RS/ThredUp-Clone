@@ -35,7 +35,6 @@ function ManageOrder() {
                     }))
                 })
                 .catch(err => console.log(err))
-
         })
     }, [orders])
 

@@ -16,7 +16,6 @@ const sendMail = async (email, otp) => {
     };
 
     await sgMail.send(msg);
-
     console.log("Mail sent successfully");
 
   } catch (error) {
