@@ -27,8 +27,7 @@ function AdminDashboard() {
     const [users, setUsers] = useState([])
     const [revenue, setRevenue] = useState([])
     const [statusData, setStatusData] = useState([]);
-    const [barData, setBarData] = useState([])
-    const [topProducts, setTopProducts] = useState([]);
+   
 
     const COLORS = ["#FFC20A", "#17BECF", "#4caf50"];
 
@@ -37,13 +36,12 @@ function AdminDashboard() {
     }, [])
 
     const [chartData, setChartData] = useState([]);
-    const [areaChart, setAreaChart] = useState([])
 
-    useEffect(() => {
-        axios.get("https://thredup-clone.onrender.com/top-products")
-            .then(res => setTopProducts(res.data))
-            .catch(err => console.log(err));
-    }, [])
+    // useEffect(() => {
+    //     axios.get("https://thredup-clone.onrender.com/top-products")
+    //         .then(res => setTopProducts(res.data))
+    //         .catch(err => console.log(err));
+    // }, [])
 
     useEffect(() => {
 
@@ -163,37 +161,8 @@ function AdminDashboard() {
             .catch(err => console.log(err))
     }, [])
 
-    const BarTooltip = ({ active, payload, label }) => {
-        if (active && payload && payload.length) {
-            return (
-                <div
-                    style={{
-                        background: "transparent",
-                        padding: '4px 4px',
-                        borderRadius: "8px",
-                    }}
-                >
-                    <p style={{
-                        margin: 0,
-                        fontSize: "11px",
-                        color: "#000",
-                        fontWeight: "400"
-                    }}>
-                        {label}
-                    </p>
-                    <p style={{
-                        margin: 0,
-                        fontSize: "13px",
-                        fontWeight: "bold",
-                        color: "#000"
-                    }}>
-                        Orders: {payload[0].value}
-                    </p>
-                </div>
-            );
-        }
-        return null;
-    }
+    
+        
 
     return (
         <>

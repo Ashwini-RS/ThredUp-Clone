@@ -509,8 +509,8 @@ app.get("/admin/revenue", async (req, res) => {
       let revenue = 0
 
       orders.forEach(order => {
-          if (orders.paymentStatus === "Success") {
-              revenue += orders.finalTotal
+          if (order.paymentStatus === "Success") {
+              revenue += order.finalTotal
           }
       })
 
