@@ -14,7 +14,6 @@ function ManageOrder() {
 
     useEffect(() => {
         // axios.get("http://127.0.0.1:3001/manageOrders")
-
         axios.get("https://thredup-clone.onrender.com/manageOrders")
             .then(orders => setOrders(orders.data))
             .catch(err => console.log(err))
@@ -41,18 +40,14 @@ function ManageOrder() {
     const deleteOrders = async (id) => {
         try {
             // await axios.delete(`http://localhost:3001/deleteOrders/${id}`);
-
             await axios.delete(`https://thredup-clone.onrender.com/deleteOrders/${id}`);
-
             // setOrders(orders.filter(order => order._id !== id));
-
             alert("Order deleted successfully!");
         } catch (err) {
             console.error("Delete failed:", err);
             alert("Could not delete the order. Please try again.");
             window.location.reload();
         }
-
         // axios.delete(`http://127.0.0.1:3001/deleteOrders/${id}`)
         // alert("Orders Deleted")
         // window.location.reload();

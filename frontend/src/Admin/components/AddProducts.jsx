@@ -88,13 +88,22 @@ function AddProducts() {
                     <br />
 
                     <label>Brand</label> <br />
-                    <input
-                        type="text"
+                    <select
                         name="brand"
                         placeholder="Brand"
                         value={brand}
-                        onChange={(e) => setBrand(e.target.value)}
-                    />
+                        onChange={(e) => setBrand(e.target.value)}>
+                        <option value="">Select Brands</option>
+                        <option value="Anthropologie">Anthropologie</option>
+                        <option value="Athleta">Athleta</option>
+                        <option value="BDG">BDG</option>
+                        <option value="Unbranded">Unbranded</option>
+                        <option value="Ideology">Ideology</option>
+                        <option value="Lulus">Lulus</option>
+                        <option value="Madwell">Madwell</option>
+                        <option value="Betsy & Adam">Betsy & Adam</option>
+                        <option value="Abercrombie & Fitch">Abercrombie & Fitch</option>
+                    </select>
 
                     <br />
 

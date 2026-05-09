@@ -320,7 +320,6 @@ app.get('/search', async (req, res) => {
         { productDescription: { $regex: q || "", $options: "i" } }
       ]
     })
-
     res.status(200).json({ products })
   } catch (error) {
     res.status(500).json({ message: error.message })
@@ -417,7 +416,6 @@ app.get('/manageUsers/:id', async (req, res) => {
 })
 
 //  RAZORPAY-PAYMENT   CREATE ORDER API
-
 app.post('/createOrder', async (req, res) => {
   const { finalTotal } = req.body
 
