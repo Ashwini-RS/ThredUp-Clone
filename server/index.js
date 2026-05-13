@@ -7,7 +7,6 @@ const User = require('./models/User');
 const Order = require('./models/Order')
 const OrderProcessingMail = require('./Ordermail/OrderProcessingMail');
 const OrderDeliveredMail = require('./Ordermail/OrderDeliveredMail');
-const Contact = require('./models/Contact')
 const path = require("path")
 const cloudinary = require('cloudinary').v2;
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
