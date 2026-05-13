@@ -7,6 +7,7 @@ const User = require('./models/User');
 const Order = require('./models/Order')
 const OrderProcessingMail = require('./Ordermail/OrderProcessingMail');
 const OrderDeliveredMail = require('./Ordermail/OrderDeliveredMail');
+const Contact = require('./models/Contact')
 const path = require("path")
 const cloudinary = require('cloudinary').v2;
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
@@ -522,13 +523,13 @@ app.get("/admin/revenue", async (req, res) => {
   }
 })
 
-//Contact
+//CONTACT Database
 
 const Contact = require("./models/Contact");
 
 app.post("/contact", async (req, res) => {
   try {
-    const { userId, fullName, email, phoneNumber, location, message } = req.body;
+    const { userId, fullname, email, phoneNumber, location, message } = req.body;
 
     if (!userId) {
       return res.status(401).json({
@@ -538,7 +539,7 @@ app.post("/contact", async (req, res) => {
 
     const newContact = new Contact({
       userId,
-      fullName,
+      fullname,
       email,
       phoneNumber,
       location,

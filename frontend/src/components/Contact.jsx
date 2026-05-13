@@ -3,7 +3,7 @@ import { useState } from 'react';
 import axios from 'axios'
 
 function Contact() {
-  const [fullName, setFullName] = useState("")
+  const [fullname, setFullName] = useState("")
   const [email, setEmail] = useState("")
   const [phoneNumber, setPhoneNumber] = useState("")
   const [location, setLocation] = useState("")
@@ -23,7 +23,7 @@ function Contact() {
         "https://thredup-clone.onrender.com/contact",
         {
           userId,
-          fullName,
+          fullname,
           email,
           phoneNumber,
           location,
@@ -38,7 +38,6 @@ function Contact() {
       setPhoneNumber("");
       setLocation("");
       setMessage("");
-
     }
 
     catch (err) {
@@ -70,7 +69,7 @@ function Contact() {
         <form className="contact-form" onSubmit={handleSubmit}>
           <div className="input-row">
             <input type="text"
-              value={fullName}
+              value={fullname}
               placeholder="Name"
               onChange={(e) => setFullName(e.target.value)}
               required />
@@ -93,7 +92,10 @@ function Contact() {
             value={message}
             onChange={(e) => setMessage(e.target.value)} required ></textarea>
 
-          <input type="text" placeholder="Region" />
+          <input type="text"
+            value={location}
+            placeholder="Region"
+            onChange={(e) => setLocation(e.target.value)} required />
 
           <button type="submit">Send</button>
         </form>
