@@ -12,7 +12,7 @@ function Header() {
     localStorage.removeItem("userId")
     localStorage.removeItem('cart')
     window.location.reload()
-}
+  }
 
   return (
     <>
@@ -53,58 +53,57 @@ function Header() {
             <Link to="/kids">Kids</Link>
             {/* <a href="#">Sale</a>
             <a href="#">Brands</a> */}
-          </nav>
 
-          <div className="icons">
+            <div className="icons">
 
-            <i className="fa-regular fa-heart"></i>
 
-            {userEmail ? (
-              <Link className="user-icon" onClick={handleLogout}>
-                <CiLogout />
-              </Link>
-
-            ) : (
-              <>
-              <Link to="/Login" className="user-icon">
-                <i className="fa-regular fa-user">
-                  <div className="dropdown">
-
-                    <div className="dropdown-content">
-                      <Link to="/UserPage">My Account </Link>
-                      <Link to="/Order">My Orders</Link>
-                      <Link to="/">My Address</Link>
-                      <Link onClick={handleLogout}>Logout</Link>
-                    </div>
-
-                  </div>
-                </i>
-              </Link>
-              </>
-            )}
-
-            {/* {userEmail ? (
-                <Link to="/" onClick={handleLogout}>
+              {userEmail ? (
+                <Link className="user-icon" onClick={handleLogout}>
                   <CiLogout />
                 </Link>
 
-            ) : (
-              <Link to="/Login" className="user-icon">
-                 <i className="fa-regular fa-user"></i>
-               </Link>
-            )} */}
+              ) : (
+                <>
+                  <Link to="/Login" className="user-icon">
+                    <i className="fa-regular fa-user">
+                      <div className="dropdown">
 
+                        <div className="dropdown-content">
+                          <Link to="/UserPage">My Account </Link>
+                          <Link to="/Order">My Orders</Link>
+                          <Link to="/">My Address</Link>
+                          <Link onClick={handleLogout}>Logout</Link>
+                        </div>
 
-            <Link to="/AddToCart" className="cart-icon">
+                      </div>
+                    </i>
+                  </Link>
+                </>
+              )}
 
-              <i className="fa-solid fa-cart-arrow-down"></i>
-              <span className="cart-item-len">
-                {cartItemsCount}
-              </span>
-
+              {/* {userEmail ? (
+           <Link to="/" onClick={handleLogout}>
+              <CiLogout />
             </Link>
 
-          </div>
+                ) : (
+                  <Link to="/Login" className="user-icon">
+                    <i className="fa-regular fa-user"></i>
+                  </Link>
+                )} */}
+
+              <Link to="/AddToCart" className="cart-icon">
+
+                <i className="fa-solid fa-cart-arrow-down"></i>
+                <span className="cart-item-len">
+                  {cartItemsCount}
+                </span>
+
+              </Link>
+
+            </div>
+          </nav>
+
         </div>
       </header>
     </>

@@ -19,6 +19,7 @@ function AdminLogin() {
         try {
             if (email === 'thredup.admin@gmail.com' && password === "thredup-admin") {
                 alert("Successfully Logined")
+                localStorage.setItem("admin", email)
                 navigate('/admin/dashboard')
             }
             else {

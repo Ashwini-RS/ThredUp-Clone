@@ -1,6 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Adminsidebar() {
+    const navigate = useNavigate()
+    const admin = localStorage.getItem('admin')
+    const handleLogout = () => {
+        localStorage.removeItem('admin')
+        alert('logout success')
+        navigate("/admin/login")
+    }
     return (
         <>
             <div className="admin-topbar" style={{position:'sticky', top:0}}>
@@ -50,9 +57,14 @@ function Adminsidebar() {
                     </Link>
                     <hr className="sidebar-line" />
 
-                    <Link to="/admin/dashboard" className="admin-task">
-                        <i className="fas fa-sign-out-alt"></i> Logout
+                    <Link to="/Admin/ManageUser" className="admin-task">
+                        <i className="fa-solid fa-user-group"></i> Manage Contact
                     </Link>
+                    <hr className="sidebar-line" />
+
+                    <div onClick={handleLogout} className="admin-task">
+                        <i className="fas fa-sign-out-alt"></i> Logout
+                    </div>
                     <hr className="sidebar-line" />
 
                 </div>

@@ -98,8 +98,7 @@ function Order() {
 
                                             <div className="order-product-details">
                                                 <h4> {order.products[0].productName} </h4>
-                                                <p>Color: {order.products[0].color} </p>
-                                                <p>Size: {order.products[0].size} </p>
+                                                
                                                 <p>Quantity: {order.products[0].quantity} </p>
                                             </div>
 

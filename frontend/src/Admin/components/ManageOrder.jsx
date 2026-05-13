@@ -105,7 +105,7 @@ function ManageOrder() {
             </div>
 
             {showModal && (
-                <div className="mod-order-details">
+                <div className="mod-order-details " style={{paddingBottom:'60px', marginRight:'50px', transform:'translate(-50%, -40%)', width:'300%'}}>
 
                     <h4> Ordered Products </h4>
                     <table>
@@ -124,7 +124,7 @@ function ManageOrder() {
                                     {/* <td><img src={`http://localhost:3001/${product.productImage}`} /></td> */}
 
                                     <td>
-                                        <img src={` https://thredup-clone.onrender.com/${product.productImage}`} />
+                                        <img src={product.productImage} />
                                     </td>
                                     <td>{product.productName}</td>
                                     <td>{product.newprice}</td>

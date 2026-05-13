@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import Contact from "./Contact";
+
 function Footer() {
     return (
         <footer className="footer">
@@ -17,6 +20,9 @@ function Footer() {
                         <li>FAQ</li>
                         <li>Return Policy</li>
                         <li>Reviews</li>
+                        <Link to="/Contact">
+                            <li>Contact Us</li>
+                        </Link>
                     </ul>
                 </div>
 
@@ -152,7 +158,7 @@ function Footer() {
                     <i className="fa-regular fa-copyright"></i>{" "}ThredUp Inc. All Rights Reserved
                 </div>
             </div>
-            
+
         </footer>
     );
 }

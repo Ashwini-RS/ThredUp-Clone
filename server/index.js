@@ -522,6 +522,41 @@ app.get("/admin/revenue", async (req, res) => {
   }
 })
 
+//Contact
+
+const Contact = require("./models/Contact");
+
+app.post("/contact", async (req, res) => {
+  try {
+    const { userId, fullName, email, phoneNumber, location, message } = req.body;
+
+    if (!userId) {
+      return res.status(401).json({
+        message: "Please login first"
+      });
+    }
+
+    const newContact = new Contact({
+      userId,
+      fullName,
+      email,
+      phoneNumber,
+      location,
+      message
+    });
+
+    await newContact.save()
+
+    res.status(201).json({
+      success: true,
+      message: "Message sent successfully"
+    })
+
+  } catch (err) {
+    console.log(err);
+  }
+})
+
 app.listen(3001, () => {
   console.log("server is running")
 })

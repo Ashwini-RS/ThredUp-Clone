@@ -20,6 +20,7 @@ import Order from "./components/Order";
 import Address from "./components/Address";
 import ViewAddress from "./components/ViewAddress";
 import EditAddress from "./components/EditAddress";
+import Contact from "./components/Contact";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="/Designer" element={<Designer />} />
         <Route path="/SingleProductDetail/:id" element={<SingleProductDetail />} />
         <Route path="/search" element={<SearchPage />} />
+        <Route path="/Contact" element={<Contact />} />
 
         <Route path="/UserPage" element={<UserPage />} />
         <Route path="/EditProfile" element={<EditProfile />} />

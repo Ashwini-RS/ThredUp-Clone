@@ -84,13 +84,11 @@ function AddProducts() {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                     />
-
                     <br />
 
                     <label>Brand</label> <br />
                     <select
-                        name="brand"
-                        placeholder="Brand"
+                        name="brand"   placeholder="Brand"
                         value={brand}
                         onChange={(e) => setBrand(e.target.value)}>
                         <option value="">Select Brands</option>
@@ -131,7 +129,6 @@ function AddProducts() {
                         <option value="XL">XL</option>
                         <option value="XXL">XXL</option>
                     </select>
-
                     <br />
 
                     <label>Color</label> <br />
@@ -159,7 +156,6 @@ function AddProducts() {
                         value={quantity}
                         onChange={(e) => setQuantity(e.target.value)}
                     />
-
                     <br />
 
                     <label>Old Price</label> <br />
@@ -170,7 +166,6 @@ function AddProducts() {
                         value={oldprice}
                         onChange={(e) => setOldprice(e.target.value)}
                     />
-
                     <br />
 
                     <label>New Price</label> <br />
@@ -181,7 +176,6 @@ function AddProducts() {
                         value={newprice}
                         onChange={(e) => setNewprice(e.target.value)}
                     />
-
                     <br />
 
                     <label>Discount</label> <br />
@@ -192,7 +186,6 @@ function AddProducts() {
                         value={discount}
                         onChange={(e) => setDiscount(e.target.value)}
                     />
-
                     <br />
 
                     <label className="category-label">Category</label>  <br />
@@ -209,7 +202,6 @@ function AddProducts() {
                         <option value="Dresses">Dresses</option>
                         <option value="Kids">Kids</option>
                     </select>
-
                     <br />
 
                     <button type="submit" className="admin-btn-addproducts">ADD</button>
