@@ -194,6 +194,7 @@ function Editproducts() {
                         <option value="Premium">Premium</option>
                         <option value="Dresses">Dresses</option>
                         <option value="Kids">Kids</option>
+                        <option value="favorite">favorite</option>
                     </select>
 
                     <br />
